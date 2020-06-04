@@ -1,6 +1,4 @@
 <script context="module">
-  /* import { getAllPosts } from "../../sourcePosts";
-  const posts = getAllPosts(); */
   export async function preload() {
     const response = await this.fetch("blog/allPosts.json");
     const { slugs } = await response.json();
