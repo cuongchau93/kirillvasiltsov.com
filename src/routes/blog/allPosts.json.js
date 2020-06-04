@@ -12,5 +12,5 @@ export function get(req, res) {
     "Content-Type": "application/json",
   });
 
-  res.end(JSON.stringify(posts));
+  res.end(JSON.stringify({ slugs: Object.keys(posts) }));
 }

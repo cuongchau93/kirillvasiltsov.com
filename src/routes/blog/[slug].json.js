@@ -1,4 +1,4 @@
-import { posts } from "./allPosts";
+import { posts } from "./allPosts.json";
 
 export function get(req, res) {
   res.writeHead(200, {
