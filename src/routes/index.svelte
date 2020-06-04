@@ -13,5 +13,5 @@
 </svelte:head>
 
 <div class="centered">
-  <p>Under construction...</p>
+  <a href="/blog">Go to blog</a>
 </div>
