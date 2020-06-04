@@ -1,7 +1,12 @@
 <script context="module">
   export async function preload() {
-    const response = await this.fetch("blog/allPosts.json");
-    const { slugs } = await response.json();
+    const responses = await Promise.all([
+      this.fetch("blog/allPosts.json"),
+      this.fetch("blog/webmentions.json")
+    ]);
+    const [{ slugs }, { webmentions }] = await Promise.all(
+      responses.map(r => r.json())
+    );
     return { slugs };
   }
 </script>

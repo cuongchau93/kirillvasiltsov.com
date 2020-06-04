@@ -5,7 +5,5 @@ export function get(req, res) {
     "Content-Type": "application/json",
   });
 
-  console.log(posts[req.params.slug]);
-
   res.end(JSON.stringify(posts[req.params.slug]));
 }
