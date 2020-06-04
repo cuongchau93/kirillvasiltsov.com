@@ -1,9 +1,10 @@
 import marked from "marked";
 import { createFilter } from "rollup-pluginutils";
-import * as matter from "gray-matter";
+import matter from "gray-matter";
+import path from "path";
 
-export function md(options = {}) {
-  const filter = createFilter(options.include || ["**/*.md"], options.exclude);
+export default function md(options = { include: ["**/*.md"] }) {
+  const filter = createFilter(options.include, options.exclude);
 
   if (options.marked) {
     marked.setOptions(options.marked);
@@ -13,14 +14,15 @@ export function md(options = {}) {
     name: "md",
 
     transform(md, id) {
-      if (!/\.md$/.test(id)) return null;
       if (!filter(id)) return null;
 
-      const content = marked(md);
-      const frontmatter = matter(mdContent);
-      const data = { content, frontmatter };
+      const slug = path.basename(id, ".md");
+      const { data: frontmatter, content } = matter(md);
+      const html = marked(content);
+      const data = { html, frontmatter, slug };
+
       return {
-        code: `export default ${JSON.stringify(data.toString())};`,
+        code: `export default ${JSON.stringify(data)};`,
         map: { mappings: "" },
       };
     },

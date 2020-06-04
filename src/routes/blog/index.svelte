@@ -1,21 +1,10 @@
-<script context="module">
-  export async function preload() {
-    try {
-      const response = await this.fetch(`blog/posts.json`);
-      const posts = await response.json();
-      return { posts };
-    } catch (e) {
-      console.log("ERROR", e);
-    }
-  }
-</script>
-
 <script>
-  export let posts;
+  import { getAllPosts } from "../../sourcePosts";
+  const posts = getAllPosts();
 </script>
 
 <ul>
   {#each posts as post}
-    <li>{post}</li>
+    <li>{post.meta.slug}</li>
   {/each}
 </ul>
