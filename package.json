@@ -17,13 +17,15 @@
     "dotenv": "^8.2.0",
     "glob": "^7.1.6",
     "gray-matter": "^4.0.2",
+    "jimp": "^0.13.0",
     "marked": "^1.1.0",
     "node-fetch": "^2.6.0",
     "polka": "next",
     "query-string": "^6.12.1",
     "sirv": "^0.4.0",
     "tailwindcss": "^1.4.6",
-    "tmp": "^0.2.1"
+    "tmp": "^0.2.1",
+    "wasm-twitter-card": "^0.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
