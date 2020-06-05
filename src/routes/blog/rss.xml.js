@@ -20,9 +20,7 @@ const render = (items) => `<?xml version="1.0" encoding="UTF-8" ?>
 			<link>${siteMetadata.url}/blog/${item.meta.slug}</link>
 			<description>${item.meta.spoiler}</description>
       <pubDate>${new Date(item.meta.date).toUTCString()}</pubDate>
-      <content:encoded>${item.html
-        .replace(/<br>/g, "<br/>")
-        .replace(/&/g, "&amp;")}</content:encoded>
+      <content:encoded><![CDATA[${item.html}]]></content:encoded>
 		</item>
 	`
     )
