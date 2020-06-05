@@ -2,7 +2,7 @@ import { getAllPosts } from "../../posts";
 import siteMetadata from "../../siteMetadata";
 
 const render = (items) => `<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0">
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
 <channel>
 	<title>Kirill Vasiltsov's Phantasiai Blog RSS Feed</title>
 	<link>${siteMetadata.url}</link>
@@ -16,10 +16,13 @@ const render = (items) => `<?xml version="1.0" encoding="UTF-8" ?>
     .map(
       (item) => `
 		<item>
-			<title>${item.title}</title>
-			<link>${siteMetadata.url}/blog/${item.slug}</link>
-			<description>${item.spoiler}</description>
-			<pubDate>${new Date(item.date).toUTCString()}</pubDate>
+			<title>${item.meta.title}</title>
+			<link>${siteMetadata.url}/blog/${item.meta.slug}</link>
+			<description>${item.meta.spoiler}</description>
+      <pubDate>${new Date(item.meta.date).toUTCString()}</pubDate>
+      <content:encoded>${item.html
+        .replace(/<br>/g, "<br/>")
+        .replace(/&/g, "&amp;")}</content:encoded>
 		</item>
 	`
     )
@@ -33,6 +36,6 @@ export function get(req, res) {
     "Content-Type": "application/rss+xml",
   });
 
-  const feed = render(getAllPosts().map((p) => p.meta));
+  const feed = render(getAllPosts());
   res.end(feed);
 }
