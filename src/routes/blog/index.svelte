@@ -1,5 +1,6 @@
 <script context="module">
   export async function preload() {
+    this.fetch("blog/rss.xml");
     const responses = await Promise.all([
       this.fetch("blog/allPosts.json"),
       this.fetch("blog/webmentions.json")
@@ -22,3 +23,4 @@
     </li>
   {/each}
 </ul>
+<a href={`/blog/rss.xml`}>RSS</a>

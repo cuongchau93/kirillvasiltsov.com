@@ -20,7 +20,8 @@ const startServer = () => {
 };
 
 if (!dev) {
-  generateAllImages().then(startServer);
+  // generateAllImages().then(startServer);
+  startServer();
 } else {
   startServer();
 }
