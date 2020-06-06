@@ -4,8 +4,6 @@ import commonjs from "@rollup/plugin-commonjs";
 import svelte from "rollup-plugin-svelte";
 import babel from "@rollup/plugin-babel";
 import { terser } from "rollup-plugin-terser";
-import sveltePreprocess from "svelte-preprocess";
-import typescript from "@rollup/plugin-typescript";
 import md from "./plugins/rollup-plugin-md";
 import glob from "./plugins/rollup-plugin-glob";
 import config from "sapper/config/rollup.js";
@@ -19,8 +17,6 @@ const onwarn = (warning, onwarn) =>
   (warning.code === "CIRCULAR_DEPENDENCY" &&
     /[/\\]@sapper[/\\]/.test(warning.message)) ||
   onwarn(warning);
-
-const preprocess = sveltePreprocess();
 
 export default {
   client: {
@@ -37,44 +33,41 @@ export default {
         dev,
         hydratable: true,
         emitCss: true,
-        preprocess,
       }),
       resolve({
         browser: true,
         dedupe: ["svelte"],
       }),
-
       commonjs(),
-      typescript(),
 
       legacy &&
-        babel({
-          extensions: [".js", ".mjs", ".html", ".svelte"],
-          babelHelpers: "runtime",
-          exclude: ["node_modules/@babel/**"],
-          presets: [
-            [
-              "@babel/preset-env",
-              {
-                targets: "> 0.25%, not dead",
-              },
-            ],
+      babel({
+        extensions: [".js", ".mjs", ".html", ".svelte"],
+        babelHelpers: "runtime",
+        exclude: ["node_modules/@babel/**"],
+        presets: [
+          [
+            "@babel/preset-env",
+            {
+              targets: "> 0.25%, not dead",
+            },
           ],
-          plugins: [
-            "@babel/plugin-syntax-dynamic-import",
-            [
-              "@babel/plugin-transform-runtime",
-              {
-                useESModules: true,
-              },
-            ],
+        ],
+        plugins: [
+          "@babel/plugin-syntax-dynamic-import",
+          [
+            "@babel/plugin-transform-runtime",
+            {
+              useESModules: true,
+            },
           ],
-        }),
+        ],
+      }),
 
       !dev &&
-        terser({
-          module: true,
-        }),
+      terser({
+        module: true,
+      }),
     ],
 
     preserveEntrySignatures: false,
@@ -94,17 +87,15 @@ export default {
       svelte({
         generate: "ssr",
         dev,
-        preprocess,
       }),
       resolve({
         dedupe: ["svelte"],
       }),
       commonjs(),
-      typescript(),
     ],
     external: Object.keys(pkg.dependencies).concat(
       require("module").builtinModules ||
-        Object.keys(process.binding("natives"))
+      Object.keys(process.binding("natives"))
     ),
 
     preserveEntrySignatures: "strict",
