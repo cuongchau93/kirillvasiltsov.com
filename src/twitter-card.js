@@ -38,7 +38,7 @@ const generateImage = ({
   subtitleFontSize = 48,
   fontStyle = "monospace",
   separator = "|",
-  fontFile,
+  fontFile = path.join(process.cwd(), "static", "inter.ttf"),
 }) => {
   let formattedDetails = "";
   if (title || author) {
