@@ -1,4 +1,4 @@
-<script context="module">
+<script lang="typescript" context="module">
   export async function preload({ params }) {
     const response = await this.fetch(`blog/${params.slug}.json`);
 
