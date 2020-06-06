@@ -19,7 +19,7 @@
 <ul>
   {#each slugs as slug}
     <li>
-      <a href={`/blog/${slug}`}>{slug}</a>
+      <a class="text-auxbg" href={`/blog/${slug}`}>{slug}</a>
     </li>
   {/each}
 </ul>

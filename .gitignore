@@ -5,4 +5,4 @@ yarn-error.log
 /cypress/screenshots/
 /__sapper__/
 .env
-/static/main.css
+/static/tailwind.css
