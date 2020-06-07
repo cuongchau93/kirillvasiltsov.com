@@ -12,6 +12,16 @@
   --clip: circle(0% at 0% 0%);
 }
 
+[data-theme="dark"] {
+  --text: white;
+  --article-text: whitesmoke;
+  --bg: #182026;
+  --auxbg: rgb(93, 152, 170);
+  --auxtext: #e4e4e4;
+  --gradient: linear-gradient(159deg, rgb(49, 57, 62) 74%, var(--auxbg) 74.1%);
+  --clip: circle(75%);
+}
+
 body {
   margin: 0;
   font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,

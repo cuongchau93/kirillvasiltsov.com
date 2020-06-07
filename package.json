@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "npm run tailwind && sapper dev",
-    "tailwind": "tailwindcss build tailwind.css -o static/tailwind.css",
+    "tailwind": "tailwindcss build tailwind.css -o static/tailwind.css -c tailwind.config.js",
     "build": "cross-env NODE_ENV=production npm run tailwind && sapper build",
     "export": "cross-env NODE_ENV=production npm run tailwind && sapper export --timeout 40000",
     "start": "node __sapper__/build",
