@@ -32,13 +32,13 @@ const generateImage = ({
   slug,
   title = "Blog",
   author = "Kirill Vasiltsov",
-  background = path.join(process.cwd(), "static", "social_card.png"),
+  background = path.join(process.cwd(), "assets", "social_card.png"),
   fontColor = "#ffffff",
   titleFontSize = 96,
   subtitleFontSize = 48,
   fontStyle = "monospace",
   separator = "|",
-  fontFile = path.join(process.cwd(), "static", "inter.ttf"),
+  fontFile = path.join(process.cwd(), "assets", "inter.ttf"),
 }) => {
   let formattedDetails = "";
   if (title || author) {
