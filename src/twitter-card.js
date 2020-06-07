@@ -8,13 +8,10 @@ const WIDTH = 1200;
 const HEIGHT = 630;
 
 async function writeTextToCard(buffer) {
-  return await new Jimp({ data: buffer, width: WIDTH, height: HEIGHT });
+  return new Jimp({ data: buffer, width: WIDTH, height: HEIGHT });
 }
 
 async function generateBackground(background) {
-  if (background.match(/[0-9A-Fa-f]{6}/g)) {
-    return await new Jimp(WIDTH, HEIGHT, background);
-  }
   return Jimp.read(background);
 }
 
@@ -36,15 +33,11 @@ const generateImage = ({
   fontColor = "#ffffff",
   titleFontSize = 96,
   subtitleFontSize = 48,
-  fontStyle = "monospace",
+  fontStyle = "custom",
   separator = "|",
   fontFile = path.join(process.cwd(), "assets", "inter.ttf"),
 }) => {
-  let formattedDetails = "";
-  if (title || author) {
-    formattedDetails =
-      title && author ? `${title} ${separator} ${author}` : title || author;
-  }
+  const details = `${title} ${separator} ${author}`;
 
   const output = path.join(
     process.cwd(),
@@ -59,13 +52,9 @@ const generateImage = ({
     ? fs.readFileSync(require.resolve(fontFile), null)
     : new Uint8Array();
 
-  if (fontFile) {
-    fontStyle = "custom";
-  }
-
   const buffer = twitterCard.generate_text(
     postTitle,
-    formattedDetails,
+    details,
     titleFontSize,
     subtitleFontSize,
     hexToRgb(fontColor),
