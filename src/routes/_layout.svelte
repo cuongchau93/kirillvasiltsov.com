@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { mode, setModeTo } from "../theme.js";
+  import { mode, toggleMode, setModeTo } from "../theme.js";
 
   onMount(() => {
     let storedTheme;
@@ -9,7 +9,6 @@
       storedTheme = localStorage.getItem("theme");
     } catch (e) {}
 
-    console.log("onMount storedTheme", storedTheme);
     const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
     document.documentElement.setAttribute(
@@ -17,26 +16,21 @@
       storedTheme || (darkQuery.matches ? "dark" : "light")
     );
 
-    mode.set(storedTheme);
+    setModeTo(storedTheme);
 
     darkQuery.addListener(e => {
-      mode.set(e.matches ? "dark" : "light");
+      setModeTo(e.matches ? "dark" : "light");
     });
 
     const setPreferredTheme = () => {
       document.documentElement.setAttribute("data-theme", $mode);
       try {
         localStorage.setItem("theme", $mode);
-        console.log("setting to", $mode);
-      } catch {}
+      } catch (e) {}
     };
 
     mode.subscribe(setPreferredTheme);
   });
-
-  function toggleTheme() {
-    mode.update(v => (v === "dark" ? "light" : "dark"));
-  }
 </script>
 
 <svelte:head>
@@ -55,6 +49,6 @@
 </svelte:head>
 
 <div class="relative text-text min-h-screen bg-auxbg">
-  <button on:click={toggleTheme}>Toggle theme</button>
+  <button on:click={toggleMode}>Toggle theme</button>
   <slot />
 </div>
