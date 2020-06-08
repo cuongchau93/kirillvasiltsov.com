@@ -1,6 +1,37 @@
 @tailwind base;
 
 /* purgecss start ignore */
+:root {
+  --bg: white;
+  --text: black;
+  --auxbg: rgb(255, 179, 0);
+  --auxtext: #353535;
+  --tag: #f05443;
+  --gradient: linear-gradient(
+    159deg,
+    var(--auxbg) 74%,
+    rgb(249, 246, 246) 74.1%
+  );
+}
+
+[data-theme="dark"] {
+  --text: white;
+  --article-text: whitesmoke;
+  --bg: #182026;
+  --auxbg: rgb(93, 152, 170);
+  --auxtext: #e4e4e4;
+  --gradient: linear-gradient(159deg, rgb(49, 57, 62) 74%, var(--auxbg) 74.1%);
+}
+
+code {
+  font-family: menlo, inconsolata, monospace;
+  font-size: calc(1em - 2px);
+  color: #555;
+  background-color: #f0f0f0;
+  padding: 0.2em 0.4em;
+  border-radius: 2px;
+}
+
 h1,
 h2,
 h3 {
@@ -25,8 +56,8 @@ article a,
   z-index: 0;
 }
 
-article a:after,
-.fancy-link:after {
+article a::after,
+.fancy-link::after {
   content: "";
   position: absolute;
   z-index: -1;

@@ -30,7 +30,7 @@
       <div
         class="py-1 px-2 ml-2 first:m-0 text-white bg-tag rounded-lg text-xs
         inline-block">
-        {tag}
+        <a href={`/blog/tags/${tag}`}>{tag}</a>
       </div>
     {/each}
   </div>
