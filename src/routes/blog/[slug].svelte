@@ -7,9 +7,19 @@
 </script>
 
 <script>
+  import Header from "../../components/Header.svelte";
+  import Bio from "../../components/Bio.svelte";
   export let post;
 </script>
 
-<article>
-  {@html post.html}
-</article>
+<Header />
+<main class="pb-4">
+  <div class="pb-8">
+    <h1 class="font-postHeader pb-4">{post.meta.title}</h1>
+  </div>
+  <article class="font-sans text-lg">
+    {@html post.html}
+  </article>
+  <!-- <Mentions {mentions} /> -->
+</main>
+<Bio />
