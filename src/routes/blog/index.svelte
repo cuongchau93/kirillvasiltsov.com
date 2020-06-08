@@ -1,13 +1,8 @@
 <script context="module">
   export async function preload() {
     this.fetch("blog/rss.xml");
-    const responses = await Promise.all([
-      this.fetch("blog/allPosts.json"),
-      this.fetch("blog/webmentions.json")
-    ]);
-    const [{ posts }, { webmentions }] = await Promise.all(
-      responses.map(r => r.json())
-    );
+    const responses = await Promise.all([this.fetch("blog/allPosts.json")]);
+    const [{ posts }] = await Promise.all(responses.map(r => r.json()));
     return { posts };
   }
 </script>
