@@ -5,24 +5,27 @@
       this.fetch("blog/allPosts.json"),
       this.fetch("blog/webmentions.json")
     ]);
-    const [{ slugs }, { webmentions }] = await Promise.all(
+    const [{ posts }, { webmentions }] = await Promise.all(
       responses.map(r => r.json())
     );
-    return { slugs };
+    return { posts };
   }
 </script>
 
 <script>
   import Header from "../../components/Header.svelte";
-  export let slugs;
+  import PostDescription from "../../components/PostDescription.svelte";
+  export let posts;
 </script>
 
 <Header isRoot />
-<ul>
-  {#each slugs as slug}
-    <li>
-      <a class="text-auxbg" href={`/blog/${slug}`}>{slug}</a>
-    </li>
+<main class="pt-10">
+  {#each posts as post}
+    <PostDescription
+      spoiler={post.meta.spoiler}
+      link={post.meta.slug}
+      tags={post.meta.tags}
+      title={post.meta.title} />
   {/each}
-</ul>
+</main>
 <a href={`/blog/rss.xml`}>RSS</a>
