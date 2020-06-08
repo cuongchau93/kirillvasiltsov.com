@@ -7,6 +7,13 @@ for (const imp of Object.values(postImports)) {
   posts[slug] = { html, meta: { ...frontmatter, slug } };
 }
 
+export const getPostDescriptions = () => {
+  return Object.values(posts).map((p) => {
+    return {
+      meta: { ...p.meta },
+    };
+  });
+};
 export const getAllPosts = () => Object.values(posts);
 export const getPostSlugs = () => Object.keys(posts);
 export const getPostBySlug = (slug) => posts[slug];

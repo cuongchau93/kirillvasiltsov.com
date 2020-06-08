@@ -101,13 +101,6 @@
     right: 2rem;
   }
 
-  @media screen and (min-width: 768px) {
-    .top-right {
-      top: 1.7rem;
-      right: 4rem;
-    }
-  }
-
   @media screen and (min-width: 1024px) {
     .top-right {
       top: 2rem;

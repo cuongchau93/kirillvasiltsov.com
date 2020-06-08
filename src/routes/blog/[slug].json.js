@@ -1,4 +1,4 @@
-import { getPostBySlug } from "../../posts.js";
+import { getPostBySlug } from "./allPosts.json";
 
 export function get(req, res) {
   res.writeHead(200, {
