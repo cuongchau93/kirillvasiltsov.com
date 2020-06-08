@@ -6,11 +6,7 @@ dotenv.config({
   path: `.env`,
 });
 
-const getMentions = ({
-  domain = "phantasiai.dev",
-  token = process.env.WEBMENTIONS_TOKEN,
-  perPage = 10000,
-}) => {
+const getMentions = ({ domain, token, perPage = 10000 }) => {
   return fetch(
     `https://webmention.io/api/mentions.jf2?${queryString.stringify({
       domain,
@@ -25,11 +21,14 @@ const getMentions = ({
       }
       return mentions.children;
     })
-    .catch(console.log);
+    .catch(console.error);
 };
 
 export async function get(req, res) {
-  const webmentions = await getMentions({});
+  const webmentions = await getMentions({
+    domain: "phantasiai.dev",
+    token: process.env.WEBMENTIONS_TOKEN,
+  });
 
   res.writeHead(200, {
     "Content-Type": "application/json",

@@ -13,9 +13,11 @@
 </script>
 
 <script>
+  import Header from "../../components/Header.svelte";
   export let slugs;
 </script>
 
+<Header isRoot />
 <ul>
   {#each slugs as slug}
     <li>

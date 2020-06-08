@@ -1,5 +1,97 @@
 @tailwind base;
 
+/* purgecss start ignore */
+h1,
+h2,
+h3 {
+  @apply transition-colors duration-500 leading-tight font-header;
+}
+
+h1 {
+  @apply text-3xl font-extrabold;
+}
+
+h2 {
+  @apply text-2xl font-extrabold;
+}
+
+h3 {
+  @apply text-xl font-bold;
+}
+
+article a,
+.fancy-link {
+  @apply relative;
+  z-index: 0;
+}
+
+article a:after,
+.fancy-link:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  left: 0;
+  bottom: -1px;
+  height: 0.5rem;
+  background: var(--auxbg);
+  transition: height 200ms;
+}
+
+article a:hover::after {
+  height: 1.5rem;
+}
+
+.fancy-link:hover::after {
+  height: 2rem;
+}
+
+.heart {
+  transform: rotate(-45deg);
+  @apply w-4 h-4 bg-red-500;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  @apply absolute w-4 h-4 rounded-full bg-red-500;
+}
+
+.heart::before {
+  top: -7px;
+  left: 0;
+}
+
+.heart::after {
+  left: 7px;
+}
+
+article p {
+  @apply pb-4;
+}
+
+article p:last-child {
+  @apply pb-8;
+}
+
+article h2 {
+  @apply pb-4 pt-8;
+}
+
+article h3 {
+  @apply mb-4 mt-8;
+}
+
+.brief-background {
+  background: var(--gradient);
+  transition: 300ms;
+}
+
+.brief-background:hover {
+  transform: scale(1.1);
+}
+/* purgecss end ignore */
+
 @tailwind components;
 
 @tailwind utilities;

@@ -100,6 +100,20 @@
     top: 1.4rem;
     right: 2rem;
   }
+
+  @media screen and (min-width: 768px) {
+    .top-right {
+      top: 1.7rem;
+      right: 4rem;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .top-right {
+      top: 2rem;
+      right: 7rem;
+    }
+  }
 </style>
 
 <svelte:head>
@@ -117,10 +131,13 @@
   </script>
 </svelte:head>
 
-<div class="relative text-text min-h-screen bg-bg">
+<div
+  class="transition-colors duration-500 relative text-text min-h-screen bg-bg">
   <label class="absolute top-right theme-toggle">
     <input checked={$mode === 'dark'} type="checkbox" on:change={toggleMode} />
     <div />
   </label>
-  <slot />
+  <div class="container mx-auto px-4 md:px-12 lg:px-48 max-w-screen-lg">
+    <slot />
+  </div>
 </div>
