@@ -4,7 +4,7 @@
 h1,
 h2,
 h3 {
-  @apply transition-colors duration-500 leading-tight font-header;
+  @apply leading-tight font-header;
 }
 
 h1 {
@@ -82,13 +82,14 @@ article h3 {
   @apply mb-4 mt-8;
 }
 
-.brief-background {
-  background: var(--gradient);
-  transition: 300ms;
+code {
+  @apply text-sm;
 }
 
-.brief-background:hover {
-  transform: scale(1.1);
+@variants hover {
+  .svg {
+    fill: var(--auxbg);
+  }
 }
 /* purgecss end ignore */
 

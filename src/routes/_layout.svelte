@@ -132,7 +132,7 @@
 </svelte:head>
 
 <div
-  class="transition-colors duration-500 relative text-text min-h-screen bg-bg">
+  class="transition-colors duration-300 relative text-text min-h-screen bg-bg">
   <label class="absolute top-right theme-toggle">
     <input checked={$mode === 'dark'} type="checkbox" on:change={toggleMode} />
     <div />

@@ -8,7 +8,6 @@
 <style>
   .brief-background {
     background: var(--gradient);
-    transition: 300ms;
   }
 
   .brief-background:hover {

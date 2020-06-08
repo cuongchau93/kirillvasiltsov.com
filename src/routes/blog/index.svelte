@@ -15,6 +15,7 @@
 <script>
   import Header from "../../components/Header.svelte";
   import PostDescription from "../../components/PostDescription.svelte";
+  import Bio from "../../components/Bio.svelte";
   export let posts;
 </script>
 
@@ -28,4 +29,4 @@
       title={post.meta.title} />
   {/each}
 </main>
-<a href={`/blog/rss.xml`}>RSS</a>
+<Bio />
