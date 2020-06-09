@@ -16,8 +16,12 @@
   const { page } = stores();
 
   $: path = $page.path;
+  $: console.log(path);
 
   const links = ["/", "/blog", "/about"];
+
+  const isRoot = p => p === "/";
+  const isCurrentPath = p => !isRoot(p) && path.startsWith(p);
 </script>
 
 <style>
@@ -33,24 +37,28 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  .nav-item:first-child,
+  .nav-item + .nav-item {
+    margin-right: 2rem;
+  }
 </style>
 
-<header class="flex justify-between">
-  <div>
-    <h1
-      class="font-extrabold inline-block font-sans bg-gradient mb-0 pt-4 pb-4">
-      <a href="/">kirillvasiltsov.com</a>
-    </h1>
-  </div>
-  <div class="flex justify-center items-center">
+<header class="pt-8 flex justify-between items-baseline">
+  <h1 class="font-extrabold inline-block font-sans bg-gradient mb-0 pt-4 pb-4">
+    <a href="/">Kirill Vasiltsov</a>
+  </h1>
+  <nav class="flex justify-end">
     {#each links as link}
-      <div class="ml-2 h-3">
-        <a href={link}>{link === '/' ? 'home' : link.slice(1)}</a>
-        {#if path === link}
+      <div class="nav-item p-2 w-20 box-border flex flex-col">
+        <a class="flex-1 text-center font-bold text-xl pb-2" href={link}>
+          {link === '/' ? 'home' : link.slice(1)}
+        </a>
+        {#if (link === '/' && path === '/') || isCurrentPath(link)}
           <div in:send out:recieve class="h-2 bg-auxbg" />
         {/if}
       </div>
     {/each}
     <slot />
-  </div>
+  </nav>
 </header>

@@ -16,7 +16,7 @@
 </script>
 
 <PostLayout>
-  <main class="pb-4">
+  <main class="pb-4 pt-8">
     <div class="pb-8">
       <h1 class="font-postHeader">{post.meta.title}</h1>
     </div>

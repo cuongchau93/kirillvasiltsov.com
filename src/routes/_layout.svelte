@@ -96,6 +96,10 @@
     transform: scale(1.5);
     transition: transform 0.5s ease 0.15s;
   }
+
+  .fix-scroll {
+    padding-left: calc(100vw - 100%);
+  }
 </style>
 
 <svelte:head>
@@ -114,10 +118,11 @@
 </svelte:head>
 
 <div
-  class="transition-colors duration-300 relative text-text min-h-screen bg-bg">
-  <div class="container mx-auto">
+  class="fix-scroll transition-colors duration-300 relative text-text
+  min-h-screen bg-bg">
+  <div class="container mx-auto xl:px-24">
     <Header>
-      <label class="theme-toggle">
+      <label class="theme-toggle p-2 w-20">
         <input
           checked={$mode === 'dark'}
           type="checkbox"
