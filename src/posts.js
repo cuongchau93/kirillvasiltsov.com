@@ -20,3 +20,8 @@ export const getPostBySlug = (slug) => posts[slug];
 export const getTitleBySlug = (slug) => posts[slug].meta.title;
 export const getPostsByTag = (tag) =>
   Object.values(posts).filter((post) => post.meta.tags.includes(tag));
+
+export const compareDate = (date1, date2) => new Date(date1) - new Date(date2);
+
+export const orderByRecent = (posts) =>
+  posts.sort((p1, p2) => compareDate(p2.meta.date, p1.meta.date));
