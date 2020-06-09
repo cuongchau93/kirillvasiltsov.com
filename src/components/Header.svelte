@@ -30,4 +30,5 @@
       <a href={siteMetadata.twitter} class="fancy-link">Kirill Vasiltsov</a>
     </h2>
   {/if}
+  <slot />
 </header>

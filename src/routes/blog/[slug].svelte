@@ -7,22 +7,23 @@
 </script>
 
 <script>
-  import Header from "../../components/Header.svelte";
   import Bio from "../../components/Bio.svelte";
   import Webmentions from "../../components/Webmentions.svelte";
+  import PostLayout from "../_post.svelte";
   export let post;
   export let likes;
   export let replies;
 </script>
 
-<Header />
-<main class="pb-4">
-  <div class="pb-8">
-    <h1 class="font-postHeader">{post.meta.title}</h1>
-  </div>
-  <article class="font-sans text-lg">
-    {@html post.html}
-  </article>
-  <Webmentions {likes} {replies} />
-</main>
-<Bio />
+<PostLayout>
+  <main class="pb-4">
+    <div class="pb-8">
+      <h1 class="font-postHeader">{post.meta.title}</h1>
+    </div>
+    <article class="font-sans text-lg">
+      {@html post.html}
+    </article>
+    <Webmentions {likes} {replies} />
+  </main>
+  <Bio />
+</PostLayout>

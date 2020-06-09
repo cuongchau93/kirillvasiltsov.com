@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { mode, toggleMode, setModeTo } from "../theme.js";
+  import Header from "../components/Header.svelte";
 
   onMount(() => {
     let storedTheme;
@@ -126,11 +127,16 @@
 
 <div
   class="transition-colors duration-300 relative text-text min-h-screen bg-bg">
-  <label class="absolute top-right theme-toggle">
-    <input checked={$mode === 'dark'} type="checkbox" on:change={toggleMode} />
-    <div />
-  </label>
-  <div class="container mx-auto px-4 md:px-12 lg:px-48 max-w-screen-lg">
+  <div class="container mx-auto">
+    <Header>
+      <label class="absolute top-right theme-toggle">
+        <input
+          checked={$mode === 'dark'}
+          type="checkbox"
+          on:change={toggleMode} />
+        <div />
+      </label>
+    </Header>
     <slot />
   </div>
 </div>

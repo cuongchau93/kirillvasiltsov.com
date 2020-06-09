@@ -14,6 +14,7 @@ export const getPostDescriptions = () => {
     };
   });
 };
+
 export const getAllPosts = () => Object.values(posts);
 export const getPostSlugs = () => Object.keys(posts);
 export const getPostBySlug = (slug) => posts[slug];
