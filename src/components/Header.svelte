@@ -16,7 +16,6 @@
   const { page } = stores();
 
   $: path = $page.path;
-  $: console.log(path);
 
   const links = ["/", "/blog", "/about"];
 
@@ -40,7 +39,14 @@
 
   .nav-item:first-child,
   .nav-item + .nav-item {
-    margin-right: 2rem;
+    margin-right: 1rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    .nav-item:first-child,
+    .nav-item + .nav-item {
+      margin-right: 2rem;
+    }
   }
 </style>
 

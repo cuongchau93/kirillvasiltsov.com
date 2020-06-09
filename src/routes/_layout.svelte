@@ -122,7 +122,7 @@
   min-h-screen bg-bg">
   <div class="container mx-auto xl:px-24">
     <Header>
-      <label class="theme-toggle p-2 w-20">
+      <label class="theme-toggle p-3">
         <input
           checked={$mode === 'dark'}
           type="checkbox"
