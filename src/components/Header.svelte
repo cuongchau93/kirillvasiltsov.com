@@ -1,6 +1,23 @@
 <script>
   import siteMetadata from "../siteMetadata";
-  export let isRoot = false;
+  import { onMount } from "svelte";
+  import { stores } from "@sapper/app";
+  import { crossfade, slide } from "svelte/transition";
+  import { cubicInOut } from "svelte/easing";
+  import { writable } from "svelte/store";
+
+  const [send, recieve] = crossfade({
+    delay: 0,
+    duration: 200,
+    fallback: slide,
+    easing: cubicInOut
+  });
+
+  const { page } = stores();
+
+  $: path = $page.path;
+
+  const links = ["/", "/blog", "/about"];
 </script>
 
 <style>
@@ -18,17 +35,22 @@
   }
 </style>
 
-<header>
-  <h1
-    class="lg:text-5xl font-extrabold inline-block font-mono bg-gradient mb-0
-    pt-4 pb-4">
-    <a href="/blog">writing</a>
-  </h1>
-  {#if isRoot}
-    <h2 class="lg:text-3xl pt-2 pb-2 font-serif text-auxtext font-bold">
-      By
-      <a href={siteMetadata.twitter} class="fancy-link">Kirill Vasiltsov</a>
-    </h2>
-  {/if}
-  <slot />
+<header class="flex justify-between">
+  <div>
+    <h1
+      class="font-extrabold inline-block font-sans bg-gradient mb-0 pt-4 pb-4">
+      <a href="/">kirillvasiltsov.com</a>
+    </h1>
+  </div>
+  <div class="flex justify-center items-center">
+    {#each links as link}
+      <div class="ml-2 h-3">
+        <a href={link}>{link === '/' ? 'home' : link.slice(1)}</a>
+        {#if path === link}
+          <div in:send out:recieve class="h-2 bg-auxbg" />
+        {/if}
+      </div>
+    {/each}
+    <slot />
+  </div>
 </header>

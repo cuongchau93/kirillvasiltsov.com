@@ -8,7 +8,7 @@ module.exports = {
         header: ["Georgia", ...defaultTheme.fontFamily.serif],
         mono: ["Source Code Pro", ...defaultTheme.fontFamily.mono],
         postHeader: ["Georgia", ...defaultTheme.fontFamily.serif],
-        sans: ["Open Sans", ...defaultTheme.fontFamily.sans],
+        sans: ["Inter", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         bg: `var(--bg)`,

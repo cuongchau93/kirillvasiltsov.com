@@ -96,18 +96,6 @@
     transform: scale(1.5);
     transition: transform 0.5s ease 0.15s;
   }
-
-  .top-right {
-    top: 1.4rem;
-    right: 2rem;
-  }
-
-  @media screen and (min-width: 1024px) {
-    .top-right {
-      top: 2rem;
-      right: 7rem;
-    }
-  }
 </style>
 
 <svelte:head>
@@ -129,7 +117,7 @@
   class="transition-colors duration-300 relative text-text min-h-screen bg-bg">
   <div class="container mx-auto">
     <Header>
-      <label class="absolute top-right theme-toggle">
+      <label class="theme-toggle">
         <input
           checked={$mode === 'dark'}
           type="checkbox"
