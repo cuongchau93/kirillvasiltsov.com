@@ -1,5 +1,6 @@
 <script>
   import siteMetadata from "../siteMetadata";
+  import MediaQuery from "./MediaQuery.svelte";
   import { onMount } from "svelte";
   import { stores } from "@sapper/app";
   import { crossfade, slide } from "svelte/transition";
@@ -21,6 +22,8 @@
 
   const isRoot = p => p === "/";
   const isCurrentPath = p => !isRoot(p) && path.startsWith(p);
+
+  export let isMobile = false;
 </script>
 
 <style>
@@ -39,32 +42,36 @@
 
   .nav-item:first-child,
   .nav-item + .nav-item {
-    margin-right: 1rem;
+    padding: 1rem;
   }
 
   @media screen and (min-width: 768px) {
     .nav-item:first-child,
     .nav-item + .nav-item {
-      margin-right: 2rem;
+      padding: 1rem 1.5rem 1rem 1rem;
     }
   }
 </style>
 
-<header class="pt-8 flex justify-between items-baseline">
-  <h1 class="font-extrabold inline-block font-sans bg-gradient mb-0 pt-4 pb-4">
+<header class="px-4 md:px-8 pt-8 flex justify-between items-baseline">
+  <h1 class="font-extrabold inline-block font-sans bg-gradient mb-0">
     <a href="/">Kirill Vasiltsov</a>
   </h1>
-  <nav class="flex justify-end">
-    {#each links as link}
-      <div class="nav-item p-2 w-20 box-border flex flex-col">
-        <a class="flex-1 text-center font-bold text-xl pb-2" href={link}>
-          {link === '/' ? 'home' : link.slice(1)}
-        </a>
-        {#if (link === '/' && path === '/') || isCurrentPath(link)}
-          <div in:send out:recieve class="h-2 bg-auxbg" />
-        {/if}
-      </div>
-    {/each}
+  {#if !isMobile}
+    <nav class="flex items-center justify-end">
+      {#each links as link}
+        <div class="w-24 h-12 box-border flex flex-col">
+          <a class="flex-1 text-center font-bold text-xl pb-2" href={link}>
+            {link === '/' ? 'home' : link.slice(1)}
+          </a>
+          {#if (link === '/' && path === '/') || isCurrentPath(link)}
+            <div in:send out:recieve class="h-2 bg-auxbg" />
+          {/if}
+        </div>
+      {/each}
+      <slot />
+    </nav>
+  {:else}
     <slot />
-  </nav>
+  {/if}
 </header>

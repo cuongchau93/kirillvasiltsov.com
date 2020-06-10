@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { mode, toggleMode, setModeTo } from "../theme.js";
   import Header from "../components/Header.svelte";
+  import MediaQuery from "../components/MediaQuery.svelte";
 
   onMount(() => {
     let storedTheme;
@@ -121,15 +122,17 @@
   class="fix-scroll transition-colors duration-300 relative text-text
   min-h-screen bg-bg">
   <div class="container mx-auto xl:px-24">
-    <Header>
-      <label class="theme-toggle p-3">
-        <input
-          checked={$mode === 'dark'}
-          type="checkbox"
-          on:change={toggleMode} />
-        <div />
-      </label>
-    </Header>
+    <MediaQuery query="(min-width: 768px)" let:matches>
+      <Header isMobile={!matches}>
+        <label class="theme-toggle md:h-12 pl-10">
+          <input
+            checked={$mode === 'dark'}
+            type="checkbox"
+            on:change={toggleMode} />
+          <div />
+        </label>
+      </Header>
+    </MediaQuery>
     <slot />
   </div>
 </div>
