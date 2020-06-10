@@ -7,8 +7,9 @@
   --auxbg: rgb(255, 179, 0);
   --auxtext: #353535;
   --tag: #f05443;
-  --cgradient: linear-gradient(138deg, #7926ff 0%, rgb(144, 104, 255) 89%);
+  --cgradient: linear-gradient(138deg, #f51a1a 0%, rgb(144, 104, 255) 89%);
   --card-text: white;
+  --repolink: rgb(54, 54, 54);
   --gradient: linear-gradient(
     159deg,
     var(--auxbg) 74%,
@@ -20,6 +21,7 @@
   --text: white;
   --article-text: whitesmoke;
   --bg: #182026;
+  --repolink: rgb(93, 152, 170);
   --cgradient: linear-gradient(138deg, rgb(74, 70, 78) 0%, rgb(60, 56, 73) 89%);
   --auxbg: rgb(93, 152, 170);
   --auxtext: #e4e4e4;
@@ -54,7 +56,8 @@ h3 {
 }
 
 article a,
-.fancy-link {
+.fancy-link,
+.repo-link {
   @apply relative;
   z-index: 0;
 }
@@ -72,11 +75,27 @@ article a::after,
   transition: height 200ms;
 }
 
+.repo-link::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  left: 0;
+  bottom: -1px;
+  height: 0.3rem;
+  background: var(--repolink);
+  transition: height 200ms;
+}
+
 article a:hover::after {
   height: 1.5rem;
 }
 
 .fancy-link:hover::after {
+  height: 2rem;
+}
+
+.repo-link:hover::after {
   height: 2rem;
 }
 

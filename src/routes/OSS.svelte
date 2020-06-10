@@ -1,5 +1,16 @@
+<script context="module">
+  export async function preload() {
+    const responses = await Promise.all([this.fetch("github.json")]);
+    const [repositories] = await Promise.all(responses.map(r => r.json()));
+    return { repositories };
+  }
+</script>
+
 <script>
   import MainLayout from "./_main.svelte";
+  import RepositoryCard from "../components/RepositoryCard.svelte";
+
+  export let repositories = [];
 </script>
 
 <MainLayout>
@@ -20,7 +31,18 @@
     </p>
     <p class="text-lg max-w-xl">
       I also like to experiment and build things myself. This includes projects
-      written in other languages like Rust or Haskell.
+      written in other languages like Rust or Haskell. Here are some of the
+      projects I am currently working on.
     </p>
+    <div class="xl:-ml-6 flex flex-wrap">
+      {#each repositories as repo}
+        <RepositoryCard
+          name={repo.name}
+          stars={repo.stars}
+          url={repo.url}
+          fullName={repo.fullName}
+          description={repo.description} />
+      {/each}
+    </div>
   </main>
 </MainLayout>
