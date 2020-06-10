@@ -135,8 +135,12 @@ article h3 {
   @apply mb-4 mt-8;
 }
 
+pre[class="shiki"] {
+  @apply -ml-3 rounded-lg p-4 overflow-auto;
+}
+
 code {
-  @apply text-sm;
+  background: none;
 }
 
 @variants hover {
