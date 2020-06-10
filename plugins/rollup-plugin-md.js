@@ -3,7 +3,9 @@ import { createFilter } from "rollup-pluginutils";
 import matter from "gray-matter";
 import path from "path";
 
-export default function md(options = { include: ["**/*.md"] }) {
+export default function md(
+  options = { include: ["**/*.md"], marked: { smartypants: true } }
+) {
   const filter = createFilter(options.include, options.exclude);
 
   if (options.marked) {

@@ -9,7 +9,7 @@
   --tag: #f05443;
   --cgradient: linear-gradient(138deg, #f51a1a 0%, rgb(144, 104, 255) 89%);
   --card-text: white;
-  --repolink: rgb(54, 54, 54);
+  --repolink: rgba(126, 88, 231, 0.836);
   --gradient: linear-gradient(
     159deg,
     var(--auxbg) 74%,

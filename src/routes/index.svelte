@@ -4,10 +4,10 @@
       this.fetch("github.json"),
       this.fetch("recentPosts.json")
     ]);
-    const [repositories, { posts }] = await Promise.all(
+    const [{ featured }, { posts }] = await Promise.all(
       responses.map(r => r.json())
     );
-    return { repositories, posts };
+    return { repositories: featured, posts };
   }
 </script>
 
@@ -15,16 +15,10 @@
   import MainLayout from "./_main.svelte";
   import RepositoryCard from "../components/RepositoryCard.svelte";
   import PostDescription from "../components/PostDescription.svelte";
-  import RSSIcon from "../components/RSSIcon.svelte";
-  import GithubIcon from "../components/GithubIcon.svelte";
-  import TwitterIcon from "../components/TwitterIcon.svelte";
-  import siteMetadata from "../siteMetadata.js";
+  import Social from "../components/Social.svelte";
 
   export let repositories = [];
   export let posts = [];
-
-  const w = 16;
-  const h = 16;
 </script>
 
 <svelte:head>
@@ -34,8 +28,8 @@
   <main class="pt-10 md:pt-16">
     <section class="pb-16">
       <h1 class="font-sans pb-4">
-        <span class="text-auxbg">Hey</span>
-        , I'm Kirill!
+        <span class="text-auxbg">Hey,</span>
+        I'm Kirill!
       </h1>
       <p class="text-lg max-w-xl pb-2">
         I am a Javascript developer. Lately I've been focusing on frontend
@@ -91,33 +85,7 @@
       </div>
     </section>
     <section class="pb-24">
-      <h1 class="font-sans pb-4">Social stuff</h1>
-      <p class="pb-4">
-        This is my personal website. Here are some other places where you can
-        find me.
-      </p>
-      <div>
-        <div class="p-2 flex items-center">
-          <GithubIcon {w} {h} />
-          <a
-            class="ml-4 fancy-link inline"
-            href="https://github.com/jlkiri/kirillvasiltsov.com">
-            View source on Github
-          </a>
-        </div>
-        <div class="p-2 flex items-center">
-          <TwitterIcon {w} {h} />
-          <a class="ml-4 fancy-link inline" href={siteMetadata.twitter}>
-            Follow me on Twitter
-          </a>
-        </div>
-        <div class="p-2 flex items-center">
-          <RSSIcon {w} {h} />
-          <a class="ml-4 fancy-link inline" href={'/blog/rss.xml'}>
-            Subscribe to the RSS feed
-          </a>
-        </div>
-      </div>
+      <Social isHomepage />
     </section>
   </main>
 </MainLayout>

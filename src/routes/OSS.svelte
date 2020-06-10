@@ -1,14 +1,16 @@
 <script context="module">
   export async function preload() {
     const responses = await Promise.all([this.fetch("github.json")]);
-    const [repositories] = await Promise.all(responses.map(r => r.json()));
-    return { repositories };
+    const [{ allRepos }] = await Promise.all(responses.map(r => r.json()));
+    return { repositories: allRepos };
   }
 </script>
 
 <script>
   import MainLayout from "./_main.svelte";
-  import RepositoryCard from "../components/RepositoryCard.svelte";
+  import SimpleRepositoryCard from "../components/SimpleRepositoryCard.svelte";
+  import Social from "../components/Social.svelte";
+  import siteMetadata from "../siteMetadata.js";
 
   export let repositories = [];
 </script>
@@ -29,20 +31,25 @@
       </a>
       .
     </p>
-    <p class="text-lg max-w-xl">
+    <p class="text-lg max-w-xl pb-16">
       I also like to experiment and build things myself. This includes projects
-      written in other languages like Rust or Haskell. Here are some of the
-      projects I am currently working on.
+      written in other languages like Rust or Haskell. Below are some of the
+      projects I am currently working on. You can see all of them on
+      <a class="fancy-link" href={siteMetadata.github}>my Github profile</a>
+      .
     </p>
-    <div class="xl:-ml-6 flex flex-wrap">
+    <div class="flex flex-col divide-y-2 pb-16">
       {#each repositories as repo}
-        <RepositoryCard
+        <SimpleRepositoryCard
           name={repo.name}
           stars={repo.stars}
           url={repo.url}
-          fullName={repo.fullName}
           description={repo.description} />
       {/each}
     </div>
+    <section class="pb-24">
+      <Social />
+    </section>
   </main>
+
 </MainLayout>

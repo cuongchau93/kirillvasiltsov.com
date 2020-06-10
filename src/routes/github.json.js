@@ -3,15 +3,26 @@ import fetch from "node-fetch";
 require("dotenv").config();
 
 export async function get(req, res) {
-  const selectedRepositoryNames = [
+  const featuredRepositoryNames = [
     "react-easy-flip",
     "looc",
     "tsx-ray",
     "umca",
   ];
 
+  const repositoryNames = [
+    "react-easy-flip",
+    "looc",
+    "tsx-ray",
+    "umca",
+    "useFetch",
+    "wasm-game-of-life",
+    "gatsby-remark-shiki",
+    "rollup-plugin-web-imports",
+  ];
+
   const githubResponses = await Promise.all(
-    selectedRepositoryNames.map((repo) =>
+    repositoryNames.map((repo) =>
       fetch(`https://api.github.com/repos/jlkiri/${repo}`, {
         headers: { Authorization: `Bearer ${process.env.GITHUB_API_TOKEN}` },
       })
@@ -29,9 +40,13 @@ export async function get(req, res) {
     };
   });
 
+  const featuredRepos = filteredRepos.filter((r) =>
+    featuredRepositoryNames.includes(r.name)
+  );
+
   res.writeHead(200, {
     "Content-Type": "application/json",
   });
 
-  res.end(JSON.stringify(filteredRepos));
+  res.end(JSON.stringify({ featured: featuredRepos, allRepos: filteredRepos }));
 }
