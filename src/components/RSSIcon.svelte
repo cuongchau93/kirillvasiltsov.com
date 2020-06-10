@@ -7,7 +7,7 @@
 
 <a
   class="text-text"
-  href="/blog/rss.xml"
+  href="/writing/rss.xml"
   target="_blank"
   rel="noopener noreferrer">
   <svg

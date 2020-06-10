@@ -37,15 +37,13 @@ export default function md(
         callback(null, result);
       };
 
-      if (options.marked) {
-        marked.setOptions({ ...options.marked, highlight: highlighter });
-      }
+      const markedOptions = { ...options.marked, highlight: highlighter };
 
       const slug = path.basename(id, ".md");
       const { data: frontmatter, content } = matter(md);
 
-      return new Promise((resolve, reject) => {
-        marked(content, null, (_, result) => {
+      const returnValue = await new Promise((resolve, reject) => {
+        marked(content, markedOptions, (_, result) => {
           const data = { html: result, frontmatter, slug };
           resolve({
             code: `export default ${JSON.stringify(data)};`,
@@ -53,6 +51,8 @@ export default function md(
           });
         });
       });
+
+      return returnValue;
     },
   };
 }

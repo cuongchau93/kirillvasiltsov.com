@@ -20,7 +20,7 @@
   class="brief-background shadow-lg rounded-md border-transparent pl-5 pb-5
   pt-10 pr-5 mb-10">
   <div class="pb-2">
-    <a href={`/blog/${link}`}>
+    <a href={`/writing/${link}`}>
       <h2 class="pb-2 font-header font-black leading-tight">{title}</h2>
     </a>
   </div>
@@ -30,7 +30,7 @@
       <div
         class="py-1 px-2 ml-2 first:m-0 text-white bg-tag rounded-lg text-xs
         inline-block">
-        <a href={`/blog/tags/${tag}`}>{tag}</a>
+        <a href={`/writing/tags/${tag}`}>{tag}</a>
       </div>
     {/each}
   </div>

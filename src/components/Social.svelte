@@ -34,7 +34,7 @@
   </div>
   <div class="p-2 flex items-center">
     <RSSIcon {w} {h} />
-    <a class="ml-4 fancy-link inline" href={'/blog/rss.xml'}>
+    <a class="ml-4 fancy-link inline" href={'/writing/rss.xml'}>
       Subscribe to the RSS feed
     </a>
   </div>

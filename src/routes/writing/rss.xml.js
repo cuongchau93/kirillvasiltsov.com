@@ -17,7 +17,7 @@ const render = (items) => `<?xml version="1.0" encoding="UTF-8" ?>
       (item) => `
 		<item>
 			<title>${item.meta.title}</title>
-			<link>${siteMetadata.url}/blog/${item.meta.slug}</link>
+			<link>${siteMetadata.url}/writing/${item.meta.slug}</link>
 			<description>${item.meta.spoiler}</description>
       <pubDate>${new Date(item.meta.date).toUTCString()}</pubDate>
       <content:encoded><![CDATA[${item.html}]]></content:encoded>

@@ -18,7 +18,7 @@
 
   $: path = $page.path;
 
-  const links = ["/", "/blog", "/OSS"];
+  const links = ["/", "/writing", "/OSS"];
 
   const isRoot = p => p === "/";
   const isCurrentPath = p => !isRoot(p) && path.startsWith(p);
@@ -72,7 +72,7 @@
         <a class="fancy-link" href="/">Home</a>
       </div>
       <div class="font-bold p-6">
-        <a class="fancy-link" href="/blog">Blog</a>
+        <a class="fancy-link" href="/writing">Writing</a>
       </div>
       <div class="font-bold p-6">
         <a class="fancy-link" href="/oss">OSS</a>

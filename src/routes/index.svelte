@@ -22,8 +22,28 @@
 </script>
 
 <svelte:head>
-  <title>Kirill Vasiltsov's personal website</title>
+  <title>Kirill Vasiltsov's website</title>
+  <meta property="og:url" content="https://www.kirillvasiltsov.com/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Kirill Vasiltsov's website" />
+  <meta name="Description" content="Kirill Vasiltsov's personal website" />
+  <meta
+    property="og:description"
+    content="Kirill Vasiltsov's personal website" />
+  <!-- <meta
+    property="og:image"
+    content="https://www.kirillvasiltsov.com/website.png" /> -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="https://twitter.com/maaiiya8/" />
+  <meta name="twitter:title" content="Kirill Vasiltsov's personal website" />
+  <meta
+    name="twitter:description"
+    content="Kirill Vasiltsov's personal website" />
+  <!-- <meta
+    name="twitter:image"
+    content="https://www.kirillvasiltsov.com/website.png" /> -->
 </svelte:head>
+
 <MainLayout>
   <main class="pt-10 md:pt-16">
     <section class="pb-16">
@@ -64,7 +84,7 @@
             tags={post.meta.tags}
             title={post.meta.title} />
         {/each}
-        <a class="font-bold text-xl fancy-link" href="/blog">View more</a>
+        <a class="font-bold text-xl fancy-link" href="/writing">View more</a>
       </div>
     </section>
     <section class="pb-16">

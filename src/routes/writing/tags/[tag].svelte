@@ -1,6 +1,6 @@
 <script context="module">
   export async function preload({ params }) {
-    const response = await this.fetch(`blog/tags/${params.tag}.json`);
+    const response = await this.fetch(`writing/tags/${params.tag}.json`);
     const posts = await response.json();
     return { posts };
   }

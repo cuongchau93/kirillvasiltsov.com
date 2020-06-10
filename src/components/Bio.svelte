@@ -10,7 +10,7 @@
 </script>
 
 <aside class="pb-4 flex items-center justify-around">
-  <SVGIcon link="/blog/rss.xml" text="RSS">
+  <SVGIcon link="/writing/rss.xml" text="RSS">
     <RSSIcon {w} {h} />
   </SVGIcon>
   <SVGIcon link={siteMetadata.github} text="Github">

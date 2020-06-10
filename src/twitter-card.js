@@ -27,7 +27,7 @@ function hexToRgb(hex) {
 const generateImage = ({
   postTitle,
   slug,
-  title = "Blog",
+  title = "Writing",
   author = "Kirill Vasiltsov",
   background = path.join(process.cwd(), "assets", "social_card.png"),
   fontColor = "#ffffff",
@@ -43,7 +43,7 @@ const generateImage = ({
     process.cwd(),
     "__sapper__",
     "export",
-    "blog",
+    "writing",
     slug,
     "twitter-card.jpg"
   );
