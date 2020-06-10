@@ -1,3 +1,3 @@
-<div class="px-4 md:px-12 lg:px-24">
+<div class="px-4 md:px-8 lg:px-18">
   <slot />
 </div>
