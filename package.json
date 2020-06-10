@@ -25,7 +25,6 @@
     "shiki": "^0.1.7",
     "sirv": "^0.4.0",
     "tailwindcss": "^1.4.6",
-    "tmp": "^0.2.1",
     "wasm-twitter-card": "^0.3.0"
   },
   "devDependencies": {
