@@ -135,8 +135,14 @@ article h3 {
   @apply mb-4 mt-8;
 }
 
-pre[class="shiki"] {
-  @apply -ml-3 rounded-lg p-4 overflow-auto;
+p code {
+  background-color: rgb(26, 44, 61);
+  color: white;
+  @apply p-1 rounded-md;
+}
+
+pre {
+  @apply -ml-3 rounded-lg p-4 overflow-auto text-sm;
 }
 
 code {

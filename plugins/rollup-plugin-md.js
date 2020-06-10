@@ -32,27 +32,22 @@ export default function md(
         theme: shikiTheme,
       });
 
-      const highlighter = (code, lang, callback) => {
+      const highlighter = (code, lang) => {
         const result = shikiHightlighter.codeToHtml(code, lang);
-        callback(null, result);
+        return result;
       };
 
-      const markedOptions = { ...options.marked, highlight: highlighter };
+      const markedOptions = { ...options.marked };
 
       const slug = path.basename(id, ".md");
       const { data: frontmatter, content } = matter(md);
 
-      const returnValue = await new Promise((resolve, reject) => {
-        marked(content, markedOptions, (_, result) => {
-          const data = { html: result, frontmatter, slug };
-          resolve({
-            code: `export default ${JSON.stringify(data)};`,
-            map: { mappings: "" },
-          });
-        });
-      });
-
-      return returnValue;
+      const returnValue = marked(content, markedOptions);
+      const data = { html: returnValue, frontmatter, slug };
+      return {
+        code: `export default ${JSON.stringify(data)};`,
+        map: { mappings: "" },
+      };
     },
   };
 }

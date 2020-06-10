@@ -3,7 +3,8 @@
   export let likes;
 </script>
 
-<div class="border-dotted border-t-2 border-b-2 border-text-auxbg pt-4 pb-4">
+<div
+  class="border-dotted border-t-2 border-b-2 border-text-auxbg mt-4 pt-4 pb-4">
   <div class="ml-2 p-2">
     <div class="heart inline-block" />
     <span class="ml-2">{likes.length}</span>

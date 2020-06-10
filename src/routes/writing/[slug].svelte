@@ -17,6 +17,9 @@
 
 <svelte:head>
   <title>{`Kirill Vasiltsov | Writing | ${post.meta.title}`}</title>
+  <script src="_prism.js">
+
+  </script>
   <meta
     property="og:url"
     content={`https://www.kirillvasiltsov.com/writing/${post.meta.slug}`} />
