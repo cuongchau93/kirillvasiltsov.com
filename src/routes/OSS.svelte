@@ -1,9 +1,14 @@
 <script context="module">
   export async function preload() {
-    const responses = await Promise.all([this.fetch("github.json")]);
-    const [{ allRepos }] = await Promise.all(responses.map(r => r.json()));
-    console.log(allRepos);
-    return { repositories: allRepos };
+    let returnVal;
+    try {
+      const responses = await Promise.all([this.fetch("github.json")]);
+      const [{ allRepos }] = await Promise.all(responses.map(r => r.json()));
+      returnVal = allRepos;
+    } catch (e) {
+      console.log(e);
+    }
+    return { repositories: returnVal };
   }
 </script>
 
