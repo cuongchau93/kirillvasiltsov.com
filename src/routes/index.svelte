@@ -32,7 +32,7 @@
     content="Kirill Vasiltsov's personal website" />
   <meta
     property="og:image"
-    content="https://www.kirillvasiltsov.com/home.png" />
+    content="https://www.kirillvasiltsov.com/home.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:creator" content="https://twitter.com/maaiiya8/" />
   <meta name="twitter:title" content="Kirill Vasiltsov's personal website" />
@@ -41,7 +41,7 @@
     content="Kirill Vasiltsov's personal website" />
   <meta
     name="twitter:image"
-    content="https://www.kirillvasiltsov.com/home.png" />
+    content="https://www.kirillvasiltsov.com/home.jpg" />
 </svelte:head>
 
 <MainLayout>
