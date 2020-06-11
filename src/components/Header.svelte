@@ -18,10 +18,16 @@
 
   $: path = $page.path;
 
-  const links = ["/", "/writing", "/OSS"];
+  const links = ["/", "/writing", "/oss"];
 
   const isRoot = p => p === "/";
   const isCurrentPath = p => !isRoot(p) && path.startsWith(p);
+
+  let isHeaderMounted = false;
+
+  onMount(() => {
+    isHeaderMounted = true;
+  });
 
   export let isMobile = false;
 </script>
@@ -47,7 +53,7 @@
     bg-gradient mb-0">
     <a href="/">Kirill Vasiltsov</a>
   </h1>
-  {#if !isMobile}
+  {#if !isMobile && isHeaderMounted}
     <nav class="flex items-center justify-end">
       {#each links as link}
         <div class="w-24 h-12 box-border flex flex-col">
@@ -65,7 +71,7 @@
     <slot />
   {/if}
 </header>
-{#if isMobile}
+{#if isMobile && isHeaderMounted}
   <footer class="fixed bg-bg border-t bottom-0 left-0 z-50 w-full">
     <nav class="flex text-xl justify-between">
       <div class="font-bold p-6">
