@@ -30,18 +30,18 @@
   <meta
     property="og:description"
     content="Kirill Vasiltsov's personal website" />
-  <!-- <meta
+  <meta
     property="og:image"
-    content="https://www.kirillvasiltsov.com/website.png" /> -->
+    content="https://www.kirillvasiltsov.com/home.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:creator" content="https://twitter.com/maaiiya8/" />
   <meta name="twitter:title" content="Kirill Vasiltsov's personal website" />
   <meta
     name="twitter:description"
     content="Kirill Vasiltsov's personal website" />
-  <!-- <meta
+  <meta
     name="twitter:image"
-    content="https://www.kirillvasiltsov.com/website.png" /> -->
+    content="https://www.kirillvasiltsov.com/home.jpg" />
 </svelte:head>
 
 <MainLayout>

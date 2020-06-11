@@ -15,6 +15,29 @@
   export let repositories = [];
 </script>
 
+<svelte:head>
+  <title>Kirill Vasiltsov | OSS</title>
+  <meta property="og:url" content="https://www.kirillvasiltsov.com/oss/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Kirill Vasiltsov | OSS" />
+  <meta name="Description" content="Kirill Vasiltsov's open source projects" />
+  <meta
+    property="og:description"
+    content="Kirill Vasiltsov's open source projects" />
+  <meta
+    property="og:image"
+    content="https://www.kirillvasiltsov.com/oss/oss.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="https://twitter.com/maaiiya8/" />
+  <meta name="twitter:title" content="Kirill Vasiltsov | OSS" />
+  <meta
+    name="twitter:description"
+    content="Kirill Vasiltsov's open source projects" />
+  <meta
+    name="twitter:image"
+    content="https://www.kirillvasiltsov.com/oss/oss.jpg" />
+</svelte:head>
+
 <MainLayout>
   <main class="pt-10 md:pt-16">
     <h1 class="font-sans pb-4">OSS</h1>

@@ -34,18 +34,18 @@
   <meta
     property="og:description"
     content="Kirill Vasiltsov's personal and work writing" />
-  <!-- <meta
+  <meta
     property="og:image"
-    content="https://www.kirillvasiltsov.com/writing.png" /> -->
+    content="https://www.kirillvasiltsov.com/writing/writing.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:creator" content="https://twitter.com/maaiiya8/" />
   <meta name="twitter:title" content="Kirill Vasiltsov | Writing" />
   <meta
     name="twitter:description"
     content="Kirill Vasiltsov's personal and work writing" />
-  <!-- <meta
+  <meta
     name="twitter:image"
-    content="https://www.kirillvasiltsov.com/writing.png" /> -->
+    content="https://www.kirillvasiltsov.com/writing/writing.jpg" />
 </svelte:head>
 
 <PostLayout>

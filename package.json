@@ -6,8 +6,9 @@
     "dev": "npm run tailwind && sapper dev",
     "tailwind": "tailwindcss build tailwind.css -o static/tailwind.css -c tailwind.config.js",
     "build": "cross-env NODE_ENV=production npm run tailwind && sapper build",
-    "export": "cross-env NODE_ENV=production npm run tailwind && sapper export --timeout 999999",
+    "export": "cross-env NODE_ENV=production npm run tailwind && sapper export --timeout 999999 && npm run copy-cards",
     "start": "node __sapper__/build",
+    "copy-cards": "cp assets/home.jpg __sapper__/export && cp assets/writing.jpg __sapper__/export/writing && cp assets/oss.jpg __sapper__/export/oss",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "test": "run-p --race dev cy:run"
