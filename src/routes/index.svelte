@@ -63,7 +63,7 @@
     </section>
     <section class="pb-12">
       <h1 class="font-sans pb-6">Featured Open Source Projects</h1>
-      <div class="xl:-ml-6 flex flex-wrap">
+      <div class="xl:-ml-6 pb-2 flex flex-wrap">
         {#each repositories as repo}
           <RepositoryCard
             name={repo.name}
@@ -73,6 +73,7 @@
             description={repo.description} />
         {/each}
       </div>
+      <a class="font-bold text-xl fancy-link" href="/oss">View more</a>
     </section>
     <section class="pb-16">
       <h1 class="font-sans pb-4">Recent blog posts</h1>
