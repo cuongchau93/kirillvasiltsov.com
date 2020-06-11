@@ -29,13 +29,18 @@ export async function get(req, res) {
   const { slug } = req.params;
   // const target = `${siteMetadata.url}/${slug}/`;
   const target = `https://phantasiai.dev/${slug}/`;
+  const target2 = `https://www.kirillvasiltsov.com/${slug}/`;
 
   const webmentions = await getMentions({
     target: target,
   });
 
-  const likes = getLikes(webmentions);
-  const replies = getReplies(webmentions);
+  const webmentions2 = await getMentions({
+    target: target2,
+  });
+
+  const likes = getLikes(webmentions).concat(getLikes(webmentions2));
+  const replies = getReplies(webmentions).concat(getReplies(webmentions2));
 
   const postData = {
     post: getPostBySlug(slug),
