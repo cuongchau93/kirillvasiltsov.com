@@ -22,10 +22,10 @@
 </script>
 
 <svelte:head>
-  <title>Kirill Vasiltsov's website</title>
+  <title>Kirill Vasiltsov | Personal website</title>
   <meta property="og:url" content="https://www.kirillvasiltsov.com/" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Kirill Vasiltsov's website" />
+  <meta property="og:title" content="Kirill Vasiltsov | Personal website" />
   <meta name="Description" content="Kirill Vasiltsov's personal website" />
   <meta
     property="og:description"
@@ -35,7 +35,7 @@
     content="https://www.kirillvasiltsov.com/home.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:creator" content="https://twitter.com/maaiiya8/" />
-  <meta name="twitter:title" content="Kirill Vasiltsov's personal website" />
+  <meta name="twitter:title" content="Kirill Vasiltsov | Personal website" />
   <meta
     name="twitter:description"
     content="Kirill Vasiltsov's personal website" />
