@@ -2,6 +2,7 @@
   export async function preload({ params }) {
     const response = await this.fetch(`writing/${params.slug}.json`);
     const { post, likes, replies } = await response.json();
+
     return { post, likes, replies };
   }
 </script>

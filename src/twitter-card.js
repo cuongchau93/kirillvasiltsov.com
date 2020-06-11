@@ -2,7 +2,6 @@ import fs from "fs";
 import Jimp from "jimp";
 import twitterCard from "wasm-twitter-card";
 import path from "path";
-import { getPostSlugs, getTitleBySlug } from "./posts";
 
 const WIDTH = 1200;
 const HEIGHT = 630;
@@ -24,7 +23,7 @@ function hexToRgb(hex) {
   return [r, g, b];
 }
 
-const generateImage = ({
+export const generateImage = ({
   postTitle,
   slug,
   title = "Writing",
@@ -71,12 +70,4 @@ const generateImage = ({
         .catch((err) => err)
     )
     .catch(console.error);
-};
-
-export const generateAllImages = async () => {
-  const postSlugs = getPostSlugs();
-  const imagePromises = postSlugs.map((slug) => {
-    return generateImage({ postTitle: getTitleBySlug(slug), slug });
-  });
-  await Promise.all(imagePromises);
 };

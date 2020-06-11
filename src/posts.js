@@ -1,4 +1,5 @@
 import * as postImports from "./posts/*.md";
+import { generateImage } from "./twitter-card";
 
 export const posts = {};
 
@@ -26,3 +27,13 @@ export const compareDate = (date1, date2) => new Date(date1) - new Date(date2);
 
 export const orderByRecent = (posts) =>
   posts.sort((p1, p2) => compareDate(p2.meta.date, p1.meta.date));
+
+const generateAllImages = async () => {
+  const postSlugs = getPostSlugs();
+  const imagePromises = postSlugs.map((slug) => {
+    return generateImage({ postTitle: getTitleBySlug(slug), slug });
+  });
+  await Promise.all(imagePromises);
+};
+
+generateAllImages();
