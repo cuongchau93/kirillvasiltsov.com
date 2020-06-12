@@ -1,12 +1,16 @@
 <script context="module">
-  import { writable } from "svelte/store";
+  import { rssStatus } from "./_rss_store.js";
 
-  export const mode = writable(null);
+  let status;
+
+  rssStatus.subscribe(s => {
+    status = s;
+  });
 
   export async function preload() {
-    if (!mode) {
+    if (!status) {
       await this.fetch("writing/rss.xml");
-      mode.set("fetched");
+      rssStatus.set("fetched");
     }
 
     const responses = await Promise.all([this.fetch("writing/allPosts.json")]);
