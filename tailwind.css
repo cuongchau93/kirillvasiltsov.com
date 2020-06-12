@@ -56,47 +56,49 @@ h3 {
 }
 
 article a,
-.fancy-link,
+.fancy-link {
+  background-image: linear-gradient(
+    to bottom,
+    transparent 70%,
+    var(--auxbg) 70.1%
+  );
+  background-position: 0 70%;
+  background-size: 100% 200%;
+  word-break: break-word;
+  transition: background-position 100ms;
+}
+
+article a:hover,
+.fancy-link:hover {
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 50%,
+    var(--auxbg) 50.1%
+  );
+  background-position: 0 100%;
+}
+
 .repo-link {
-  @apply relative;
-  z-index: 0;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 70%,
+    var(--repolink) 70.1%
+  );
+  background-position: 0 70%;
+  background-size: 100% 200%;
+  word-break: break-word;
+  transition: background-position 100ms;
 }
 
-article a::after,
-.fancy-link::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  left: 0;
-  bottom: -1px;
-  height: 0.5rem;
-  background: var(--auxbg);
-  transition: height 200ms;
-}
-
-.repo-link::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  left: 0;
-  bottom: -1px;
-  height: 0.3rem;
-  background: var(--repolink);
-  transition: height 200ms;
-}
-
-article a:hover::after {
-  height: 1.5rem;
-}
-
-.fancy-link:hover::after {
-  height: 2rem;
-}
-
-.repo-link:hover::after {
-  height: 2rem;
+.repo-link:hover {
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 50%,
+    var(--repolink) 50.1%
+  );
+  background-position: 0 100%;
 }
 
 .heart {
