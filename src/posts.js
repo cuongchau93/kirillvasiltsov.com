@@ -36,4 +36,9 @@ const generateAllImages = async () => {
   await Promise.all(imagePromises);
 };
 
-generateAllImages();
+const { NODE_ENV } = process.env;
+const dev = NODE_ENV === "development";
+
+if (!dev) {
+  generateAllImages();
+}

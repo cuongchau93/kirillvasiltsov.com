@@ -1,10 +1,10 @@
 <script>
-  import { onMount } from "svelte";
+  import { beforeUpdate } from "svelte";
   import { mode, toggleMode, setModeTo } from "../theme.js";
-  import Header from "../components/Header.svelte";
+  import Navigation from "../components/Navigation.svelte";
   import MediaQuery from "../components/MediaQuery.svelte";
 
-  onMount(() => {
+  beforeUpdate(() => {
     let storedTheme;
 
     try {
@@ -123,7 +123,7 @@
   min-h-screen bg-bg">
   <div class="container mx-auto xl:px-24">
     <MediaQuery query="(min-width: 768px)" let:matches>
-      <Header isMobile={!matches}>
+      <Navigation isMobile={!matches}>
         <label class="theme-toggle md:h-12 pl-10">
           <input
             checked={$mode === 'dark'}
@@ -131,7 +131,7 @@
             on:change={toggleMode} />
           <div />
         </label>
-      </Header>
+      </Navigation>
     </MediaQuery>
     <slot />
   </div>

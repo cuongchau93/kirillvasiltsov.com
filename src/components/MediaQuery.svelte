@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from "svelte";
+  import { beforeUpdate } from "svelte";
 
   export let query;
 
@@ -8,7 +8,7 @@
   let wasMounted = false;
   let matches = false;
 
-  onMount(() => {
+  beforeUpdate(() => {
     wasMounted = true;
     return () => {
       removeActiveListener();
