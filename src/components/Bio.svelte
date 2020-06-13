@@ -9,7 +9,7 @@
   const h = 30;
 </script>
 
-<aside class="pb-4 flex items-center justify-around">
+<aside class="pb-24 flex items-center justify-around">
   <SVGIcon link="/writing/rss.xml" text="RSS">
     <RSSIcon {w} {h} />
   </SVGIcon>
