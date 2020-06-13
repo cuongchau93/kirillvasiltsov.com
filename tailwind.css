@@ -121,6 +121,21 @@ article a:hover,
   left: 7px;
 }
 
+pre[class*="language-"] {
+  margin: 0 0 1rem 0;
+  @apply text-sm;
+}
+
+@media screen and (min-width: 768px) {
+  pre[class*="language-"] {
+    margin: 0 -12px 1rem -12px;
+  }
+}
+
+article iframe {
+  @apply mb-4;
+}
+
 article p {
   @apply pb-4;
 }
@@ -141,14 +156,6 @@ p code {
   background-color: rgb(26, 44, 61);
   color: white;
   @apply p-1 rounded-md;
-}
-
-pre {
-  @apply -ml-3 rounded-lg p-4 overflow-auto text-sm;
-}
-
-code {
-  background: none;
 }
 
 @variants hover {
