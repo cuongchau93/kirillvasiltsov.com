@@ -30,7 +30,7 @@
   <meta property="og:description" content={post.meta.title} />
   <meta
     property="og:image"
-    content={`https://www.kirillvasiltsov.com/writing/${post.meta.slug}/twitter-card.png`} />
+    content={`https://www.kirillvasiltsov.com/writing/${post.meta.slug}/twitter-card.jpg`} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:domain" value="kirillvasiltsov.com" />
   <meta name="twitter:creator" value="https://twitter.com/maaiiya8/" />
@@ -38,7 +38,7 @@
   <meta name="twitter:description" value={post.meta.spoiler} />
   <meta
     name="twitter:image"
-    content={`https://www.kirillvasiltsov.com/writing/${post.meta.slug}/twitter-card.png`} />
+    content={`https://www.kirillvasiltsov.com/writing/${post.meta.slug}/twitter-card.jpg`} />
 </svelte:head>
 
 <PostLayout>
