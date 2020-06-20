@@ -88,4 +88,4 @@ This way they will likely to be also minimized to something like `g` or `e` or w
 
 ## Note on gzip
 
-Interestingly, when you compress two outputs with gzip, the difference between them becomes much smaller. Still, on large files the difference can easily reach 50KB and more - enough to have a noticeable impact on your page load. If you are interested, you can [learn more about gzip here](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer) and [here](https://www.youtube.com/watch?v=whGwm0Lky2s&feature=youtu.be&t=14m11s).
+Interestingly, when you compress two outputs with gzip, the difference between them becomes much smaller. Still, on large files the difference can easily reach 50KB and more - enough to have a noticeable impact on your page load. If you are interested, you can [learn more about gzip here](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer), [here](https://www.youtube.com/watch?v=whGwm0Lky2s&feature=youtu.be&t=14m11s) and [here](https://css-tricks.com/the-difference-between-minification-and-gzipping/).
