@@ -28,7 +28,7 @@
     property="og:image"
     content="https://www.kirillvasiltsov.com/oss/oss.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:creator" content="https://twitter.com/maaiiya8/" />
+  <meta name="twitter:creator" content="https://twitter.com/virtualkirill/" />
   <meta name="twitter:title" content="Kirill Vasiltsov | OSS" />
   <meta
     name="twitter:description"

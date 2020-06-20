@@ -170,4 +170,4 @@ Before submitting the pull request, I also added the unit test for the `timeToRe
 
 ## Next time
 
-Next time I will talk about another contribution to Gatsby. In the meantime, if you liked the article, [follow me on Twitter](https://twitter.com/maaiiya8) for more updates!
+Next time I will talk about another contribution to Gatsby. In the meantime, if you liked the article, [follow me on Twitter](https://twitter.com/virtualkirill) for more updates!

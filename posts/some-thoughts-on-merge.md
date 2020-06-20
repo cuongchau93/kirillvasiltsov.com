@@ -11,7 +11,7 @@ The idea of Merge as a fundamental computational operation of human language has
 
 However I have long felt that the original definition of Merge has largely served its purpose. A lot of things (like movement) in human language suddenly started to make sense when we first analyzed them as workings of Merge. Now, I personally struggle to find new phenomena which Merge would explain as brilliantly as it did movement (at least not in a far-fetched way).
 
-A few days ago I [tried](https://twitter.com/maaiiya8/status/1172450475976712192) [to be picky](https://twitter.com/maaiiya8/status/1172460087387934720) about Merge on Twitter, and realized that it might be better to write a post about it.
+A few days ago I [tried](https://twitter.com/virtualkirill/status/1172450475976712192) [to be picky](https://twitter.com/virtualkirill/status/1172460087387934720) about Merge on Twitter, and realized that it might be better to write a post about it.
 
 ### Sentences, rivers and lungs
 
@@ -34,7 +34,7 @@ Of course, the problem of "compatibility" only arises if one thinks of Merge as 
 Let us take the simplest definition of Merge possible.
 
 ```javascript
-merge(x, y) = { x, y }
+merge(x, y) = { x, y };
 ```
 
 This reads: "for _any_ `x` and `y`, the product of their Merge is a set `{x, y}`". As I mentioned above, this cannot be true because not any `x` and `y` are of the same **type**. The original definition of Merge quite explicitly constrains the types of `x` and `y` to lexical items. To make this explicit in our formal definition we would write something like this:
