@@ -105,6 +105,19 @@
         </div>
       </div>
     </section>
+    <section class="pb-16">
+      <h1 class="font-sans pb-4">Guest Writing</h1>
+      <ul class="pl-4 list-disc">
+        <li class="pl-2">
+          <a
+            class="fancy-link text-xl font-bold"
+            href="https://css-tricks.com/everything-you-need-to-know-about-flip-animations-in-react/">
+            Everything You Need to Know About FLIP Animations in React
+          </a>
+          <p class="text-sm text-gray-500">css-tricks.com</p>
+        </li>
+      </ul>
+    </section>
     <section class="pb-24">
       <Social isHomepage />
     </section>
