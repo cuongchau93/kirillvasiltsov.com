@@ -24,6 +24,10 @@ const getLikes = (mentions) =>
   mentions.filter((m) => m.activity.type === "like");
 const getReplies = (mentions) =>
   mentions.filter((m) => m.activity.type === "reply");
+const getReposts = (mentions) =>
+  mentions.filter(
+    (m) => m.activity.type === "repost" || m.activity.type === "link"
+  );
 
 export async function get(req, res) {
   const { slug } = req.params;
@@ -44,11 +48,15 @@ export async function get(req, res) {
   const replies = getReplies(oldWebmentions).concat(
     getReplies(currentWebmentions)
   );
+  const reposts = getReposts(oldWebmentions).concat(
+    getReposts(currentWebmentions)
+  );
 
   const postData = {
     post: getPostBySlug(slug),
     likes,
     replies,
+    reposts,
   };
 
   res.writeHead(200, {

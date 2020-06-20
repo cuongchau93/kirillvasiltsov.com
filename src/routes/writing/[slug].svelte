@@ -1,9 +1,9 @@
 <script context="module">
   export async function preload({ params }) {
     const response = await this.fetch(`writing/${params.slug}.json`);
-    const { post, likes, replies } = await response.json();
+    const { post, likes, replies, reposts } = await response.json();
 
-    return { post, likes, replies };
+    return { post, likes, replies, reposts };
   }
 </script>
 
@@ -14,6 +14,7 @@
   export let post;
   export let likes;
   export let replies;
+  export let reposts;
 </script>
 
 <svelte:head>
@@ -49,7 +50,7 @@
     <article class="font-sans text-lg">
       {@html post.html}
     </article>
-    <Webmentions {likes} {replies} />
+    <Webmentions {likes} {replies} {reposts} />
   </main>
   <Bio />
 </PostLayout>
