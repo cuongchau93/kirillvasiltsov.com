@@ -1,5 +1,5 @@
 ---
-title: The hidden advantage of abstraction
+title: When more functions = less code
 date: "2020-06-20"
 spoiler: How abstraction makes it easier to minimize your code
 language: en
