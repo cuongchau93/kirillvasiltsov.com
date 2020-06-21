@@ -38,7 +38,7 @@ Automatic UI generation for props manipulation almost sounds like magic, but how
 
 Suppose you have a file `IDCard.tsx` and inside it is a component that looks like this:
 
-```typescript
+```ts
 interface IDCardProps {
   firstName: string;
   lastName: string;
