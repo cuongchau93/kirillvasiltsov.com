@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "/writing/the-hidden-advantage-of-abstraction"
+  to = "/writing/when-more-functions-equals-less-code"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/writing/the-hidden-advantage-of-abstraction/"
+  to = "/writing/when-more-functions-equals-less-code"
+  status = 301
+  force = true
