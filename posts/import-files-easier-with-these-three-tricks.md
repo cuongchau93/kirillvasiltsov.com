@@ -1,5 +1,5 @@
 ---
-title: "Import files easier with these few tricks"
+title: "Import files easier with these three tricks"
 date: "2020-06-23"
 spoiler: How to avoid writing long and confusing relative paths
 language: en
