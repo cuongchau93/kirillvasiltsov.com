@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+
+<url>
+  <loc>https://www.kirillvasiltsov.com/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/oss/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/import-files-easier-with-these-three-tricks/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/tags/programming/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/tags/tips/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/when-more-functions-equals-less-code/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/my-first-article-as-a-guest-writer/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/tags/react/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/tags/animation/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/contributing-to-gatsby-issue-21311/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/tags/oss/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/how-to-draw-a-circle-with-css-and-no-html/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/tags/css/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/how-to-implement-dark-theme-with-css-and-javascript/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/if-you-want-to-learn-how-to-code-but-are-afraid-to-start/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/tags/learning/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/smooth-animation-with-react-hooks-again/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/sorting-algorithms-in-rust/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/tags/rust/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/tags/algorithms/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/using-streams-api-in-react-app/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/visually-test-and-sandbox-your-react-components-with-looc/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/webmention-support/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/tags/webmentions/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/you-do-not-need-a-container-component-or-how-to-use-redux-hooks-in-storybook-stories/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/drawing-a-line-between-merge-and-recursion/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/tags/linguistics/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/some-thoughts-on-merge/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/what-can-stoics-teach-us/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/tags/ethics/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/poverty-of-stimulus-argument-part-2/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/poverty-of-stimulus-argument-part-1/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/on-acceptability/</loc>
+  <lastmod>2020-06-24T09:46:51+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
