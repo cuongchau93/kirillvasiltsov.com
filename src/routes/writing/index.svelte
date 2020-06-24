@@ -28,7 +28,7 @@
 </script>
 
 <svelte:head>
-  <title>Kirill Vasiltsov | Writing</title>
+  <title>Writing | Kirill Vasiltsov</title>
   <meta property="og:url" content="https://www.kirillvasiltsov.com/writing/" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Kirill Vasiltsov | Writing" />

@@ -16,7 +16,7 @@
 </script>
 
 <svelte:head>
-  <title>Kirill Vasiltsov | OSS</title>
+  <title>OSS | Kirill Vasiltsov</title>
   <meta property="og:url" content="https://www.kirillvasiltsov.com/oss/" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Kirill Vasiltsov | OSS" />

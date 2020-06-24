@@ -18,7 +18,7 @@
 </script>
 
 <svelte:head>
-  <title>{`Kirill Vasiltsov | Writing | ${post.meta.title}`}</title>
+  <title>{`${post.meta.title} | Writing | Kirill Vasiltsov`}</title>
   <script src="_prism.js">
 
   </script>
