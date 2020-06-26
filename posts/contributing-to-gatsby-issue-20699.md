@@ -8,7 +8,7 @@ tags:
   - programming
 ---
 
-[Last time](https://www.kirillvasiltsov.com/writing/contributing-to-gatsby-issue-21311/) I wrote about fixing `gatsby-transformer-remark`, which failed to properly count words (and time-to-read) problem in Chinese and Japanese languages.
+[Last time](https://www.kirillvasiltsov.com/writing/contributing-to-gatsby-issue-21311/) I wrote about fixing `gatsby-transformer-remark`, which failed to properly count words (and time-to-read) in Chinese and Japanese languages.
 
 Today I'm going to tell you about another contribution to [Gatsby](https://www.gatsbyjs.org/) that I made earlier this year.
 
