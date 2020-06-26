@@ -1,7 +1,7 @@
 ---
 title: "Contributing to Gatsby - Issue #20699"
 date: "2020-06-26"
-spoiler: Do you know how long can your directory name be?
+spoiler: Do you know how long can your directory names be?
 language: en
 tags:
   - OSS
@@ -58,7 +58,7 @@ if (invalidPathSegments.length > 0) {
 }
 ```
 
-`tooLongSegmentsInPath` is where it gets interesting. First of all, we simply split the path by `/`. Then we need to check whether each segment is too long. But what is too long? It [seems that most OS have a filename limit of 255 bytes](https://serverfault.com/questions/9546/filename-length-limits-on-linux/9548#9548).
+`tooLongSegmentsInPath` is where it gets interesting. First of all, we simply split the path by `/`. Then we need to check whether each segment is too long.
 
 ```javascript
 export const tooLongSegmentsInPath = (path: string): Array<string> => {
@@ -72,4 +72,46 @@ export const tooLongSegmentsInPath = (path: string): Array<string> => {
 };
 ```
 
-and choose to crash if this is a `production` build. After all, we don't want to truncate paths because this is not what the user may want. But in `development` mode this is fine with a simple warning.
+But what is _too long_? It [seems that most OS have a filename limit of 255 bytes](https://serverfault.com/questions/9546/filename-length-limits-on-linux/9548#9548). However, I did some research and found out that some systems allow 255 **characters**! For example, both MacOS (APFS) and Windows (NTFS) allow up to 255 chars, regardless of how many bytes is in one character. For example, a Latin character `a` is 1 byte, but a Japanese character `あ` is all 4! On macOS and Windows, I'm allowed to create a folder which name is 255 characters `あ` (=1020 bytes). Anyway, it seems like there aren't systems that allow less than 255 bytes, so we need to put that in code.
+
+To find out which OS is used to `build`, we use a very handy Node.js `process.platform` property:
+
+```javascript
+const isMacOs = process.platform === `darwin`; // Yes, it is "darwin"
+const isWindows = process.platform === `win32`;
+```
+
+And here is the `isNameTooLong` function:
+
+```javascript
+const MAX_PATH_SEGMENT_CHARS = 255;
+const MAX_PATH_SEGMENT_BYTES = 255;
+
+const isNameTooLong = (segment: string): boolean =>
+  isMacOs || isWindows
+    ? segment.length > MAX_PATH_SEGMENT_CHARS // MacOS (APFS) and Windows (NTFS) filename length limit (255 chars)
+    : Buffer.from(segment).length > MAX_PATH_SEGMENT_BYTES; // Other (255 bytes)
+```
+
+A good way to truncate a path is to cut it at around 50 chars and to hash the rest with a function that hashes strings to obtain a unique value. This way we don't accidentally get identical truncated paths. Luckily, Gatsby already has a hashing function `createContentDigest`, so I just used it.
+
+```javascript
+export const truncatePath = (path: string): string =>
+  path.replace(pathSegmentRe, (match) => {
+    if (isNameTooLong(match)) {
+      return (
+        match.slice(0, SLICING_INDEX) +
+        createContentDigest(match.slice(SLICING_INDEX))
+      );
+    }
+    return match;
+  });
+```
+
+Finally, we want to truncate the path only during `development` and show a warning. This is because the truncation is automatic and the resulting hash is unpredictable to the user. This can be easily done by looking at `NODE_ENV` environment variable. In `production` paths that are too long are still expected to cause crash but with a meaningful error.
+
+As always, new functions need to be unit tested, so I wrote a couple of tests for the functions above, which you can see in the PR. And that's it!
+
+## Next time
+
+I plan to write more about contributions in the near future. In the meantime, if you liked the article, [follow me on Twitter](https://twitter.com/virtualkirill) for more updates! Also, [check out the first post](https://www.kirillvasiltsov.com/writing/contributing-to-gatsby-issue-21311/) about my contribution to Gatsby if you haven't yet.
