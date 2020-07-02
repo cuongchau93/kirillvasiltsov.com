@@ -11,7 +11,7 @@ React Hooks API [was released more than a year ago](https://reactjs.org/blog/201
 
 I think disagreements exist because we tend to use React hooks without really "thinking" in them.
 
-In this article, I will omit the "how", because there already are a plenty of good introductions. Instead I will focus on **why** and **when** you should use React hooks.
+In this article, I will omit the "what" and "how", because there already are a plenty of good introductions. Instead I will focus on **why** and **when** you should use React hooks.
 
 ## Why hooks
 
@@ -53,21 +53,20 @@ function Page1() {
 function Page2() {
   return <Fetcher>{(data) => <div>{data.title}</div>}</Fetcher>;
 }
-
-export default function App() {
-  return (
-    <main>
-      <Page1 />
-      <Page2 />
-    </main>
-  );
-}
 ```
 
 You can play with it here:
 
 [![Edit sharing-data-fetching-react](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/recursing-rgb-7f0nf?fontsize=14&hidenavigation=1&theme=dark)
 
-If you are an attentive reader, you probably noticed that although logic is shared, **the state is not**! We actually `fetch` data twice and it exists in two different places now. This is bad and may lead to very nasty bugs. Of course, it is possible to rely on libraries like `react-redux` to completely separate fetching logic from React and maintain an external object, which is then "connected" to your components. But at the end of the day, what `connect` does is basically the same thing as HOCs (although [`react-redux` hooks are now a thing](https://react-redux.js.org/api/hooks)!).
+If you are an attentive reader, you probably noticed that although logic is shared, **the state is not**! We actually `fetch` data twice and it exists in two different places now. This is bad and may lead to very nasty bugs. Here's a picture that shows what actually happens:
 
 ![state-not-shared](/assets/datafetcher.png)
+
+Of course, it is possible to rely on libraries like `react-redux` to completely separate fetching logic from React and maintain an external object, which is then "connected" to your components. But at the end of the day, what `connect` does is basically the same thing as HOCs (although [`react-redux` hooks are now a thing](https://react-redux.js.org/api/hooks)!).
+
+### Owning state versus sharing it
+
+Hooks were made to solve exactly this problem of sharing logic. When you use `useState`, your component does not **own** state. Instead, it is shared with your component. I've never seen anyone say this, but, conceptually, with React Hooks none of your components **have** state.
+
+Not understanding the (conceptual) difference between owning and sharing is the main reason disagreements exist, I think. For example, in one real discussion I argued
