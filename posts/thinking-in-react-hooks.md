@@ -1,9 +1,10 @@
 ---
 title: "Thinking in React Hooks: why and when"
 date: "2020-07-02"
-spoiler: How to avoid using React hooks wihout thinking in them
+spoiler: The conceptual difference between owning and sharing state
 language: en
 tags:
+  - react
   - programming
 ---
 
@@ -81,7 +82,7 @@ With custom hook:
 
 ![with custom hook](/assets/with-custom-hook.png)
 
-The analogy with import is completely justified. A lot of `react` libraries that people import in their code today are basically a hook. Some of the most popular data fetching libraries like [swr](https://github.com/vercel/swr) and [react-query](https://github.com/tannerlinsley/react-query) are hooks (`useSwr` and `useQuery` respectively). Even animations in libraries like [react-easy-flip](https://github.com/jlkiri/react-easy-flip) can be done with a [useFlip] hook.
+The analogy with import is completely justified. A lot of `react` libraries that people import in their code today are basically a hook. Some of the most popular data fetching libraries like [swr](https://github.com/vercel/swr) and [react-query](https://github.com/tannerlinsley/react-query) are hooks (`useSwr` and `useQuery` respectively). Even animations in libraries like [react-easy-flip](https://github.com/jlkiri/react-easy-flip) can be done with a `useFlip` hook.
 
 Not understanding the (conceptual) difference between owning and sharing is one big reason disagreements may occur. No one would argue whether using `import` is a good approach or not. It is essential. In fact, before Hooks were released, there was a proposal to use the `use` keyword. But I guess a function is better than having to maintain a non-standard syntax addition to Javascript.
 
@@ -98,3 +99,7 @@ b) A custom hook which may change a lot is not a very good hook. For example ins
 ## What you can't do with React Hooks
 
 I am aware of only one case where you cannot use React hooks. This is when you need to capture the DOM properties like width or (x,y) position right before the rendered update is commited / laid out. In class components this is possible with the [getSnapshotBeforeUpdate](https://reactjs.org/docs/react-component.html#getsnapshotbeforeupdate) lifecycle method. At the moment of writing there is not hook counterpart of that method. This is a pretty rare usecase, but it is very important in some animation libraries.
+
+## What about many other hooks?
+
+I didn't say anything about other very useful hooks like `useEffect`, but the same logic applies to them. You can share not only state but side effects as well! The detailed analysis of them is out of the scope of this article. But if you are interested you can read more about some [interesting use cases for `useLayoutEffect` in this article](https://css-tricks.com/everything-you-need-to-know-about-flip-animations-in-react/) I wrote earlier.
