@@ -90,11 +90,13 @@ Not understanding the (conceptual) difference between owning and sharing is one 
 
 The answer to this question is "almost always". Some people think that there are cases where you CAN use a hook but, even though it is natural, it would not be very scalable/maintainable to use it. For example, it may be tempting to try to separate the pure view component from logic and avoid using hooks in it, especially when you do not need to share that logic (e.g. data fetching specifically for that component). The fear of using hooks in that component comes from thinking that the otherwise pure component would **own** the state and hence be coupled to logic that may potentially change.
 
-There is no 100% right or wrong answer, but there are two reasons to still use hooks there:
+There is no 100% right or wrong answer, but there are three reasons to still use hooks there:
 
 a) There are no better alternatives. One of them is to have a "container" component whose only purpose is to fetch data for the pure component. The problem is that if logic changes in the future, the very same changes would have to be made to the container. It is even worse because some components higher in the tree might want to pass props to the pure view component and the container will have to take and pass the props down.
 
 b) A custom hook which may change a lot is not a very good hook. For example instead of having `useFetchUser` and `useFetchProfile` hooks, it may be better to have a `useFetch` hook that only does the fetching. The fetching function may change from the external API to the local database, so you can also make it an argument to `useFetch`. Then you can create hooks like `useUser` which use `useFetch` under the hood. Ultimately, this is not a problem of React, but a problem of abstraction.
+
+c) Components that use hooks are NOT difficult to test. It seems so, but changes that you need to do to make the component with hooks testable are minimal. [In this article about Storybook](https://www.kirillvasiltsov.com/writing/you-do-not-need-a-container-component-or-how-to-use-redux-hooks-in-storybook-stories) I explain how to use dependency injection to make testing easy.
 
 ## What you can't do with React Hooks
 
