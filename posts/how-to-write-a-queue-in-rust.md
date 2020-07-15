@@ -102,7 +102,7 @@ fn peek(&self) -> Option<&T> {
 }
 ```
 
-Note that it returns a reference (`&`) and the reference itself is wrapped in an `Option` because the index passed to get may be out of bounds (in which case you get a `None`).
+Note that it returns a reference (`&`) and the reference itself is wrapped in an `Option`.
 
 Now we have a functioning queue! Here's the full code:
 
