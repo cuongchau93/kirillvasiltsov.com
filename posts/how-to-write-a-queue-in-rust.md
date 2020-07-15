@@ -132,7 +132,7 @@ impl<T> Queue<T> {
   }
 
   fn peek(&self) -> Option<&T> {
-    self.queue.get(0)
+    self.queue.first()
   }
 }
 ```
