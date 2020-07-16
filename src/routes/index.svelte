@@ -58,6 +58,69 @@
     transform: skewY(-6.5deg);
     z-index: -1;
   }
+
+  #pc {
+    position: absolute;
+    bottom: 0;
+    right: 15%;
+  }
+
+  #frame {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    left: 0;
+    height: 15%;
+    transform: skewY(-6.5deg) skewX(30deg);
+    background: linear-gradient(
+      to left,
+      rgba(255, 224, 158, 0.212) 0%,
+      rgba(249, 255, 196, 0.123) 10%,
+      transparent 10%,
+      transparent 14%,
+      rgba(255, 224, 158, 0.267) 14%,
+      rgba(249, 255, 196, 0.212) 30%,
+      transparent 40%,
+      transparent
+    );
+  }
+
+  #parallax-wrap {
+    transform-style: preserve-3d;
+    position: relative;
+    height: 600px;
+  }
+
+  #parallax-child {
+    background: 50% 50% / cover;
+    background-image: url("/tree-night.jpg");
+    position: relative;
+    transform: translateZ(-2px) scale(3);
+    transform-origin: 0% 0% 0px;
+    height: 750px;
+    width: 100%;
+    filter: blur(2px) brightness(0.4);
+  }
+
+  .magic-pixel {
+    width: 1px;
+    height: 1px;
+  }
+
+  :global(#sapper) {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    perspective: 1px;
+    perspective-origin: 0% 0%;
+    height: 100%;
+  }
+
+  :global(body, html) {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
 </style>
 
 <svelte:head>
@@ -84,7 +147,8 @@
 </svelte:head>
 
 <MainLayout>
-  <main class="pt-10 md:pt-16">
+  <main class="preserve-3d-transform">
+    <div class="magic-pixel" />
     <section id="content-up" class="pb-16">
       <h1 class="font-sans pb-4">
         <span class="text-auxbg">Hey,</span>
@@ -100,7 +164,11 @@
         brain and language, or brewing favorite coffee.
       </p>
     </section>
-
+    <div id="parallax-wrap">
+      <div id="frame" />
+      <img id="pc" src="pc.svg" width="320" height="320" />
+      <div id="parallax-child" />
+    </div>
     <section id="content-down" class="pt-12 pb-12">
       <h1 class="font-sans pb-6">Featured Open Source Projects</h1>
       <div class="xl:-ml-6 pb-2 flex flex-wrap">

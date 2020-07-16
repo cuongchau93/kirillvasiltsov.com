@@ -101,49 +101,6 @@
   .fix-scroll {
     padding-left: calc(100vw - 100%);
   }
-
-  #pc {
-    position: absolute;
-    bottom: 0;
-    right: 15%;
-  }
-
-  #frame {
-    position: absolute;
-    top: 20%;
-    right: 0;
-    left: 0;
-    height: 15%;
-    transform: skewY(-6.5deg) skewX(30deg);
-    background: linear-gradient(
-      to left,
-      rgba(255, 224, 158, 0.212) 0%,
-      rgba(249, 255, 196, 0.123) 10%,
-      transparent 10%,
-      transparent 14%,
-      rgba(255, 224, 158, 0.267) 14%,
-      rgba(249, 255, 196, 0.212) 30%,
-      transparent 40%,
-      transparent
-    );
-  }
-
-  #parallax-wrap {
-    transform-style: preserve-3d;
-    position: relative;
-    height: 600px;
-  }
-
-  #parallax-child {
-    background: 50% 50% / cover;
-    background-image: url("/tree-night.jpg");
-    position: relative;
-    transform: translateZ(-2px) scale(3);
-    transform-origin: 0% 0% 0px;
-    height: 850px;
-    width: 100%;
-    filter: blur(2px) brightness(0.4);
-  }
 </style>
 
 <svelte:head>
@@ -163,7 +120,7 @@
 
 <div
   class="preserve-3d-transform fix-scroll transition-colors duration-300
-  relative text-text min-h-screen bg-bg">
+  relative text-text min-h-screen">
   <div class="preserve-3d-transform container mx-auto xl:px-24">
     <MediaQuery query="(min-width: 768px)" let:matches>
       <Navigation isMobile={!matches}>
@@ -176,13 +133,6 @@
         </label>
       </Navigation>
     </MediaQuery>
-    <div id="parallax-wrap">
-      <div id="frame" />
-      <img id="pc" src="pc.svg" width="320" height="320" />
-      <div id="parallax-child" />
-    </div>
     <slot />
-
   </div>
-
 </div>
