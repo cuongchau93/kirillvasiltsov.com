@@ -12,7 +12,7 @@
 </script>
 
 <script>
-  import MainLayout from "./_main.svelte";
+  import Padded from "./_padded.svelte";
   import RepositoryCard from "../components/RepositoryCard.svelte";
   import PostDescription from "../components/PostDescription.svelte";
   import Social from "../components/Social.svelte";
@@ -38,7 +38,7 @@
     bottom: -5%;
     right: 0;
     left: 0;
-    height: 50%;
+    height: 80%;
     transform-origin: 100%;
     transform: skewY(-6.5deg);
     z-index: -1;
@@ -56,6 +56,7 @@
     height: 50%;
     transform-origin: 0 100%;
     transform: skewY(-6.5deg);
+    background-color: var(--bg);
     z-index: -1;
   }
 
@@ -121,6 +122,10 @@
     padding: 0;
     height: 100%;
   }
+
+  .fix-scroll {
+    padding-left: calc(100vw - 100%);
+  }
 </style>
 
 <svelte:head>
@@ -146,10 +151,10 @@
     content="https://www.kirillvasiltsov.com/home.jpg" />
 </svelte:head>
 
-<MainLayout>
-  <main class="preserve-3d-transform">
-    <div class="magic-pixel" />
-    <section id="content-up" class="pb-16">
+<main class="preserve-3d-transform">
+  <div class="magic-pixel" />
+  <section id="content-up" class="w-full bg-bg pb-16 fix-scroll">
+    <div class="px-18 md:px-24 lg:px-48">
       <h1 class="font-sans pb-4">
         <span class="text-auxbg">Hey,</span>
         I'm Kirill!
@@ -163,71 +168,72 @@
         When I'm not writing code, I'm reading (and writing) about ethics, human
         brain and language, or brewing favorite coffee.
       </p>
-    </section>
-    <div id="parallax-wrap">
-      <div id="frame" />
-      <img id="pc" src="pc.svg" width="320" height="320" />
-      <div id="parallax-child" />
     </div>
-    <section id="content-down" class="pt-12 pb-12">
-      <h1 class="font-sans pb-6">Featured Open Source Projects</h1>
-      <div class="xl:-ml-6 pb-2 flex flex-wrap">
-        {#each repositories as repo}
-          <RepositoryCard
-            name={repo.name}
-            stars={repo.stars}
-            url={repo.url}
-            fullName={repo.fullName}
-            description={repo.description} />
-        {/each}
-      </div>
-      <a class="font-bold text-xl fancy-link" href="/oss">View more</a>
-    </section>
-    <section class="pb-16">
-      <h1 class="font-sans pb-4">Recent blog posts</h1>
-      <div class="lg:pr-64 recent-posts">
-        {#each posts as post}
-          <PostDescription
-            spoiler={post.meta.spoiler}
-            link={post.meta.slug}
-            tags={post.meta.tags}
-            title={post.meta.title} />
-        {/each}
-        <a class="font-bold text-xl fancy-link" href="/writing">View more</a>
-      </div>
-    </section>
-    <section class="pb-16">
-      <h1 class="font-sans pb-4">Appearances</h1>
-      <div class="lg:pr-64 recent-posts">
-        <div class="p-2 md:p-6">
-          <h2 class="text-3xl">2019</h2>
-          <div class="h-1 bg-gray-300" />
-          <div class="py-3">
-            <a
-              class="fancy-link font-bold text-xl"
-              href="https://2019.kfug.jp/session/kirillvasiltsov">
-              Frontend Conference 2019
-            </a>
-            <div class="text-gray-600">Osaka, Japan</div>
-          </div>
+  </section>
+  <section id="parallax-wrap">
+    <div id="frame" />
+    <img id="pc" src="pc.svg" width="320" height="320" />
+    <div id="parallax-child" />
+  </section>
+  <section id="content-down" class="bg-bg pt-12 pb-12">
+    <h1 class="font-sans pb-6">Featured Open Source Projects</h1>
+    <div class="xl:-ml-6 pb-2 flex flex-wrap">
+      {#each repositories as repo}
+        <RepositoryCard
+          name={repo.name}
+          stars={repo.stars}
+          url={repo.url}
+          fullName={repo.fullName}
+          description={repo.description} />
+      {/each}
+    </div>
+    <a class="font-bold text-xl fancy-link" href="/oss">View more</a>
+  </section>
+
+  <section class="pb-16">
+    <h1 class="font-sans pb-4">Recent blog posts</h1>
+    <div class="lg:pr-64 recent-posts">
+      {#each posts as post}
+        <PostDescription
+          spoiler={post.meta.spoiler}
+          link={post.meta.slug}
+          tags={post.meta.tags}
+          title={post.meta.title} />
+      {/each}
+      <a class="font-bold text-xl fancy-link" href="/writing">View more</a>
+    </div>
+  </section>
+  <section class="pb-16">
+    <h1 class="font-sans pb-4">Appearances</h1>
+    <div class="lg:pr-64 recent-posts">
+      <div class="p-2 md:p-6">
+        <h2 class="text-3xl">2019</h2>
+        <div class="h-1 bg-gray-300" />
+        <div class="py-3">
+          <a
+            class="fancy-link font-bold text-xl"
+            href="https://2019.kfug.jp/session/kirillvasiltsov">
+            Frontend Conference 2019
+          </a>
+          <div class="text-gray-600">Osaka, Japan</div>
         </div>
       </div>
-    </section>
-    <section class="pb-16">
-      <h1 class="font-sans pb-4">Guest Writing</h1>
-      <ul class="pl-4 list-disc">
-        <li class="pl-2">
-          <a
-            class="fancy-link text-xl font-bold"
-            href="https://css-tricks.com/everything-you-need-to-know-about-flip-animations-in-react/">
-            Everything You Need to Know About FLIP Animations in React
-          </a>
-          <p class="text-sm text-gray-500">css-tricks.com</p>
-        </li>
-      </ul>
-    </section>
-    <section class="pb-24">
-      <Social isHomepage />
-    </section>
-  </main>
-</MainLayout>
+    </div>
+  </section>
+  <section class="pb-16">
+    <h1 class="font-sans pb-4">Guest Writing</h1>
+    <ul class="pl-4 list-disc">
+      <li class="pl-2">
+        <a
+          class="fancy-link text-xl font-bold"
+          href="https://css-tricks.com/everything-you-need-to-know-about-flip-animations-in-react/">
+          Everything You Need to Know About FLIP Animations in React
+        </a>
+        <p class="text-sm text-gray-500">css-tricks.com</p>
+      </li>
+    </ul>
+  </section>
+  <section class="pb-24">
+    <Social isHomepage />
+  </section>
+</main>

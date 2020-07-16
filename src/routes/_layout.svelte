@@ -97,10 +97,6 @@
     transform: scale(1.5);
     transition: transform 0.5s ease 0.15s;
   }
-
-  .fix-scroll {
-    padding-left: calc(100vw - 100%);
-  }
 </style>
 
 <svelte:head>
@@ -119,9 +115,9 @@
 </svelte:head>
 
 <div
-  class="preserve-3d-transform fix-scroll transition-colors duration-300
-  relative text-text min-h-screen">
-  <div class="preserve-3d-transform container mx-auto xl:px-24">
+  class="preserve-3d-transform transition-colors duration-300 relative text-text
+  min-h-screen">
+  <div class="preserve-3d-transform">
     <MediaQuery query="(min-width: 768px)" let:matches>
       <Navigation isMobile={!matches}>
         <label class="theme-toggle md:h-12 pl-10">
