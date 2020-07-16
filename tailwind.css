@@ -17,6 +17,14 @@
   );
 }
 
+#sapper {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  perspective: 1px;
+  perspective-origin: 0% 0%;
+}
+
 [data-theme="dark"] {
   --text: white;
   --article-text: whitesmoke;
@@ -26,6 +34,10 @@
   --auxbg: rgb(93, 152, 170);
   --auxtext: #e4e4e4;
   --gradient: linear-gradient(159deg, rgb(49, 57, 62) 74%, var(--auxbg) 74.1%);
+}
+
+.preserve-3d-transform {
+  transform-style: preserve-3d;
 }
 
 code {

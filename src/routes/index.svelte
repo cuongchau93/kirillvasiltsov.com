@@ -21,6 +21,45 @@
   export let posts = [];
 </script>
 
+<style>
+  #content-up {
+    position: relative;
+  }
+
+  #content-down {
+    position: relative;
+  }
+
+  #content-up::after {
+    content: "";
+    display: block;
+    background: inherit;
+    position: absolute;
+    bottom: -5%;
+    right: 0;
+    left: 0;
+    height: 50%;
+    transform-origin: 100%;
+    transform: skewY(-6.5deg);
+    z-index: -1;
+    border-bottom: 12px solid black;
+  }
+
+  #content-down::before {
+    content: "";
+    display: block;
+    position: absolute;
+    border-top: 12px solid black;
+    top: -1%;
+    right: 0;
+    left: 0;
+    height: 50%;
+    transform-origin: 0 100%;
+    transform: skewY(-6.5deg);
+    z-index: -1;
+  }
+</style>
+
 <svelte:head>
   <title>Kirill Vasiltsov | Personal website</title>
   <meta property="og:url" content="https://www.kirillvasiltsov.com/" />
@@ -46,7 +85,7 @@
 
 <MainLayout>
   <main class="pt-10 md:pt-16">
-    <section class="pb-16">
+    <section id="content-up" class="pb-16">
       <h1 class="font-sans pb-4">
         <span class="text-auxbg">Hey,</span>
         I'm Kirill!
@@ -61,7 +100,8 @@
         brain and language, or brewing favorite coffee.
       </p>
     </section>
-    <section class="pb-12">
+
+    <section id="content-down" class="pt-12 pb-12">
       <h1 class="font-sans pb-6">Featured Open Source Projects</h1>
       <div class="xl:-ml-6 pb-2 flex flex-wrap">
         {#each repositories as repo}
