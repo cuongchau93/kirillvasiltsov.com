@@ -17,6 +17,24 @@
   import PostDescription from "../components/PostDescription.svelte";
   import Social from "../components/Social.svelte";
 
+  import { onMount } from "svelte";
+
+  const words = ["Welcome!", "What's up?", "Have a nice day!"];
+
+  let interval;
+  let prompt;
+  let typed = words[0];
+  let idx = 0;
+
+  onMount(() => {
+    console.log(prompt);
+    interval = setInterval(() => {
+      idx = (idx + 1) % 3;
+      typed = words[idx];
+      prompt.style.setProperty("--chwidth", typed.length + 1);
+    }, 4000);
+  });
+
   export let repositories = [];
   export let posts = [];
 </script>
@@ -121,6 +139,44 @@
   .fix-scroll {
     padding-left: calc(100vw - 100%);
   }
+
+  #greet {
+    position: absolute;
+    top: 20%;
+    left: 8%;
+    font-size: 15px;
+    font-family: monospace;
+    transform: skewY(-8deg);
+  }
+
+  @media screen and (min-width: 768px) {
+    #greet {
+      font-size: 17px;
+    }
+  }
+
+  .typing {
+    --chwidth: 9;
+    width: calc(var(--chwidth) * 1ch);
+    animation: typing 2s steps(var(--chwidth)) infinite alternate both,
+      blink 0.5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    box-sizing: content-box;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
 </style>
 
 <svelte:head>
@@ -148,7 +204,7 @@
 
 <main class="preserve-3d-transform">
   <div class="magic-pixel" />
-  <section id="content-up" class="w-full bg-bg pb-16 fix-scroll">
+  <section id="content-up" class="w-full bg-bg pt-16 pb-16 fix-scroll">
     <div class="px-4 md:px-24 lg:px-48">
       <h1 class="font-sans pb-4">
         <span class="text-auxbg">Hey,</span>
@@ -167,7 +223,13 @@
   </section>
   <section id="parallax-wrap">
     <div id="frame" />
-    <img id="pc" src="pc.svg" />
+    <div id="pc">
+      <div id="greet">
+        <div>[me@home ~]$</div>
+        <div bind:this={prompt} class="typing">{typed}</div>
+      </div>
+      <img src="pc3.svg" />
+    </div>
     <div id="parallax-child" />
   </section>
   <section id="content-down" class="w-full bg-bg pb-16 pt-16 fix-scroll">

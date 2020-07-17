@@ -20,7 +20,7 @@
 [data-theme="dark"] {
   --text: white;
   --article-text: whitesmoke;
-  --bg: #182026;
+  --bg: #030a0f;
   --repolink: rgb(93, 152, 170);
   --cgradient: linear-gradient(138deg, rgb(74, 70, 78) 0%, rgb(60, 56, 73) 89%);
   --auxbg: rgb(93, 152, 170);
