@@ -22,8 +22,8 @@
 </style>
 
 <div
-  class="flex flex-col zoom justify-between card-gradient shadow-lg max-w-full
-  md:max-w-xs lg:max-w-md p-4 mb-4 md:mr-4 rounded-lg">
+  class="flex flex-col zoom justify-between w-full card-gradient shadow-lg
+  max-w-full md:max-w-xs lg:max-w-md p-4 mb-4 md:mr-4 rounded-lg">
   <h2 class="font-mono pb-2">
     <a class="font-bold repo-link" href={url}>{name}</a>
   </h2>
