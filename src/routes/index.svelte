@@ -12,14 +12,77 @@
 </script>
 
 <script>
-  import MainLayout from "./_main.svelte";
+  import Padded from "./_padded.svelte";
   import RepositoryCard from "../components/RepositoryCard.svelte";
   import PostDescription from "../components/PostDescription.svelte";
   import Social from "../components/Social.svelte";
+  import ParallaxBackground from "../components/ParallaxBackground.svelte";
 
   export let repositories = [];
   export let posts = [];
 </script>
+
+<style>
+  #content-up {
+    position: relative;
+  }
+
+  #content-down {
+    position: relative;
+  }
+
+  #content-up::after {
+    content: "";
+    display: block;
+    background: inherit;
+    position: absolute;
+    bottom: -5%;
+    right: 0;
+    left: 0;
+    height: 80%;
+    transform-origin: 100%;
+    transform: skewY(-6.5deg);
+    z-index: -1;
+    border-bottom: 12px solid black;
+  }
+
+  #content-down::before {
+    content: "";
+    display: block;
+    position: absolute;
+    border-top: 12px solid black;
+    top: -5%;
+    right: 0;
+    left: 0;
+    height: 50%;
+    transform-origin: 0 100%;
+    transform: skewY(-6.5deg);
+    background-color: var(--bg);
+    z-index: -1;
+  }
+  :global(#sapper) {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    perspective: 1px;
+    perspective-origin: 0% 0%;
+    height: 100%;
+  }
+
+  :global(body, html) {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  :global(body) {
+    transform: translateZ(0);
+  }
+
+  .fix-scroll {
+    padding-left: calc(100vw - 100%);
+  }
+</style>
 
 <svelte:head>
   <title>Kirill Vasiltsov | Personal website</title>
@@ -44,9 +107,10 @@
     content="https://www.kirillvasiltsov.com/home.jpg" />
 </svelte:head>
 
-<MainLayout>
-  <main class="pt-10 md:pt-16">
-    <section class="pb-16">
+<main class="preserve-3d-transform">
+  <div class="magic-pixel" />
+  <section id="content-up" class="w-full bg-bg pt-16 pb-16 fix-scroll">
+    <div class="px-4 md:px-24 lg:px-48">
       <h1 class="font-sans pb-4">
         <span class="text-auxbg">Hey,</span>
         I'm Kirill!
@@ -60,8 +124,11 @@
         When I'm not writing code, I'm reading (and writing) about ethics, human
         brain and language, or brewing favorite coffee.
       </p>
-    </section>
-    <section class="pb-12">
+    </div>
+  </section>
+  <ParallaxBackground />
+  <section id="content-down" class="w-full bg-bg pb-16 pt-16 fix-scroll">
+    <div class="px-4 md:px-24 lg:px-48">
       <h1 class="font-sans pb-6">Featured Open Source Projects</h1>
       <div class="xl:-ml-6 pb-2 flex flex-wrap">
         {#each repositories as repo}
@@ -74,8 +141,11 @@
         {/each}
       </div>
       <a class="font-bold text-xl fancy-link" href="/oss">View more</a>
-    </section>
-    <section class="pb-16">
+    </div>
+  </section>
+
+  <section class="w-full bg-bg pb-16 pt-16 fix-scroll">
+    <div class="px-4 md:px-24 lg:px-48">
       <h1 class="font-sans pb-4">Recent blog posts</h1>
       <div class="lg:pr-64 recent-posts">
         {#each posts as post}
@@ -87,8 +157,10 @@
         {/each}
         <a class="font-bold text-xl fancy-link" href="/writing">View more</a>
       </div>
-    </section>
-    <section class="pb-16">
+    </div>
+  </section>
+  <section class="w-full bg-bg pb-16 pt-16 fix-scroll">
+    <div class="px-4 md:px-24 lg:px-48">
       <h1 class="font-sans pb-4">Appearances</h1>
       <div class="lg:pr-64 recent-posts">
         <div class="p-2 md:p-6">
@@ -104,8 +176,10 @@
           </div>
         </div>
       </div>
-    </section>
-    <section class="pb-16">
+    </div>
+  </section>
+  <section class="w-full bg-bg pb-16 pt-16 fix-scroll">
+    <div class="px-4 md:px-24 lg:px-48">
       <h1 class="font-sans pb-4">Guest Writing</h1>
       <ul class="pl-4 list-disc">
         <li class="pl-2">
@@ -117,9 +191,11 @@
           <p class="text-sm text-gray-500">css-tricks.com</p>
         </li>
       </ul>
-    </section>
-    <section class="pb-24">
+    </div>
+  </section>
+  <section class="w-full bg-bg pb-24 pt-16 fix-scroll">
+    <div class="px-4 md:px-24 lg:px-48">
       <Social isHomepage />
-    </section>
-  </main>
-</MainLayout>
+    </div>
+  </section>
+</main>

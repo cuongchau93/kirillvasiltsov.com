@@ -7,7 +7,7 @@
 </script>
 
 <script>
-  import MainLayout from "./_main.svelte";
+  import Padded from "./_padded.svelte";
   import SimpleRepositoryCard from "../components/SimpleRepositoryCard.svelte";
   import Social from "../components/Social.svelte";
   import siteMetadata from "../siteMetadata.js";

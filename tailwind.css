@@ -20,12 +20,39 @@
 [data-theme="dark"] {
   --text: white;
   --article-text: whitesmoke;
-  --bg: #182026;
+  --bg: #030a0f;
   --repolink: rgb(93, 152, 170);
   --cgradient: linear-gradient(138deg, rgb(74, 70, 78) 0%, rgb(60, 56, 73) 89%);
   --auxbg: rgb(93, 152, 170);
   --auxtext: #e4e4e4;
   --gradient: linear-gradient(159deg, rgb(49, 57, 62) 74%, var(--auxbg) 74.1%);
+}
+
+.preserve-3d-transform {
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+#pc {
+  @apply absolute bottom-0 h-64 w-64;
+  right: 10%;
+}
+
+#parallax-wrap {
+  transform-style: preserve-3d;
+  position: relative;
+  height: 32rem;
+}
+
+@media screen and (min-width: 768px) {
+  #pc {
+    width: 350px;
+    height: 350px;
+  }
+
+  #parallax-wrap {
+    height: 38rem;
+  }
 }
 
 code {
