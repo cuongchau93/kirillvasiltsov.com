@@ -1,3 +1,5 @@
-<div class="px-4 md:px-12 lg:px-48">
-  <slot />
+<div class="bg-bg">
+  <div class="container px-4 m-auto lg:px-64">
+    <slot />
+  </div>
 </div>

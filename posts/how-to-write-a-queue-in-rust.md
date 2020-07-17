@@ -18,7 +18,7 @@ A queue is a very common data structure, which can be used in a variety of situa
 
 When we add something to a queue we say that we `enqueue` it. When we remove something from a queue we say that we `dequeue` it. Here's a simple model of how it works:
 
-![queue](https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Data_Queue.svg/810px-Data_Queue.svg.png)
+![queue](/assets/queue.png)
 
 Like a [stack](https://www.kirillvasiltsov.com/writing/how-to-write-a-stack-in-rust/) it can be implemented using `Vec`.
 

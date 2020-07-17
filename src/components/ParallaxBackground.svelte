@@ -27,7 +27,7 @@
     height: 15%;
     transform: skewY(-6.5deg) skewX(30deg);
     background: linear-gradient(
-      to left,
+      to right,
       rgba(255, 224, 158, 0.212) 0%,
       rgba(249, 255, 196, 0.123) 10%,
       transparent 10%,
@@ -41,7 +41,7 @@
 
   #parallax-child {
     background: 50% 50% / cover;
-    background-image: url("/tree-night.jpg");
+    background-image: url("/tree-night-sm.jpg");
     position: relative;
     transform: translateZ(-2px) scale(3);
     transform-origin: 0% 0% 0px;
@@ -65,6 +65,7 @@
     font-size: 15px;
     font-family: monospace;
     transform: skewY(-8deg);
+    color: white;
   }
 
   @media screen and (min-width: 768px) {
