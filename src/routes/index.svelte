@@ -50,7 +50,7 @@
     display: block;
     position: absolute;
     border-top: 12px solid black;
-    top: -1%;
+    top: -5%;
     right: 0;
     left: 0;
     height: 50%;
@@ -58,12 +58,6 @@
     transform: skewY(-6.5deg);
     background-color: var(--bg);
     z-index: -1;
-  }
-
-  #pc {
-    position: absolute;
-    bottom: 0;
-    right: 15%;
   }
 
   #frame {
@@ -86,26 +80,23 @@
     );
   }
 
-  #parallax-wrap {
-    transform-style: preserve-3d;
-    position: relative;
-    height: 600px;
-  }
-
   #parallax-child {
     background: 50% 50% / cover;
     background-image: url("/tree-night.jpg");
     position: relative;
     transform: translateZ(-2px) scale(3);
     transform-origin: 0% 0% 0px;
-    height: 750px;
+    transform-style: preserve-3d;
+    height: 950px;
     width: 100%;
-    filter: blur(2px) brightness(0.4);
+    filter: brightness(0.7);
+    will-change: transform;
   }
 
   .magic-pixel {
-    width: 1px;
+    width: 100%;
     height: 1px;
+    background-color: var(--bg);
   }
 
   :global(#sapper) {
@@ -121,6 +112,10 @@
     margin: 0;
     padding: 0;
     height: 100%;
+  }
+
+  :global(body) {
+    transform: translateZ(0);
   }
 
   .fix-scroll {
@@ -154,7 +149,7 @@
 <main class="preserve-3d-transform">
   <div class="magic-pixel" />
   <section id="content-up" class="w-full bg-bg pb-16 fix-scroll">
-    <div class="px-18 md:px-24 lg:px-48">
+    <div class="px-4 md:px-24 lg:px-48">
       <h1 class="font-sans pb-4">
         <span class="text-auxbg">Hey,</span>
         I'm Kirill!
@@ -172,68 +167,78 @@
   </section>
   <section id="parallax-wrap">
     <div id="frame" />
-    <img id="pc" src="pc.svg" width="320" height="320" />
+    <img id="pc" src="pc.svg" />
     <div id="parallax-child" />
   </section>
-  <section id="content-down" class="bg-bg pt-12 pb-12">
-    <h1 class="font-sans pb-6">Featured Open Source Projects</h1>
-    <div class="xl:-ml-6 pb-2 flex flex-wrap">
-      {#each repositories as repo}
-        <RepositoryCard
-          name={repo.name}
-          stars={repo.stars}
-          url={repo.url}
-          fullName={repo.fullName}
-          description={repo.description} />
-      {/each}
+  <section id="content-down" class="w-full bg-bg pb-16 pt-16 fix-scroll">
+    <div class="px-4 md:px-24 lg:px-48">
+      <h1 class="font-sans pb-6">Featured Open Source Projects</h1>
+      <div class="xl:-ml-6 pb-2 flex flex-wrap">
+        {#each repositories as repo}
+          <RepositoryCard
+            name={repo.name}
+            stars={repo.stars}
+            url={repo.url}
+            fullName={repo.fullName}
+            description={repo.description} />
+        {/each}
+      </div>
+      <a class="font-bold text-xl fancy-link" href="/oss">View more</a>
     </div>
-    <a class="font-bold text-xl fancy-link" href="/oss">View more</a>
   </section>
 
-  <section class="pb-16">
-    <h1 class="font-sans pb-4">Recent blog posts</h1>
-    <div class="lg:pr-64 recent-posts">
-      {#each posts as post}
-        <PostDescription
-          spoiler={post.meta.spoiler}
-          link={post.meta.slug}
-          tags={post.meta.tags}
-          title={post.meta.title} />
-      {/each}
-      <a class="font-bold text-xl fancy-link" href="/writing">View more</a>
+  <section class="w-full bg-bg pb-16 pt-16 fix-scroll">
+    <div class="px-4 md:px-24 lg:px-48">
+      <h1 class="font-sans pb-4">Recent blog posts</h1>
+      <div class="lg:pr-64 recent-posts">
+        {#each posts as post}
+          <PostDescription
+            spoiler={post.meta.spoiler}
+            link={post.meta.slug}
+            tags={post.meta.tags}
+            title={post.meta.title} />
+        {/each}
+        <a class="font-bold text-xl fancy-link" href="/writing">View more</a>
+      </div>
     </div>
   </section>
-  <section class="pb-16">
-    <h1 class="font-sans pb-4">Appearances</h1>
-    <div class="lg:pr-64 recent-posts">
-      <div class="p-2 md:p-6">
-        <h2 class="text-3xl">2019</h2>
-        <div class="h-1 bg-gray-300" />
-        <div class="py-3">
-          <a
-            class="fancy-link font-bold text-xl"
-            href="https://2019.kfug.jp/session/kirillvasiltsov">
-            Frontend Conference 2019
-          </a>
-          <div class="text-gray-600">Osaka, Japan</div>
+  <section class="w-full bg-bg pb-16 pt-16 fix-scroll">
+    <div class="px-4 md:px-24 lg:px-48">
+      <h1 class="font-sans pb-4">Appearances</h1>
+      <div class="lg:pr-64 recent-posts">
+        <div class="p-2 md:p-6">
+          <h2 class="text-3xl">2019</h2>
+          <div class="h-1 bg-gray-300" />
+          <div class="py-3">
+            <a
+              class="fancy-link font-bold text-xl"
+              href="https://2019.kfug.jp/session/kirillvasiltsov">
+              Frontend Conference 2019
+            </a>
+            <div class="text-gray-600">Osaka, Japan</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
-  <section class="pb-16">
-    <h1 class="font-sans pb-4">Guest Writing</h1>
-    <ul class="pl-4 list-disc">
-      <li class="pl-2">
-        <a
-          class="fancy-link text-xl font-bold"
-          href="https://css-tricks.com/everything-you-need-to-know-about-flip-animations-in-react/">
-          Everything You Need to Know About FLIP Animations in React
-        </a>
-        <p class="text-sm text-gray-500">css-tricks.com</p>
-      </li>
-    </ul>
+  <section class="w-full bg-bg pb-16 pt-16 fix-scroll">
+    <div class="px-4 md:px-24 lg:px-48">
+      <h1 class="font-sans pb-4">Guest Writing</h1>
+      <ul class="pl-4 list-disc">
+        <li class="pl-2">
+          <a
+            class="fancy-link text-xl font-bold"
+            href="https://css-tricks.com/everything-you-need-to-know-about-flip-animations-in-react/">
+            Everything You Need to Know About FLIP Animations in React
+          </a>
+          <p class="text-sm text-gray-500">css-tricks.com</p>
+        </li>
+      </ul>
+    </div>
   </section>
-  <section class="pb-24">
-    <Social isHomepage />
+  <section class="w-full bg-bg pb-24 pt-16 fix-scroll">
+    <div class="px-4 md:px-24 lg:px-48">
+      <Social isHomepage />
+    </div>
   </section>
 </main>

@@ -52,7 +52,7 @@
 </style>
 
 <header
-  class="fixed-header-height px-4 md:px-8 pt-8 flex justify-between
+  class="bg-bg fixed-header-height px-4 md:px-8 pt-8 flex justify-between
   items-baseline">
   <h1
     class="text-xl md:text-2xl lg:text-3xl font-extrabold inline-block font-sans
