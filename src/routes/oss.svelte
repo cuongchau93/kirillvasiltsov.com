@@ -7,7 +7,6 @@
 </script>
 
 <script>
-  import Padded from "./_padded.svelte";
   import SimpleRepositoryCard from "../components/SimpleRepositoryCard.svelte";
   import Social from "../components/Social.svelte";
   import siteMetadata from "../siteMetadata.js";
@@ -38,8 +37,8 @@
     content="https://www.kirillvasiltsov.com/oss/oss.jpg" />
 </svelte:head>
 
-<MainLayout>
-  <main class="pt-10 md:pt-16">
+<main class="bg-bg pt-10 md:pt-16">
+  <div class="px-4 md:px-24 lg:px-48">
     <h1 class="font-sans pb-4">OSS</h1>
     <p class="text-lg max-w-xl pb-2">
       Whenever possible, I contribute to the open source projects that I use and
@@ -73,6 +72,5 @@
     <section class="pb-24">
       <Social />
     </section>
-  </main>
-
-</MainLayout>
+  </div>
+</main>

@@ -12,7 +12,6 @@
 </script>
 
 <script>
-  import Padded from "./_padded.svelte";
   import RepositoryCard from "../components/RepositoryCard.svelte";
   import PostDescription from "../components/PostDescription.svelte";
   import Social from "../components/Social.svelte";
