@@ -5,6 +5,7 @@ spoiler: "On what is under our control and what isn't."
 language: en
 tags:
   - ethics
+  - post
 ---
 
 If you hear the word “Stoicism” for the first time, I recommend that you first read a very short history of Stoicism in the next paragraph. Otherwise, you can skip it and continue reading.

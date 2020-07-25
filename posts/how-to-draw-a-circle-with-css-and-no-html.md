@@ -6,6 +6,7 @@ language: en
 tags:
   - css
   - programming
+  - post
 ---
 
 If you ever find yourself needing to draw a circle with pure CSS and not a single line of HTML - I've got you covered.

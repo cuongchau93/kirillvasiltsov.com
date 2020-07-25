@@ -7,10 +7,12 @@ tags:
   - programming
   - rust
   - algorithms
+  - post
 ---
-*Epistemic status: Still learning*
 
-While reading "De-Coding The Technical Interview Process" by Emma Bostian (@EmmaBostian) which has great examples of sorting algorithms in Javascript, I wondered whether there are any good examples in Rust out there. 
+_Epistemic status: Still learning_
+
+While reading "De-Coding The Technical Interview Process" by Emma Bostian (@EmmaBostian) which has great examples of sorting algorithms in Javascript, I wondered whether there are any good examples in Rust out there.
 
 I couldn't find an article which has more than one algorithm, so I took each example, tweaked it a little bit and put together in one collection. The implementations are pretty different from Javascript versions in the book. I will add explanations to this post later.
 
@@ -86,7 +88,7 @@ fn merge(l_arr: &[i32], r_arr: &[i32], sorted: &mut [i32]) {
 
 ## Quick sort
 
-This one is the trickiest, since [partitioning](https://www.geeksforgeeks.org/quick-sort/) is done in-place. Also, since there is no way to set default parameter values in Rust, we need a third, "entry" function, so that we don't have to explicitly specify  that we need to sort the whole array from 0 to last index.
+This one is the trickiest, since [partitioning](https://www.geeksforgeeks.org/quick-sort/) is done in-place. Also, since there is no way to set default parameter values in Rust, we need a third, "entry" function, so that we don't have to explicitly specify that we need to sort the whole array from 0 to last index.
 
 ```rust
 fn sort(array: &mut [i32]) {

@@ -6,6 +6,7 @@ language: en
 tags:
   - react
   - programming
+  - post
 ---
 
 React Hooks API [was released more than a year ago](https://reactjs.org/blog/2019/02/06/react-v16.8.0.html). A great deal has been said and written about it, including articles by React team. I am using hooks every day on my job and in my personal projects. However, I noticed that quite often we disagree about when to use them - and this can hurt productivity.

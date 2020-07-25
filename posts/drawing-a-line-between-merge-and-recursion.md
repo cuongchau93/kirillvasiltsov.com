@@ -5,6 +5,7 @@ spoiler: Merge is not really recursive.
 language: en
 tags:
   - linguistics
+  - post
 ---
 
 This post was motivated by two recent papers: one [by Martins & Boeckx](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3000389) and another [by Berwick & Chomsky](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3000539).
@@ -39,14 +40,14 @@ id(id(id(1))) = 1
 A good example of a truly recursive function would be a function that calculates the nth power of a number by referring itself:
 
 ```javascript
-pow(num, 0) = 1
-pow(num, n) = num * pow(num, n - 1)
+pow(num, 0) = 1;
+pow(num, n) = num * pow(num, n - 1);
 ```
 
 Note that the base case is required in definitions of this sort to be correct. Above it means that the 0th power of any number is 1. For example, the 3rd power of 3 would be calculated this way:
 
 ```javascript
-pow(3, 3) = 3 * (3 * (3 * 1)) = 27
+pow(3, 3) = 3 * (3 * (3 * 1)) = 27;
 ```
 
 Importantly, `pow` **cannot** be applied to its own output alone. It outputs one number but requires 2 arguments! However, the repeated multiplication as a result of recursive application of `pow` above is what seems to be meant by recursion in linguistic literature. Merge can obviously be repeatedly applied too:

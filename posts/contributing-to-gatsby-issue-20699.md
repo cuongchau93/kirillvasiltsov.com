@@ -6,6 +6,7 @@ language: en
 tags:
   - OSS
   - programming
+  - post
 ---
 
 [Last time](https://www.kirillvasiltsov.com/writing/contributing-to-gatsby-issue-21311/) I wrote about fixing `gatsby-transformer-remark`, which failed to properly count words (and time-to-read) in Chinese and Japanese languages.

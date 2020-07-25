@@ -43,6 +43,7 @@ export const generateImage = ({
     "__sapper__",
     "export",
     "writing",
+    "post",
     slug,
     "twitter-card.jpg"
   );

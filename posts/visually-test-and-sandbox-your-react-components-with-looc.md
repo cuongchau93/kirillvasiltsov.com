@@ -6,6 +6,7 @@ language: en
 tags:
   - react
   - programming
+  - post
 ---
 
 If you've ever used Storybook in a big React project, you should know that builds can be really slow -- the more stories you write the more it takes to build the whole catalogue. This is fine when you actually use Storybook as a catalogue. The ability to deploy the whole component library so everyone on the team can instantly confirm it is one of the biggest advantages of Storybook. However if your component is not yet finished then rebuilding the whole bunch of stories on every single change is too much just to see how the look of the component changed. If only we could work with ONE component at a time!
