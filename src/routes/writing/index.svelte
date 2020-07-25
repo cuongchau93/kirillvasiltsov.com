@@ -1,18 +1,5 @@
 <script context="module">
-  import { rssStatus } from "./_rss_store.js";
-
-  let status;
-
-  rssStatus.subscribe(s => {
-    status = s;
-  });
-
   export async function preload() {
-    if (!status) {
-      await this.fetch("writing/rss.xml");
-      rssStatus.set("fetched");
-    }
-
     const responses = await Promise.all([this.fetch("writing/allPosts.json")]);
     const [{ tags }] = await Promise.all(responses.map(r => r.json()));
     return { tags };
