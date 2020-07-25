@@ -1,4 +1,4 @@
-import { getPostsByTag } from "../../../posts";
+import { getPostsByTag } from "../../posts";
 
 export function get(req, res) {
   res.writeHead(200, {

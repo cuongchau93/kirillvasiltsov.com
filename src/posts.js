@@ -16,6 +16,12 @@ export const getPostDescriptions = () => {
   });
 };
 
+export const getAllTags = () =>
+  new Set(
+    Object.values(posts)
+      .map((p) => p.meta.tags)
+      .flat()
+  );
 export const getAllPosts = () => Object.values(posts);
 export const getPostSlugs = () => Object.keys(posts);
 export const getPostBySlug = (slug) => posts[slug];

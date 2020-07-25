@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from "svelte";
+  import { onMount, onDestroy } from "svelte";
 
   const words = ["Welcome!", "What's up?", "Have a nice day!"];
 
@@ -9,12 +9,15 @@
   let idx = 0;
 
   onMount(() => {
-    console.log(prompt);
     interval = setInterval(() => {
       idx = (idx + 1) % 3;
       typed = words[idx];
       prompt.style.setProperty("--chwidth", typed.length + 1);
     }, 4000);
+  });
+
+  onDestroy(() => {
+    clearInterval(interval);
   });
 </script>
 
