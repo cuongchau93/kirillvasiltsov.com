@@ -20,7 +20,7 @@ export const getAllTags = () =>
   new Set(
     Object.values(posts)
       .map((p) => p.meta.tags)
-      .flat()
+      .reduce((acc, val) => acc.concat(val), [])
   );
 export const getAllPosts = () => Object.values(posts);
 export const getPostSlugs = () => Object.keys(posts);
