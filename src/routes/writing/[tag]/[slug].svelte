@@ -43,6 +43,11 @@
   <meta
     name="twitter:image"
     content={`https://www.kirillvasiltsov.com/writing/${tag}/${post.meta.slug}/twitter-card.jpg`} />
+  {#if tag !== 'post' && post.meta.tags.includes('post')}
+    <link
+      rel="canonical"
+      href={`https://www.kirillvasiltsov.com/writing/post/${post.meta.slug}/`} />
+  {/if}
 </svelte:head>
 
 <PostLayout>
