@@ -6,6 +6,7 @@ language: en
 tags:
   - OSS
   - programming
+  - post
 ---
 
 I think there are a lot of people who would like to contribute to an open source project, but don't know how and where to start, especially if it is their first time. It is even harder when English, in which communication about the project happens, is not your native language.

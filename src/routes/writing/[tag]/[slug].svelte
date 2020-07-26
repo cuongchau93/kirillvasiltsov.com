@@ -1,20 +1,23 @@
 <script context="module">
   export async function preload({ params }) {
-    const response = await this.fetch(`writing/${params.slug}.json`);
+    const response = await this.fetch(
+      `writing/${params.tag}/${params.slug}.json`
+    );
     const { post, likes, replies, reposts } = await response.json();
 
-    return { post, likes, replies, reposts };
+    return { tag: params.tag, post, likes, replies, reposts };
   }
 </script>
 
 <script>
-  import Bio from "../../components/Bio.svelte";
-  import Webmentions from "../../components/Webmentions.svelte";
-  import PostLayout from "../_post.svelte";
+  import Bio from "../../../components/Bio.svelte";
+  import Webmentions from "../../../components/Webmentions.svelte";
+  import PostLayout from "../../_post.svelte";
   export let post;
   export let likes;
   export let replies;
   export let reposts;
+  export let tag;
 </script>
 
 <svelte:head>
@@ -24,14 +27,14 @@
   </script>
   <meta
     property="og:url"
-    content={`https://www.kirillvasiltsov.com/writing/${post.meta.slug}`} />
+    content={`https://www.kirillvasiltsov.com/writing/${tag}/${post.meta.slug}`} />
   <meta property="og:type" content="article" />
   <meta property="og:title" content={post.meta.title} />
   <meta name="Description" content={post.meta.title} />
   <meta property="og:description" content={post.meta.title} />
   <meta
     property="og:image"
-    content={`https://www.kirillvasiltsov.com/writing/${post.meta.slug}/twitter-card.jpg`} />
+    content={`https://www.kirillvasiltsov.com/writing/${tag}/${post.meta.slug}/twitter-card.jpg`} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:domain" value="kirillvasiltsov.com" />
   <meta name="twitter:creator" value="https://twitter.com/virtualkirill/" />
@@ -39,7 +42,12 @@
   <meta name="twitter:description" value={post.meta.spoiler} />
   <meta
     name="twitter:image"
-    content={`https://www.kirillvasiltsov.com/writing/${post.meta.slug}/twitter-card.jpg`} />
+    content={`https://www.kirillvasiltsov.com/writing/${tag}/${post.meta.slug}/twitter-card.jpg`} />
+  {#if tag !== 'post' && post.meta.tags.includes('post')}
+    <link
+      rel="canonical"
+      href={`https://www.kirillvasiltsov.com/writing/post/${post.meta.slug}/`} />
+  {/if}
 </svelte:head>
 
 <PostLayout>

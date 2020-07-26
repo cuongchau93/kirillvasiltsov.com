@@ -6,6 +6,7 @@ language: en
 tags:
   - react
   - programming
+  - post
 ---
 
 A few days ago I came across [this awesome article about React rendering behaviour](https://blog.isquaredsoftware.com/2020/05/blogged-answers-a-mostly-complete-guide-to-react-rendering-behavior/) by [Mark Erikson](https://twitter.com/acemarke). It's pretty deep and covers things that you won't find in the official docs and I think even on [Overreacted](https://overreacted.io/). I had problems with some rendering behaviours when building [react-easy-flip](https://github.com/jlkiri/react-easy-flip) and the article was very helpful.

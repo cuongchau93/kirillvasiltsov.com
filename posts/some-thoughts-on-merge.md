@@ -5,6 +5,7 @@ spoiler: Trying to be really picky about Merge.
 language: en
 tags:
   - linguistics
+  - post
 ---
 
 The idea of Merge as a fundamental computational operation of human language has been all the rage since 1990s in generative linguitics.

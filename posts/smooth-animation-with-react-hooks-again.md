@@ -7,6 +7,7 @@ tags:
   - react
   - animation
   - programming
+  - post
 ---
 
 _Originally posted at [dev.to](https://dev.to/jlkiri/smooth-animations-with-react-hooks-again-51a4)_

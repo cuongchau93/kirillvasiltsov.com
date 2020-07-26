@@ -115,9 +115,9 @@
 </svelte:head>
 
 <div
-  class="preserve-3d-transform transition-colors duration-300 relative text-text
-  min-h-screen">
-  <div class="preserve-3d-transform">
+  class="preserve-3d-transform h-full transition-colors duration-300 relative
+  text-text min-h-screen">
+  <div class="preserve-3d-transform h-full flex flex-col">
     <MediaQuery query="(min-width: 768px)" let:matches>
       <Navigation isMobile={!matches}>
         <label class="theme-toggle md:h-12 pl-10">

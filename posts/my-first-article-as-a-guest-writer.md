@@ -6,6 +6,7 @@ language: en
 tags:
   - react
   - animation
+  - post
 ---
 
 Yesterday, [CSS-Tricks](https://css-tricks.com/) [published my first article about FLIP animations in React](https://css-tricks.com/everything-you-need-to-know-about-flip-animations-in-react/)! I've been wanting to write about it in detail for a long time and I'm glad it is finally live.

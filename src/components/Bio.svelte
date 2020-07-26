@@ -1,6 +1,5 @@
 <script>
   import SVGIcon from "./SvgIcon.svelte";
-  import RSSIcon from "./RSSIcon.svelte";
   import GithubIcon from "./GithubIcon.svelte";
   import TwitterIcon from "./TwitterIcon.svelte";
   import siteMetadata from "../siteMetadata.js";
@@ -10,9 +9,6 @@
 </script>
 
 <aside class="pb-24 flex items-center justify-around">
-  <SVGIcon link="/writing/rss.xml" text="RSS">
-    <RSSIcon {w} {h} />
-  </SVGIcon>
   <SVGIcon link={siteMetadata.github} text="Github">
     <GithubIcon {w} {h} />
   </SVGIcon>

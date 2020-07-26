@@ -7,7 +7,9 @@ language: en
 tags:
   - programming
   - react
+  - post
 ---
+
 I often hear that you still need [Container components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) that fetch data or retrieve something from Redux store and pass it to the state-less component even if retrieval/fetching itself can be done with hooks. The reasoning behind these opinions is that it is difficult to test components with hooks of this kind (or use them in Storybook). Or that it simply takes to much time and energy.
 
 This is not true. I will show you how components like this can be very easily used in Storybook with its new [Component Story Format](https://storybook.js.org/docs/formats/component-story-format/). I won't show any testing examples but believe me that the same solution applies to tests as well.
@@ -71,5 +73,4 @@ export default {
   component: TextButton,
   decorators: [withKnobs],
 };
-
 ```

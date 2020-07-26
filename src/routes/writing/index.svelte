@@ -1,31 +1,22 @@
 <script context="module">
-  import { rssStatus } from "./_rss_store.js";
-
-  let status;
-
-  rssStatus.subscribe(s => {
-    status = s;
-  });
-
   export async function preload() {
-    if (!status) {
-      await this.fetch("writing/rss.xml");
-      rssStatus.set("fetched");
-    }
-
     const responses = await Promise.all([this.fetch("writing/allPosts.json")]);
-    const [{ posts }] = await Promise.all(responses.map(r => r.json()));
-    return { posts };
+    const [{ tags }] = await Promise.all(responses.map(r => r.json()));
+    return { tags };
   }
 </script>
 
 <script>
-  import PostDescription from "../../components/PostDescription.svelte";
+  import TagCard from "../../components/TagCard.svelte";
   import Bio from "../../components/Bio.svelte";
   import PostLayout from "../_post.svelte";
 
-  export let posts;
+  export let tags;
 </script>
+
+<style>
+
+</style>
 
 <svelte:head>
   <title>Writing | Kirill Vasiltsov</title>
@@ -51,15 +42,11 @@
     name="twitter:image"
     content="https://www.kirillvasiltsov.com/writing/writing.jpg" />
 </svelte:head>
-
 <PostLayout>
-  <main class="pt-10">
-    {#each posts as post}
-      <PostDescription
-        spoiler={post.meta.spoiler}
-        link={post.meta.slug}
-        tags={post.meta.tags}
-        title={post.meta.title} />
+  <main
+    class="pt-10 pb-10 font-bold flex items-center justify-center flex-wrap">
+    {#each tags as tag}
+      <TagCard name={tag} />
     {/each}
   </main>
   <Bio />

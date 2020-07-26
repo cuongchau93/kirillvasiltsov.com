@@ -5,6 +5,7 @@ spoiler: How abstraction makes it easier to minimize your code
 language: en
 tags:
   - programming
+  - post
 ---
 
 Normally, I don't think (and don't have to think) much about minimization. I just let my bundler and plugins do their job and enjoy the result. But when developing my own library, I wondered whether there was something I could do to shave some kilobytes. The answer was **abstraction**.

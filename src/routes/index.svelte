@@ -1,24 +1,17 @@
 <script context="module">
   export async function preload() {
-    const responses = await Promise.all([
-      this.fetch("github.json"),
-      this.fetch("recentPosts.json")
-    ]);
-    const [{ featured }, { posts }] = await Promise.all(
-      responses.map(r => r.json())
-    );
-    return { repositories: featured, posts };
+    const responses = await Promise.all([this.fetch("github.json")]);
+    const [{ featured }] = await Promise.all(responses.map(r => r.json()));
+    return { repositories: featured };
   }
 </script>
 
 <script>
   import RepositoryCard from "../components/RepositoryCard.svelte";
-  import PostDescription from "../components/PostDescription.svelte";
   import Social from "../components/Social.svelte";
   import ParallaxBackground from "../components/ParallaxBackground.svelte";
 
   export let repositories = [];
-  export let posts = [];
 </script>
 
 <style>
@@ -145,16 +138,11 @@
 
   <section class="w-full bg-bg pb-16 pt-16 fix-scroll">
     <div class="px-4 md:px-24 lg:px-48">
-      <h1 class="font-sans pb-4">Recent blog posts</h1>
+      <h1 class="font-sans pb-4">Writing / Digital garden</h1>
       <div class="lg:pr-64 recent-posts">
-        {#each posts as post}
-          <PostDescription
-            spoiler={post.meta.spoiler}
-            link={post.meta.slug}
-            tags={post.meta.tags}
-            title={post.meta.title} />
-        {/each}
-        <a class="font-bold text-xl fancy-link" href="/writing">View more</a>
+        <a class="font-bold text-xl fancy-link" href="/writing">
+          See all categories
+        </a>
       </div>
     </div>
   </section>

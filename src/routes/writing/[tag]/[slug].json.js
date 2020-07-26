@@ -1,6 +1,6 @@
 import queryString from "query-string";
 import fetch from "node-fetch";
-import { getPostBySlug } from "./allPosts.json";
+import { getPostBySlug } from "../allPosts.json";
 
 const getMentions = ({ target, perPage = 500 }) => {
   return fetch(

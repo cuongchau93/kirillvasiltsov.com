@@ -6,6 +6,7 @@ language: en
 tags:
   - programming
   - css
+  - post
 ---
 
 Good user experience often implies being able to customize the way users interact with your website and adjusting your website to their preferences.
@@ -56,7 +57,7 @@ a {
 [`prefers color scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) is a media feature that lets us detect user preferences. The simplest way to check whether your users prefer a dark color scheme is with the following Javascript:
 
 ```javascript
-let darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
+let darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
 ```
 
 `matches` returns a media query object with a boolean property `matches` which tells us whether our users prefers dark colors. But it also has an `addEventListener` method, which we can use to monitor preference changes and adjust our design accordingly!
@@ -66,20 +67,20 @@ Let us a define a minimal script that sets our theme on page load. The easiest w
 ```html
 <body>
   <script>
-    ;(function() {
-      window.__setPreferredTheme = function(newTheme) {
-        window.__theme = newTheme
-        document.body.className = newTheme
-      }
+    (function () {
+      window.__setPreferredTheme = function (newTheme) {
+        window.__theme = newTheme;
+        document.body.className = newTheme;
+      };
 
-      let darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
+      let darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-      darkQuery.addListener(function(e) {
-        window.__setPreferredTheme(e.matches ? "dark" : "light")
-      })
+      darkQuery.addListener(function (e) {
+        window.__setPreferredTheme(e.matches ? "dark" : "light");
+      });
 
-      window.__setPreferredTheme(darkQuery.matches ? "dark" : "light")
-    })()
+      window.__setPreferredTheme(darkQuery.matches ? "dark" : "light");
+    })();
   </script>
   <!-- your markup -->
 </body>
@@ -103,37 +104,37 @@ Now we can add a click event listener that will toggle the theme.
 document.querySelector("#toggle").addEventListener("click", () => {
   window.__setPreferredTheme(
     document.body.className === "light" ? "dark" : "light"
-  )
-})
+  );
+});
 ```
 
 There is a problem, however. If your website consists of several pages, the next page your users go to will not remember the theme that they chose with a toggle on the previous page. To fix that, we need to leverage local storage. Fortunately, this is a matter of adding few lines to the script above!
 
 ```javascript
-let preferredTheme
+let preferredTheme;
 
 try {
-  preferredTheme = localStorage.getItem("theme")
+  preferredTheme = localStorage.getItem("theme");
 } catch (err) {}
 
-window.__setPreferredTheme = function(newTheme) {
-  window.__theme = newTheme
-  document.body.className = newTheme
+window.__setPreferredTheme = function (newTheme) {
+  window.__theme = newTheme;
+  document.body.className = newTheme;
 
   try {
-    localStorage.setItem("theme", newTheme)
+    localStorage.setItem("theme", newTheme);
   } catch (err) {}
-}
+};
 
-let darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
+let darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-darkQuery.addListener(function(e) {
-  window.__setPreferredTheme(e.matches ? "dark" : "light")
-})
+darkQuery.addListener(function (e) {
+  window.__setPreferredTheme(e.matches ? "dark" : "light");
+});
 
 window.__setPreferredTheme(
   preferredTheme || (darkQuery.matches ? "dark" : "light")
-)
+);
 ```
 
 And this is it!
@@ -143,17 +144,17 @@ And this is it!
 In case you want to somehow synchronize state of a component with the current theme, you may want to add to the script above a global function like `onThemeChange`.
 
 ```javascript
-window.__onThemeChange = function() {}
+window.__onThemeChange = function () {};
 
-window.__setPreferredTheme = function(newTheme) {
-  window.__theme = newTheme
-  document.body.className = newTheme
-  window.__onThemeChange(newTheme)
+window.__setPreferredTheme = function (newTheme) {
+  window.__theme = newTheme;
+  document.body.className = newTheme;
+  window.__onThemeChange(newTheme);
 
   try {
-    localStorage.setItem("theme", newTheme)
+    localStorage.setItem("theme", newTheme);
   } catch (err) {}
-}
+};
 ```
 
 Then you can use it in your component like this:

@@ -3,6 +3,7 @@
   export let spoiler;
   export let link;
   export let tags;
+  export let tag;
 </script>
 
 <style>
@@ -20,7 +21,7 @@
   class="brief-background shadow-lg rounded-md border-transparent pl-5 pb-5
   pt-10 pr-5 mb-10">
   <div class="pb-2">
-    <a href={`/writing/${link}`}>
+    <a href={`/writing/${tag}/${link}`}>
       <h2 class="pb-2 font-header font-black leading-tight">{title}</h2>
     </a>
   </div>
@@ -30,7 +31,7 @@
       <div
         class="py-1 px-2 ml-2 first:m-0 text-white bg-tag rounded-lg text-xs
         inline-block">
-        <a href={`/writing/tags/${tag}`}>{tag}</a>
+        <a href={`/writing/${tag}`}>{tag}</a>
       </div>
     {/each}
   </div>

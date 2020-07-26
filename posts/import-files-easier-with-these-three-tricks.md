@@ -6,6 +6,7 @@ language: en
 tags:
   - programming
   - tips
+  - post
 ---
 
 Have you ever found yourself writing imports that look like this?
