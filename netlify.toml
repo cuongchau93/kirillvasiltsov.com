@@ -12,144 +12,144 @@
 
 [[redirects]]
   from = "/writing/contributing-to-gatsby-issue-20699/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/contributing-to-gatsby-issue-20699/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/contributing-to-gatsby-issue-21311/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/contributing-to-gatsby-issue-21311/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/drawing-a-line-between-merge-and-recursion/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/drawing-a-line-between-merge-and-recursion/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/how-to-draw-a-circle-with-css-and-no-html/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/how-to-draw-a-circle-with-css-and-no-html/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/how-to-implement-dark-theme-with-css-and-javascript/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/how-to-implement-dark-theme-with-css-and-javascript/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/how-to-write-a-queue-in-rust/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/how-to-write-a-queue-in-rust/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/how-to-write-a-stack-in-rust/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/how-to-write-a-stack-in-rust/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/if-you-want-to-learn-how-to-code-but-are-afraid-to-start/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/if-you-want-to-learn-how-to-code-but-are-afraid-to-start/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/import-files-easier-with-these-three-tricks/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/import-files-easier-with-these-three-tricks/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/my-first-article-as-a-guest-writer/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/my-first-article-as-a-guest-writer/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/on-acceptability/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/on-acceptability/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/poverty-of-stimulus-argument-part-1/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/poverty-of-stimulus-argument-part-1/""
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/poverty-of-stimulus-argument-part-2/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/poverty-of-stimulus-argument-part-2/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/react-rendering-cheatsheet/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/react-rendering-cheatsheet/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/smooth-animation-with-react-hooks-again/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/smooth-animation-with-react-hooks-again/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/some-thoughts-on-merge/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/some-thoughts-on-merge/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/sorting-algorithms-in-rust/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/sorting-algorithms-in-rust/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/thinking-in-react-hooks/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/thinking-in-react-hooks/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/using-streams-api-in-react-app/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/using-streams-api-in-react-app/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/visually-test-and-sandbox-your-react-components-with-looc/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/visually-test-and-sandbox-your-react-components-with-looc/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/webmention-support/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/webmention-support/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/what-can-stoics-teach-us/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/what-can-stoics-teach-us/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/when-more-functions-equals-less-code/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/when-more-functions-equals-less-code/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/writing/you-do-not-need-a-container-component-or-how-to-use-redux-hooks-in-storybook-stories/"
-  to = "https://www.kirillvasiltsov.com/writing/post/:splat"
+  to = "https://www.kirillvasiltsov.com/writing/post/you-do-not-need-a-container-component-or-how-to-use-redux-hooks-in-storybook-stories/"
   status = 301
   force = true
