@@ -87,6 +87,8 @@ The analogy with import is completely justified. A lot of `react` libraries that
 
 Not understanding the (conceptual) difference between owning and sharing is one big reason disagreements may occur. No one would argue whether using `import` is a good approach or not. It is essential. In fact, before Hooks were released, there was a proposal to use the `use` keyword. But I guess a function is better than having to maintain a non-standard syntax addition to Javascript.
 
+**UPDATE**: I'm not saying that by using a custom hook you can have the same state reference or execute logic only once. In fact, if this is a fetching hook, unless some kind of cache is used, you will fetch twice and get two identical pieces of data for each calling component. This is the same result as in render function as children approach (or render props).
+
 ## When to use React Hooks
 
 The answer to this question is "almost always". Some people think that there are cases where you CAN use a hook but, even though it is natural, it would not be very scalable/maintainable to use it. For example, it may be tempting to try to separate the pure view component from logic and avoid using hooks in it, especially when you do not need to share that logic (e.g. data fetching specifically for that component). The fear of using hooks in that component comes from thinking that the otherwise pure component would **own** the state and hence be coupled to logic that may potentially change.
