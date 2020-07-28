@@ -71,7 +71,7 @@ Strictly speaking, we are not dragging the element using native browser API. But
 
 ```javascript
 function transformDrag(dx, dy) {
-  square.style.transform = `translate(${dragDx}px, ${dragDy}px)`;
+  square.style.transform = `translate(${dx}px, ${dy}px)`;
 }
 
 function handleMouseMove(e) {
@@ -79,7 +79,7 @@ function handleMouseMove(e) {
   const dy = e.clientY - mouseY;
   dragDx = dragDx + dx;
   dragDy = dragDy + dy;
-  transformDrag(dx, dy);
+  transformDrag(dragDx, dragDy);
 }
 ```
 
