@@ -1,8 +1,8 @@
 <script context="module">
   export async function preload({ params }) {
     const response = await this.fetch(`writing/${params.tag}.json`);
-    const posts = await response.json();
-    return { posts, tag: params.tag };
+    const { posts, list } = await response.json();
+    return { posts, list, tag: params.tag };
   }
 </script>
 
@@ -11,19 +11,27 @@
   import Bio from "../../components/Bio.svelte";
   import PostLayout from "../_post.svelte";
   export let posts;
+  export let list;
   export let tag;
 </script>
 
 <PostLayout>
   <main class="pt-10">
-    {#each posts as post}
-      <PostDescription
-        spoiler={post.meta.spoiler}
-        link={post.meta.slug}
-        tags={post.meta.tags}
-        {tag}
-        title={post.meta.title} />
-    {/each}
+    <h2 class="text-4xl">Curated list of CSS resources and memos</h2>
+    <article class="font-sans text-lg pb-10 pt-5">
+      {@html list.html}
+    </article>
+    <section>
+      <h2 class="pb-2">Posts</h2>
+      {#each posts as post}
+        <PostDescription
+          spoiler={post.meta.spoiler}
+          link={post.meta.slug}
+          tags={post.meta.tags}
+          {tag}
+          title={post.meta.title} />
+      {/each}
+    </section>
   </main>
   <Bio />
 </PostLayout>
