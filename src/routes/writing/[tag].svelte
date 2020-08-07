@@ -18,7 +18,9 @@
 <PostLayout>
   <main class="pt-10">
     {#if list}
-      <h2 class="text-4xl">Curated list of {list.field} resources and memos</h2>
+      <h2 class="text-4xl">
+        Curated list of {list.meta.field} resources and memos
+      </h2>
 
       <article class="font-sans text-lg pb-10 pt-5">
         {@html list.html}
