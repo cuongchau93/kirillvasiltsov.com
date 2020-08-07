@@ -17,10 +17,13 @@
 
 <PostLayout>
   <main class="pt-10">
-    <h2 class="text-4xl">Curated list of CSS resources and memos</h2>
-    <article class="font-sans text-lg pb-10 pt-5">
-      {@html list.html}
-    </article>
+    {#if list}
+      <h2 class="text-4xl">Curated list of {list.field} resources and memos</h2>
+
+      <article class="font-sans text-lg pb-10 pt-5">
+        {@html list.html}
+      </article>
+    {/if}
     <section>
       <h2 class="pb-2">Posts</h2>
       {#each posts as post}
