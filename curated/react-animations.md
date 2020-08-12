@@ -6,8 +6,6 @@ field: react
 
 # Animating mounts and unmounts
 
-# Synchronize animation and render lifecycles
-
 Any solution to the problem of animating mounts and mounts can be summarized with one phrase: _synchronize animation and render lifecycles_. This is something you can do very easily without any help, as I show below, but also something that probably requires a library in anything more complex than toy examples.
 
 ## Start simple

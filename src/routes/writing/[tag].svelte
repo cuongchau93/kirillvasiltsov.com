@@ -15,6 +15,12 @@
   export let tag;
 </script>
 
+<svelte:head>
+  <script src="_prism.js">
+
+  </script>
+</svelte:head>
+
 <PostLayout>
   <main class="pt-10">
     {#if list}
