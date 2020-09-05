@@ -1,5 +1,4 @@
 <script>
-  import RSSIcon from "./RSSIcon.svelte";
   import GithubIcon from "./GithubIcon.svelte";
   import TwitterIcon from "./TwitterIcon.svelte";
   import siteMetadata from "../routes/_meta.js";

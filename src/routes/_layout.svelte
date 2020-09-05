@@ -36,67 +36,7 @@
 </script>
 
 <style>
-  .theme-toggle {
-    cursor: pointer;
-  }
 
-  .theme-toggle input {
-    display: none;
-  }
-
-  .theme-toggle input + div {
-    border-radius: 50%;
-    width: 26px;
-    height: 26px;
-    position: relative;
-    box-shadow: inset 10px -10px 0 0 var(--auxtext);
-    transform: scale(1) rotate(-2deg);
-    transition: box-shadow 0.5s ease 0s, transform 0.4s ease 0.1s;
-  }
-
-  .theme-toggle input + div:before {
-    content: "";
-    width: inherit;
-    height: inherit;
-    border-radius: inherit;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transition: background 0.3s ease;
-  }
-
-  .theme-toggle input + div:after {
-    content: "";
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    margin: -3px 0 0 -3px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    box-shadow: 0 -14px 0 var(--auxtext), 0 14px 0 var(--auxtext),
-      14px 0 0 var(--auxtext), -14px 0 0 var(--auxtext),
-      10px 10px 0 var(--auxtext), -10px 10px 0 var(--auxtext),
-      10px -10px 0 var(--auxtext), -10px -10px 0 var(--auxtext);
-    transform: scale(0);
-    transition: all 0.3s ease;
-  }
-
-  .theme-toggle input:checked + div {
-    box-shadow: inset 32px -32px 0 0 var(--auxtext);
-    transform: scale(0.5) rotate(0deg);
-    transition: transform 0.3s ease 0.1s, box-shadow 0.2s ease 0s;
-  }
-
-  .theme-toggle input:checked + div:before {
-    background: var(--auxtext);
-    transition: background 0.3s ease 0.1s;
-  }
-
-  .theme-toggle input:checked + div:after {
-    transform: scale(1.5);
-    transition: transform 0.5s ease 0.15s;
-  }
 </style>
 
 <svelte:head>
@@ -114,21 +54,17 @@
   </script>
 </svelte:head>
 
-<div
-  class="preserve-3d-transform h-full transition-colors duration-300 relative
-  text-text min-h-screen">
-  <div class="preserve-3d-transform h-full flex flex-col">
-    <MediaQuery query="(min-width: 768px)" let:matches>
-      <Navigation isMobile={!matches}>
-        <label class="theme-toggle md:h-12 pl-10">
-          <input
-            checked={$mode === 'dark'}
-            type="checkbox"
-            on:change={toggleMode} />
-          <div />
-        </label>
-      </Navigation>
-    </MediaQuery>
-    <slot />
+<header>
+  <div class="max-w-screen-lg mx-auto text-center">
+    <div class="flex justify-between">
+      <div>Kirill Vasiltsov</div>
+      <nav class="hidden lg:block">
+        <ul class="flex">
+          <li>Home</li>
+          <li>Writing</li>
+          <li>OSS</li>
+        </ul>
+      </nav>
+    </div>
   </div>
-</div>
+</header>

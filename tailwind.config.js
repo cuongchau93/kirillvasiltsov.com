@@ -2,13 +2,15 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   purge: [process.env.NODE_ENV === "production" && "./src/**/*.svelte"],
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+  },
   theme: {
     extend: {
       fontFamily: {
-        header: ["Georgia", ...defaultTheme.fontFamily.serif],
+        inter: ["Inter", ...defaultTheme.fontFamily.serif],
         mono: ["Source Code Pro", ...defaultTheme.fontFamily.mono],
-        postHeader: ["Georgia", ...defaultTheme.fontFamily.serif],
-        sans: ["Inter", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         bg: `var(--bg)`,
