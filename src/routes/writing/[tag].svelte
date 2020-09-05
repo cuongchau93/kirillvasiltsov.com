@@ -2,6 +2,7 @@
   export async function preload({ params }) {
     const response = await this.fetch(`writing/${params.tag}.json`);
     const { posts, list } = await response.json();
+    console.log("posts", posts);
     return { posts, list, tag: params.tag };
   }
 </script>
@@ -37,7 +38,7 @@
       {#each posts as post}
         <PostDescription
           spoiler={post.meta.spoiler}
-          link={post.meta.slug}
+          link={post.slug}
           tags={post.meta.tags}
           {tag}
           title={post.meta.title} />

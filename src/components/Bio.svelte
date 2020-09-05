@@ -2,7 +2,7 @@
   import SVGIcon from "./SvgIcon.svelte";
   import GithubIcon from "./GithubIcon.svelte";
   import TwitterIcon from "./TwitterIcon.svelte";
-  import siteMetadata from "../siteMetadata.js";
+  import siteMetadata from "../routes/_meta.js";
 
   const w = 30;
   const h = 30;

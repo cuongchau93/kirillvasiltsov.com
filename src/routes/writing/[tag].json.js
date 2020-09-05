@@ -1,14 +1,14 @@
-import { getPostsByTag, getCuratedListByField } from "../../posts"
+import { getPostsByTag } from "../_posts";
 
 export function get(req, res) {
   res.writeHead(200, {
-    "Content-Type": "application/json"
-  })
+    "Content-Type": "application/json",
+  });
 
   res.end(
     JSON.stringify({
-      posts: getPostsByTag(req.params.tag),
-      list: getCuratedListByField(req.params.tag)
+      posts: getPostsByTag(req.params.tag)(),
+      list: null,
     })
-  )
+  );
 }

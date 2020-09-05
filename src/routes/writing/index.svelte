@@ -1,7 +1,7 @@
 <script context="module">
   export async function preload() {
-    const responses = await Promise.all([this.fetch("writing/allPosts.json")]);
-    const [{ tags }] = await Promise.all(responses.map(r => r.json()));
+    const response = await this.fetch("writing/writing.json");
+    const tags = await response.json();
     return { tags };
   }
 </script>

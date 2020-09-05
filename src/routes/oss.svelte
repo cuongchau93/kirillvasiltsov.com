@@ -9,7 +9,7 @@
 <script>
   import SimpleRepositoryCard from "../components/SimpleRepositoryCard.svelte";
   import Social from "../components/Social.svelte";
-  import siteMetadata from "../siteMetadata.js";
+  import siteMetadata from "./_meta.js";
 
   export let repositories = [];
 </script>

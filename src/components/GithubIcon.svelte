@@ -1,5 +1,5 @@
 <script>
-  import siteMetadata from "../siteMetadata.js";
+  import siteMetadata from "../routes/_meta.js";
 
   export let w = 30;
   export let h = 30;

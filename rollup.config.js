@@ -4,8 +4,6 @@ import commonjs from "@rollup/plugin-commonjs";
 import svelte from "rollup-plugin-svelte";
 import babel from "@rollup/plugin-babel";
 import { terser } from "rollup-plugin-terser";
-import md from "./plugins/rollup-plugin-md";
-import glob from "./plugins/rollup-plugin-glob";
 import config from "sapper/config/rollup.js";
 import pkg from "./package.json";
 
@@ -23,8 +21,6 @@ export default {
     input: config.client.input(),
     output: config.client.output(),
     plugins: [
-      md(),
-      glob(),
       replace({
         "process.browser": true,
         "process.env.NODE_ENV": JSON.stringify(mode),
@@ -41,33 +37,33 @@ export default {
       commonjs(),
 
       legacy &&
-      babel({
-        extensions: [".js", ".mjs", ".html", ".svelte"],
-        babelHelpers: "runtime",
-        exclude: ["node_modules/@babel/**"],
-        presets: [
-          [
-            "@babel/preset-env",
-            {
-              targets: "> 0.25%, not dead",
-            },
+        babel({
+          extensions: [".js", ".mjs", ".html", ".svelte"],
+          babelHelpers: "runtime",
+          exclude: ["node_modules/@babel/**"],
+          presets: [
+            [
+              "@babel/preset-env",
+              {
+                targets: "> 0.25%, not dead",
+              },
+            ],
           ],
-        ],
-        plugins: [
-          "@babel/plugin-syntax-dynamic-import",
-          [
-            "@babel/plugin-transform-runtime",
-            {
-              useESModules: true,
-            },
+          plugins: [
+            "@babel/plugin-syntax-dynamic-import",
+            [
+              "@babel/plugin-transform-runtime",
+              {
+                useESModules: true,
+              },
+            ],
           ],
-        ],
-      }),
+        }),
 
       !dev &&
-      terser({
-        module: true,
-      }),
+        terser({
+          module: true,
+        }),
     ],
 
     preserveEntrySignatures: false,
@@ -78,8 +74,6 @@ export default {
     input: config.server.input(),
     output: config.server.output(),
     plugins: [
-      md(),
-      glob(),
       replace({
         "process.browser": false,
         "process.env.NODE_ENV": JSON.stringify(mode),
@@ -95,7 +89,7 @@ export default {
     ],
     external: Object.keys(pkg.dependencies).concat(
       require("module").builtinModules ||
-      Object.keys(process.binding("natives"))
+        Object.keys(process.binding("natives"))
     ),
 
     preserveEntrySignatures: "strict",

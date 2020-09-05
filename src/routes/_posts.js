@@ -48,10 +48,25 @@ const withCache = (fn) => () => fn(loadAllEntries());
 exports.getAllPosts = withCache((cache) => cache.entries());
 exports.getPostSlugs = withCache((cache) => Array.from(cache.keys()));
 exports.getPostBySlug = (slug) => getFromCache(slug);
+exports.getPostsByTag = (tag) =>
+  withCache((cache) =>
+    Array.from(cache.values()).filter((entry) => {
+      // console.log("entry", entry.meta.tags);
+      return entry.meta.tags.includes(tag);
+    })
+  );
 exports.getTitleBySlug = (slug) => {
   const entry = getFromCache(slug);
   return entry.meta.title;
 };
+exports.getAllTags = withCache(
+  (cache) =>
+    new Set(
+      Array.from(cache.values())
+        .map((p) => p.meta.tags)
+        .reduce((acc, val) => acc.concat(val), [])
+    )
+);
 exports.compareDate = (date1, date2) => new Date(date1) - new Date(date2);
 exports.orderByRecent = (posts) =>
   posts.sort((p1, p2) => compareDate(p2.meta.date, p1.meta.date));
