@@ -3,10 +3,10 @@
   "description": "Kirill Vasiltsov's personal website",
   "version": "0.0.1",
   "scripts": {
-    "dev": "npm run tailwind && sapper dev",
+    "dev": "sapper dev",
     "tailwind": "tailwindcss build tailwind.css -o static/tailwind.css -c tailwind.config.js",
-    "build": "cross-env NODE_ENV=production npm run tailwind && sapper build",
-    "export": "cross-env NODE_ENV=production npm run tailwind && sapper export --timeout 999999 && npm run copy-cards",
+    "build": "cross-env NODE_ENV=production sapper build",
+    "export": "cross-env NODE_ENV=production sapper export && npm run copy-cards",
     "start": "node __sapper__/build",
     "copy-cards": "cp assets/home.jpg __sapper__/export && cp assets/writing.jpg __sapper__/export/writing && cp assets/oss.jpg __sapper__/export/oss",
     "cy:run": "cypress run",
@@ -14,7 +14,9 @@
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
+    "autoprefixer": "^9.8.6",
     "compression": "^1.7.1",
+    "cssnano": "^4.1.10",
     "dotenv": "^8.2.0",
     "glob": "^7.1.6",
     "gray-matter": "^4.0.2",
@@ -22,10 +24,13 @@
     "marked": "^1.1.0",
     "node-fetch": "^2.6.0",
     "polka": "next",
+    "postcss": "^7.0.32",
     "query-string": "^6.12.1",
     "remarkable": "^2.0.1",
+    "rollup-plugin-postcss": "^3.1.8",
     "sirv": "^0.4.0",
     "snarkdown": "^2.0.0",
+    "svelte-preprocess": "^4.2.1",
     "tailwindcss": "^1.8.2",
     "wasm-twitter-card": "^0.3.0"
   },

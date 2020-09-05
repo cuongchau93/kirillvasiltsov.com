@@ -36,7 +36,26 @@
 </script>
 
 <style>
+  :global(:root) {
+    --bg: hsl(257, 33%, 96%);
+    --primary: hsl(330, 40%, 2%);
+    --secondary: hsl(359, 87%, 60%);
+  }
 
+  :global([data-theme="dark"]) {
+    --bg: hsl(330, 40%, 2%);
+    --primary: hsl(257, 33%, 96%);
+    --secondary: hsl(359, 87%, 60%);
+  }
+
+  :global(body) {
+    color: var(--primary);
+    background-color: var(--bg);
+  }
+
+  :global(a) {
+    color: var(--secondary);
+  }
 </style>
 
 <svelte:head>
@@ -60,9 +79,15 @@
       <div>Kirill Vasiltsov</div>
       <nav class="hidden lg:block">
         <ul class="flex">
-          <li>Home</li>
-          <li>Writing</li>
-          <li>OSS</li>
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">Writing</a>
+          </li>
+          <li>
+            <a href="#">OSS</a>
+          </li>
         </ul>
       </nav>
     </div>
