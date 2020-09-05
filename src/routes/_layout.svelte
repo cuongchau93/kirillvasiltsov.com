@@ -56,6 +56,38 @@
   :global(a) {
     color: var(--secondary);
   }
+
+  .container {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  .flex-between {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  nav {
+    display: none;
+  }
+
+  nav > ul {
+    display: flex;
+    list-style: none;
+  }
+
+  @media screen and (min-width: 1024px) {
+    nav {
+      display: block;
+    }
+  }
+
+  ul > li > a {
+    display: block;
+    padding: 0.8em;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+  }
 </style>
 
 <svelte:head>
@@ -74,22 +106,20 @@
 </svelte:head>
 
 <header>
-  <div class="max-w-screen-lg mx-auto text-center">
-    <div class="flex justify-between">
-      <div>Kirill Vasiltsov</div>
-      <nav class="hidden lg:block">
-        <ul class="flex">
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">Writing</a>
-          </li>
-          <li>
-            <a href="#">OSS</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+  <div class="container flex-between">
+    <div>Kirill Vasiltsov</div>
+    <nav>
+      <ul>
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">Writing</a>
+        </li>
+        <li>
+          <a href="#">OSS</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </header>
