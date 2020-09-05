@@ -3,7 +3,7 @@ import {
   getPostBySlug,
   orderByRecent,
   getAllTags,
-} from "../../posts";
+} from "../_posts";
 
 export function get(req, res) {
   res.writeHead(200, {

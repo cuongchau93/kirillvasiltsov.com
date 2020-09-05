@@ -23,7 +23,9 @@
     "node-fetch": "^2.6.0",
     "polka": "next",
     "query-string": "^6.12.1",
+    "remarkable": "^2.0.1",
     "sirv": "^0.4.0",
+    "snarkdown": "^2.0.0",
     "tailwindcss": "^1.4.6",
     "wasm-twitter-card": "^0.3.0"
   },

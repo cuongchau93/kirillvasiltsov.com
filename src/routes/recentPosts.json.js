@@ -1,4 +1,4 @@
-import { getPostDescriptions, orderByRecent } from "../posts";
+import { getPostDescriptions, orderByRecent } from "./_posts";
 
 export function get(req, res) {
   res.writeHead(200, {
