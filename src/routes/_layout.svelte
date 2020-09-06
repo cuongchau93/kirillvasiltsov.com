@@ -76,6 +76,7 @@
     color: var(--primary);
     background-color: var(--bg);
     font-family: Inter, serif;
+    transition: color, background-color 300ms ease-out;
   }
 
   :global(body > div > * + *) {
@@ -83,7 +84,40 @@
   }
 
   :global(a) {
+    --link: linear-gradient(to bottom, transparent 70%, var(--secondary) 70.1%);
+    --active: linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 50%,
+      var(--secondary) 50.1%
+    );
     color: var(--primary);
+  }
+
+  :global(a:link) {
+    background-image: var(--link);
+    background-position: 0 70%;
+    background-size: 100% 200%;
+    word-break: break-word;
+    transition: background-position 100ms;
+  }
+
+  :global(a:visited) {
+    background-image: var(--link);
+    background-position: 0 70%;
+    background-size: 100% 200%;
+    word-break: break-word;
+    transition: background-position 100ms;
+  }
+
+  :global(a:hover) {
+    background-image: var(--active);
+    background-position: 0 100%;
+  }
+
+  :global(a:active) {
+    background-image: var(--active);
+    background-position: 0 100%;
   }
 
   .max-width {
@@ -98,13 +132,6 @@
   .page-pointers {
     display: none;
     margin-top: 0;
-  }
-
-  .pointer-container {
-    padding: 0.2em 0;
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
   }
 
   .pointer-oss {
@@ -177,12 +204,42 @@
     -webkit-text-fill-color: transparent;
   }
 
+  .mode-toggle {
+    margin-top: 0;
+    position: relative;
+  }
+
   nav {
+    display: flex;
     font-size: 1.25rem;
+    margin-right: 3em;
   }
 
   nav > ul {
     display: none;
+  }
+
+  ul > * + * {
+    margin-left: 1.5em;
+  }
+
+  ul > li > a {
+    display: block;
+    padding: 0.3em 0.8em;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+  }
+
+  ul > li > a:link,
+  ul > li > a:visited {
+    color: var(--primary);
+    background: none;
+  }
+
+  ul > li > a:hover,
+  ul > li > a:active {
+    color: var(--secondary);
   }
 
   @media screen and (min-width: 1024px) {
@@ -200,16 +257,68 @@
     }
   }
 
-  ul > * + * {
-    margin-left: 1.5em;
+  .dark {
+    transition: transform 300ms ease-out;
+    transform: rotate(0deg);
   }
 
-  ul > li > a {
-    display: block;
-    padding: 0.3em 0.8em;
-    font-weight: bold;
-    text-decoration: none;
-    letter-spacing: 0.03em;
+  .light {
+    transition: transform 300ms ease-out;
+    transform: rotate(360deg);
+  }
+
+  .toggle {
+    cursor: pointer;
+    position: absolute;
+    right: 1.5em;
+    top: -1.95em;
+  }
+
+  .toggle > input {
+    display: none;
+  }
+
+  .toggle > div {
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+  }
+
+  .toggle > div > div {
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--primary);
+    background: linear-gradient(
+      to right,
+      var(--bg),
+      var(--bg) 50%,
+      var(--primary) 50%
+    );
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    transition: background-position 500ms;
+  }
+
+  .toggle > div > div > div {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: linear-gradient(
+      to left,
+      var(--bg),
+      var(--bg) 50%,
+      var(--primary) 50%
+    );
+  }
+
+  .bars {
+    font-size: 1.25rem;
+    padding: 0.2em 0;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 3em;
   }
 </style>
 
@@ -240,18 +349,31 @@
         {/each}
       </ul>
       <button class="menu-button">MENU</button>
+
     </nav>
   </div>
 </header>
+<aside class="mode-toggle">
+  <label class={`toggle ${$mode === 'dark' ? 'dark' : 'light'}`}>
+    <input checked={$mode === 'dark'} type="checkbox" on:change={toggleMode} />
+    <div>
+      <div>
+        <div />
+      </div>
+    </div>
+  </label>
+</aside>
 <aside class="page-pointers">
   <div class="max-width pointer-container">
-    {#each Object.keys(links) as link}
-      <div class={`pointer-${links[link]}`}>
-        {#if (link === '/' && isRoot(path)) || isCurrentPath(link)}
-          <div in:send out:recieve class="pointer" />
-        {/if}
-      </div>
-    {/each}
+    <div class="bars">
+      {#each Object.keys(links) as link}
+        <div class={`pointer-${links[link]}`}>
+          {#if (link === '/' && isRoot(path)) || isCurrentPath(link)}
+            <div in:send out:recieve class="pointer" />
+          {/if}
+        </div>
+      {/each}
+    </div>
   </div>
 </aside>
 <aside class="divider">
