@@ -41,4 +41,5 @@
     name="twitter:image"
     content="https://www.kirillvasiltsov.com/home.jpg" />
 </svelte:head>
+
 <div class="hero-grid" />

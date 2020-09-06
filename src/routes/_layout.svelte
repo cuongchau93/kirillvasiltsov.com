@@ -1,10 +1,18 @@
 <script>
   import { beforeUpdate } from "svelte";
-  import { mode, toggleMode, setModeTo } from "../theme.js";
   import { stores } from "@sapper/app";
   import { crossfade, slide } from "svelte/transition";
   import { cubicInOut } from "svelte/easing";
   import { writable } from "svelte/store";
+
+  import { mode, toggleMode, setModeTo } from "../theme.js";
+  import Menu from "../components/Menu.svelte";
+
+  let isMenuOpen = false;
+
+  const toggleMenu = () => {
+    isMenuOpen = !isMenuOpen;
+  };
 
   const [send, recieve] = crossfade({
     delay: 0,
@@ -72,6 +80,11 @@
     --tertiary: hsl(206, 89%, 82%);
   }
 
+  :global(*:focus) {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--tertiary);
+  }
+
   :global(body) {
     color: var(--primary);
     background-color: var(--bg);
@@ -79,7 +92,7 @@
     transition: color, background-color 300ms ease-out;
   }
 
-  :global(main > * + *) {
+  :global(.content > * + *) {
     margin-top: 1rem;
   }
 
@@ -153,6 +166,7 @@
   .flex-between {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   .author {
@@ -170,6 +184,8 @@
       var(--primary) 45.1%,
       var(--primary)
     );
+    background-size: 150% 150%;
+    animation: gradient-left 30s ease infinite;
   }
 
   .bar + .bar {
@@ -181,6 +197,7 @@
       var(--primary) 50.1%,
       var(--primary)
     );
+    animation: gradient-right 30s ease infinite;
   }
 
   .page-pointers__pointer {
@@ -193,6 +210,23 @@
 
   .menu-button {
     display: block;
+    position: relative;
+    width: 0.7em;
+    height: 0.7em;
+    font-size: 2em;
+    line-height: 0.4;
+    text-indent: 5em;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .menu-button::after {
+    position: absolute;
+    top: 0.1em;
+    left: 0.1em;
+    display: block;
+    content: "\2261";
+    text-indent: 0;
   }
 
   .gradient {
@@ -213,21 +247,21 @@
     position: relative;
   }
 
-  nav {
+  .pc-navigation {
     display: flex;
     font-size: 1.25rem;
     margin-right: 3em;
   }
 
-  nav > ul {
+  .pc-navigation > ul {
     display: none;
   }
 
-  ul > * + * {
+  .pc-navigation > ul > * + * {
     margin-left: 1.5em;
   }
 
-  ul > li > a {
+  .pc-navigation__link > a {
     display: block;
     padding: 0.3em 0.8em;
     font-weight: bold;
@@ -235,19 +269,19 @@
     letter-spacing: 0.03em;
   }
 
-  ul > li > a:link,
-  ul > li > a:visited {
+  .pc-navigation__link > a:link,
+  .pc-navigation__link > a:visited {
     color: var(--primary);
     background: none;
   }
 
-  ul > li > a:hover,
-  ul > li > a:active {
+  .pc-navigation__link > a:hover,
+  .pc-navigation__link > a:active {
     color: var(--secondary);
   }
 
   @media screen and (min-width: 1024px) {
-    nav > ul {
+    .pc-navigation > ul {
       display: flex;
       list-style: none;
     }
@@ -329,6 +363,30 @@
     display: grid;
     grid-template-rows: auto 1fr auto;
   }
+
+  @keyframes gradient-right {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes gradient-left {
+    0% {
+      background-position: 100% 50%;
+    }
+    50% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
 </style>
 
 <svelte:head>
@@ -350,19 +408,19 @@
   <header>
     <div class="max-width header-container flex-between">
       <div class="gradient author">Kirill Vasiltsov</div>
-      <nav>
+      <nav class="pc-navigation">
         <ul>
           {#each Object.keys(links) as link}
-            <li>
+            <li class="pc-navigation__link">
               <a href={link}>{links[link]}</a>
             </li>
           {/each}
         </ul>
-        <button class="menu-button">MENU</button>
+        <button class="menu-button" on:click={toggleMenu}>MENU</button>
       </nav>
     </div>
   </header>
-  <main>
+  <div class="content">
     <aside class="mode-toggle">
       <label
         class={`mode-toggle__toggle mode-toggle__toggle--${$mode === 'dark' ? 'dark' : 'light'}`}>
@@ -395,5 +453,8 @@
       <div class="bar" />
     </aside>
     <slot />
-  </main>
+  </div>
 </div>
+{#if isMenuOpen}
+  <Menu {links} {toggleMenu} />
+{/if}
