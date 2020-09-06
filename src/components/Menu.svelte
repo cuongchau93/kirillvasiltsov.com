@@ -34,10 +34,16 @@
 
   .mobile-navigation__link {
     font-size: 1.8rem;
-    padding: 1em;
     color: var(--bg);
     text-align: center;
     text-transform: uppercase;
+  }
+
+  .mobile-navigation__link > a {
+    display: block;
+    text-decoration: none;
+    border-radius: 0.3em;
+    padding: 0.8em;
   }
 
   .mobile-navigation__link > a:link,
@@ -48,7 +54,11 @@
 
   .mobile-navigation__link > a:hover,
   .mobile-navigation__link > a:active {
-    color: var(--bg);
+    color: var(--secondary);
+  }
+
+  .mobile-navigation__link > a:focus {
+    color: var(--secondary);
   }
 
   .mobile-navigation__close {
