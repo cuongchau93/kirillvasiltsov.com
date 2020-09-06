@@ -79,7 +79,7 @@
     transition: color, background-color 300ms ease-out;
   }
 
-  :global(body > div > * + *) {
+  :global(main > * + *) {
     margin-top: 1rem;
   }
 
@@ -118,6 +118,10 @@
   :global(a:active) {
     background-image: var(--active);
     background-position: 0 100%;
+  }
+
+  .fix-scroll {
+    padding-left: calc(100vw - 100%);
   }
 
   .max-width {
@@ -320,6 +324,11 @@
     justify-content: flex-end;
     margin-right: 3em;
   }
+
+  .grid {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
 </style>
 
 <svelte:head>
@@ -337,46 +346,54 @@
   </script>
 </svelte:head>
 
-<header>
-  <div class="max-width header-container flex-between">
-    <div class="gradient author">Kirill Vasiltsov</div>
-    <nav>
-      <ul>
-        {#each Object.keys(links) as link}
-          <li>
-            <a href={link}>{links[link]}</a>
-          </li>
-        {/each}
-      </ul>
-      <button class="menu-button">MENU</button>
-    </nav>
-  </div>
-</header>
-<aside class="mode-toggle">
-  <label
-    class={`mode-toggle__toggle mode-toggle__toggle--${$mode === 'dark' ? 'dark' : 'light'}`}>
-    <input checked={$mode === 'dark'} type="checkbox" on:change={toggleMode} />
-    <div>
-      <div>
-        <div />
-      </div>
+<div class="grid fix-scroll">
+  <header>
+    <div class="max-width header-container flex-between">
+      <div class="gradient author">Kirill Vasiltsov</div>
+      <nav>
+        <ul>
+          {#each Object.keys(links) as link}
+            <li>
+              <a href={link}>{links[link]}</a>
+            </li>
+          {/each}
+        </ul>
+        <button class="menu-button">MENU</button>
+      </nav>
     </div>
-  </label>
-</aside>
-<aside class="page-pointers">
-  <div class="max-width">
-    <div class="page-pointers__offset">
-      {#each Object.keys(links) as link}
-        <div class={`page-pointers__pointer-${links[link]}`}>
-          {#if (link === '/' && isRoot(path)) || isCurrentPath(link)}
-            <div in:send out:recieve class="page-pointers__pointer" />
-          {/if}
+  </header>
+  <main>
+    <aside class="mode-toggle">
+      <label
+        class={`mode-toggle__toggle mode-toggle__toggle--${$mode === 'dark' ? 'dark' : 'light'}`}>
+        <input
+          checked={$mode === 'dark'}
+          type="checkbox"
+          on:change={toggleMode} />
+        <div>
+          <div>
+            <div />
+          </div>
         </div>
-      {/each}
-    </div>
-  </div>
-</aside>
-<aside class="divider">
-  <div class="bar" />
-  <div class="bar" />
-</aside>
+      </label>
+    </aside>
+    <aside class="page-pointers">
+      <div class="max-width">
+        <div class="page-pointers__offset">
+          {#each Object.keys(links) as link}
+            <div class={`page-pointers__pointer-${links[link]}`}>
+              {#if (link === '/' && isRoot(path)) || isCurrentPath(link)}
+                <div in:send out:recieve class="page-pointers__pointer" />
+              {/if}
+            </div>
+          {/each}
+        </div>
+      </div>
+    </aside>
+    <aside class="divider">
+      <div class="bar" />
+      <div class="bar" />
+    </aside>
+    <slot />
+  </main>
+</div>
