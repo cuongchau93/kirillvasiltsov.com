@@ -5,7 +5,39 @@
   export let toggleMenu = () => {};
   export let links;
 
+  const KEYCODE_TAB = 9;
+  const paths = Object.keys(links);
+
   let menuCloseBtn;
+  let topmostFocusable;
+  let bottomFocusable;
+
+  let refs = [];
+
+  $: topmostFocusable = menuCloseBtn;
+
+  $: {
+    if (refs.length === paths.length) {
+      bottomFocusable = refs[paths.length - 1];
+      console.log(bottomFocusable);
+    }
+  }
+
+  const handleFocus = e => {
+    if (e.key === "Tab" || e.keyCode === KEYCODE_TAB) {
+      if (e.shiftKey) {
+        /* shift + tab */ if (document.activeElement === topmostFocusable) {
+          bottomFocusable.focus();
+          e.preventDefault();
+        }
+      } /* tab */ else {
+        if (document.activeElement === bottomFocusable) {
+          topmostFocusable.focus();
+          e.preventDefault();
+        }
+      }
+    }
+  };
 
   onMount(() => {
     menuCloseBtn.focus();
@@ -86,7 +118,7 @@
   }
 </style>
 
-<aside class="menu">
+<aside class="menu" on:keydown={handleFocus}>
   <nav
     class="mobile-navigation"
     in:fly={{ y: -1000, opacity: 0.6, duration: 400 }}
@@ -98,9 +130,11 @@
       Close
     </button>
     <ul>
-      {#each Object.keys(links) as link}
+      {#each paths as path, i}
         <li class="mobile-navigation__link">
-          <a on:click={toggleMenu} href={link}>{links[link]}</a>
+          <a on:click={toggleMenu} bind:this={refs[i]} href={path}>
+            {links[path]}
+          </a>
         </li>
       {/each}
     </ul>
