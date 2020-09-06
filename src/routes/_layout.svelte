@@ -1,8 +1,32 @@
 <script>
   import { beforeUpdate } from "svelte";
   import { mode, toggleMode, setModeTo } from "../theme.js";
-  import Navigation from "../components/Navigation.svelte";
-  import MediaQuery from "../components/MediaQuery.svelte";
+  import { stores } from "@sapper/app";
+  import { crossfade, slide } from "svelte/transition";
+  import { cubicInOut } from "svelte/easing";
+  import { writable } from "svelte/store";
+
+  const [send, recieve] = crossfade({
+    delay: 0,
+    duration: 200,
+    fallback: slide,
+    easing: cubicInOut
+  });
+
+  const { page } = stores();
+
+  $: path = $page.path;
+
+  $: console.log(path);
+
+  const links = {
+    "/": "home",
+    "/writing": "writing",
+    "/oss": "oss"
+  };
+
+  const isRoot = p => p === "/";
+  const isCurrentPath = p => !isRoot(p) && path.startsWith(p);
 
   beforeUpdate(() => {
     let storedTheme;
@@ -37,29 +61,60 @@
 
 <style>
   :global(:root) {
-    --bg: hsl(257, 33%, 96%);
-    --primary: hsl(330, 40%, 2%);
-    --secondary: hsl(359, 87%, 60%);
+    --bg: hsl(266, 33%, 96%);
+    --primary: hsl(0, 33%, 2%);
+    --secondary: hsl(346, 100%, 50%);
   }
 
   :global([data-theme="dark"]) {
-    --bg: hsl(330, 40%, 2%);
-    --primary: hsl(257, 33%, 96%);
-    --secondary: hsl(359, 87%, 60%);
+    --bg: hsl(0, 33%, 2%);
+    --primary: hsl(266, 33%, 96%);
+    --secondary: hsl(346, 100%, 50%);
   }
 
   :global(body) {
     color: var(--primary);
     background-color: var(--bg);
+    font-family: Inter, serif;
+  }
+
+  :global(body > div > * + *) {
+    margin-top: 1rem;
   }
 
   :global(a) {
-    color: var(--secondary);
+    color: var(--primary);
   }
 
-  .container {
+  .header-container {
     max-width: 1024px;
     margin: 0 auto;
+    padding: 1em 1em 0 1em;
+  }
+
+  .page-pointers {
+    margin-top: 0;
+  }
+
+  .pointer-container {
+    max-width: 1024px;
+    padding: 0.2em 0;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .pointer-oss {
+    width: 105px;
+  }
+
+  .pointer-writing {
+    width: 130px;
+  }
+
+  .pointer-home {
+    width: 117px;
   }
 
   .flex-between {
@@ -67,24 +122,66 @@
     justify-content: space-between;
   }
 
+  .author {
+    font-size: max(1.5rem, calc(1rem + 1vw));
+    font-weight: bold;
+    letter-spacing: 0.04em;
+  }
+
+  .bar {
+    padding: 0.2em;
+    background-image: linear-gradient(
+      110deg,
+      var(--secondary),
+      var(--secondary) 45%,
+      var(--primary) 45.1%,
+      var(--primary)
+    );
+  }
+
+  .bar + .bar {
+    margin-top: 0.4em;
+  }
+
+  .pointer {
+    border-radius: 50%;
+    background-color: var(--secondary);
+    width: 0.5em;
+    height: 0.5em;
+    margin: 0 auto;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
   nav {
-    display: none;
+    font-size: 1.25rem;
   }
 
   nav > ul {
-    display: flex;
-    list-style: none;
+    display: none;
   }
 
   @media screen and (min-width: 1024px) {
-    nav {
-      display: block;
+    nav > ul {
+      display: flex;
+      list-style: none;
     }
+
+    .menu-button {
+      display: none;
+    }
+  }
+
+  ul > * + * {
+    margin-left: 1.5em;
   }
 
   ul > li > a {
     display: block;
-    padding: 0.8em;
+    padding: 0.3em 0.8em;
+    font-weight: bold;
     text-decoration: none;
     letter-spacing: 0.03em;
   }
@@ -106,20 +203,32 @@
 </svelte:head>
 
 <header>
-  <div class="container flex-between">
-    <div>Kirill Vasiltsov</div>
+  <div class="header-container flex-between">
+    <div class="author">Kirill Vasiltsov</div>
     <nav>
       <ul>
-        <li>
-          <a href="#">Home</a>
-        </li>
-        <li>
-          <a href="#">Writing</a>
-        </li>
-        <li>
-          <a href="#">OSS</a>
-        </li>
+        {#each Object.keys(links) as link}
+          <li>
+            <a href={link}>{links[link]}</a>
+          </li>
+        {/each}
       </ul>
+      <button class="menu-button">MENU</button>
     </nav>
   </div>
 </header>
+<aside class="page-pointers">
+  <div class="pointer-container">
+    {#each Object.keys(links) as link}
+      <div class={`pointer-${links[link]}`}>
+        {#if (link === '/' && isRoot(path)) || isCurrentPath(link)}
+          <div in:send out:recieve class="pointer" />
+        {/if}
+      </div>
+    {/each}
+  </div>
+</aside>
+<aside class="divider">
+  <div class="bar" />
+  <div class="bar" />
+</aside>
