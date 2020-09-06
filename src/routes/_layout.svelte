@@ -17,8 +17,6 @@
 
   $: path = $page.path;
 
-  $: console.log(path);
-
   const links = {
     "/": "home",
     "/writing": "writing",
@@ -61,15 +59,17 @@
 
 <style>
   :global(:root) {
-    --bg: hsl(266, 33%, 96%);
-    --primary: hsl(0, 33%, 2%);
-    --secondary: hsl(346, 100%, 50%);
+    --bg: hsl(210, 20%, 99%);
+    --primary: hsl(74, 32%, 8%);
+    --secondary: hsl(206, 100%, 44%);
+    --tertiary: hsl(206, 54%, 32%);
   }
 
   :global([data-theme="dark"]) {
-    --bg: hsl(0, 33%, 2%);
-    --primary: hsl(266, 33%, 96%);
-    --secondary: hsl(346, 100%, 50%);
+    --bg: hsl(74, 32%, 8%);
+    --primary: hsl(210, 20%, 99%);
+    --secondary: hsl(206, 80%, 71%);
+    --tertiary: hsl(206, 89%, 82%);
   }
 
   :global(body) {
@@ -86,20 +86,22 @@
     color: var(--primary);
   }
 
-  .header-container {
+  .max-width {
     max-width: 1024px;
     margin: 0 auto;
+  }
+
+  .header-container {
     padding: 1em 1em 0 1em;
   }
 
   .page-pointers {
+    display: none;
     margin-top: 0;
   }
 
   .pointer-container {
-    max-width: 1024px;
     padding: 0.2em 0;
-    margin: 0 auto;
     position: relative;
     display: flex;
     justify-content: flex-end;
@@ -131,7 +133,7 @@
   .bar {
     padding: 0.2em;
     background-image: linear-gradient(
-      110deg,
+      70deg,
       var(--secondary),
       var(--secondary) 45%,
       var(--primary) 45.1%,
@@ -141,6 +143,13 @@
 
   .bar + .bar {
     margin-top: 0.4em;
+    background-image: linear-gradient(
+      110deg,
+      var(--secondary),
+      var(--secondary) 50%,
+      var(--primary) 50.1%,
+      var(--primary)
+    );
   }
 
   .pointer {
@@ -153,6 +162,19 @@
 
   .menu-button {
     display: block;
+  }
+
+  .gradient {
+    background: linear-gradient(
+      138deg,
+      var(--primary) 20%,
+      var(--tertiary) 20.1%,
+      var(--tertiary) 85%,
+      var(--primary) 85.1%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   nav {
@@ -171,6 +193,10 @@
 
     .menu-button {
       display: none;
+    }
+
+    .page-pointers {
+      display: block;
     }
   }
 
@@ -203,8 +229,8 @@
 </svelte:head>
 
 <header>
-  <div class="header-container flex-between">
-    <div class="author">Kirill Vasiltsov</div>
+  <div class="max-width header-container flex-between">
+    <div class="gradient author">Kirill Vasiltsov</div>
     <nav>
       <ul>
         {#each Object.keys(links) as link}
@@ -218,7 +244,7 @@
   </div>
 </header>
 <aside class="page-pointers">
-  <div class="pointer-container">
+  <div class="max-width pointer-container">
     {#each Object.keys(links) as link}
       <div class={`pointer-${links[link]}`}>
         {#if (link === '/' && isRoot(path)) || isCurrentPath(link)}
