@@ -134,15 +134,15 @@
     margin-top: 0;
   }
 
-  .pointer-oss {
+  .page-pointers__pointer-oss {
     width: 105px;
   }
 
-  .pointer-writing {
+  .page-pointers__pointer-writing {
     width: 130px;
   }
 
-  .pointer-home {
+  .page-pointers__pointer-home {
     width: 117px;
   }
 
@@ -179,7 +179,7 @@
     );
   }
 
-  .pointer {
+  .page-pointers__pointer {
     border-radius: 50%;
     background-color: var(--secondary);
     width: 0.5em;
@@ -257,34 +257,34 @@
     }
   }
 
-  .dark {
+  .mode-toggle__toggle--dark {
     transition: transform 300ms ease-out;
     transform: rotate(0deg);
   }
 
-  .light {
+  .mode-toggle__toggle--light {
     transition: transform 300ms ease-out;
     transform: rotate(360deg);
   }
 
-  .toggle {
+  .mode-toggle__toggle {
     cursor: pointer;
     position: absolute;
     right: 1.5em;
     top: -1.95em;
   }
 
-  .toggle > input {
+  .mode-toggle__toggle > input {
     display: none;
   }
 
-  .toggle > div {
+  .mode-toggle__toggle > div {
     border-radius: 50%;
     display: grid;
     place-items: center;
   }
 
-  .toggle > div > div {
+  .mode-toggle__toggle > div > div {
     width: 30px;
     height: 30px;
     border: 2px solid var(--primary);
@@ -300,7 +300,7 @@
     transition: background-position 500ms;
   }
 
-  .toggle > div > div > div {
+  .mode-toggle__toggle > div > div > div {
     width: 15px;
     height: 15px;
     border-radius: 50%;
@@ -312,7 +312,7 @@
     );
   }
 
-  .bars {
+  .page-pointers__offset {
     font-size: 1.25rem;
     padding: 0.2em 0;
     position: relative;
@@ -349,12 +349,12 @@
         {/each}
       </ul>
       <button class="menu-button">MENU</button>
-
     </nav>
   </div>
 </header>
 <aside class="mode-toggle">
-  <label class={`toggle ${$mode === 'dark' ? 'dark' : 'light'}`}>
+  <label
+    class={`mode-toggle__toggle mode-toggle__toggle--${$mode === 'dark' ? 'dark' : 'light'}`}>
     <input checked={$mode === 'dark'} type="checkbox" on:change={toggleMode} />
     <div>
       <div>
@@ -364,12 +364,12 @@
   </label>
 </aside>
 <aside class="page-pointers">
-  <div class="max-width pointer-container">
-    <div class="bars">
+  <div class="max-width">
+    <div class="page-pointers__offset">
       {#each Object.keys(links) as link}
-        <div class={`pointer-${links[link]}`}>
+        <div class={`page-pointers__pointer-${links[link]}`}>
           {#if (link === '/' && isRoot(path)) || isCurrentPath(link)}
-            <div in:send out:recieve class="pointer" />
+            <div in:send out:recieve class="page-pointers__pointer" />
           {/if}
         </div>
       {/each}
