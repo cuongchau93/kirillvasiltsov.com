@@ -13,10 +13,6 @@
   export let repositories = [];
 </script>
 
-<style>
-
-</style>
-
 <svelte:head>
   <title>Kirill Vasiltsov | Personal website</title>
   <meta property="og:url" content="https://www.kirillvasiltsov.com/" />
@@ -40,4 +36,4 @@
     content="https://www.kirillvasiltsov.com/home.jpg" />
 </svelte:head>
 
-<main />
+<div class="hero-grid" />
