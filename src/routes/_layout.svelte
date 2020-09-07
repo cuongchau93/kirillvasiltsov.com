@@ -165,7 +165,7 @@
   }
 
   .bar {
-    padding: 0.3em;
+    padding: 0.7em;
     background-image: linear-gradient(
       70deg,
       var(--secondary),
