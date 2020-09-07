@@ -165,7 +165,7 @@
   }
 
   .bar {
-    padding: 0.4em;
+    padding: 0.3em;
     background-image: linear-gradient(
       70deg,
       var(--secondary),
@@ -174,7 +174,7 @@
       var(--primary)
     );
     background-size: 150% 150%;
-    animation: gradient-left 30s ease infinite;
+    animation: gradient-left 30s ease infinite -200ms;
   }
 
   .bar + .bar {
@@ -186,7 +186,19 @@
       var(--primary) 50.1%,
       var(--primary)
     );
-    animation: gradient-right 30s ease infinite;
+    animation: gradient-right 30s ease infinite 0ms;
+  }
+
+  .bar + .bar + .bar {
+    margin-top: 0.4em;
+    background-image: linear-gradient(
+      70deg,
+      var(--secondary),
+      var(--secondary) 45%,
+      var(--primary) 45.1%,
+      var(--primary)
+    );
+    animation: gradient-left 30s ease infinite 200ms;
   }
 
   .menu-button {
@@ -382,10 +394,6 @@
       background-position: 100% 50%;
     }
   }
-
-  .min-height {
-    min-height: 0.5em;
-  }
 </style>
 
 <svelte:head>
@@ -438,6 +446,7 @@
       </div>
     </div>
     <aside class="divider">
+      <div class="bar" />
       <div class="bar" />
       <div class="bar" />
     </aside>
