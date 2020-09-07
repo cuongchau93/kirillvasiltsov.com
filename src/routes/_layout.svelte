@@ -288,7 +288,6 @@
   }
 
   .divider {
-    margin-top: 0.8em;
   }
 
   @media screen and (min-width: 1024px) {
