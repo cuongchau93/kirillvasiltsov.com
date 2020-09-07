@@ -16,6 +16,7 @@
 <style>
   .hero-grid {
     display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 </style>
 
@@ -42,4 +43,7 @@
     content="https://www.kirillvasiltsov.com/home.jpg" />
 </svelte:head>
 
-<div class="hero-grid" />
+<div class="hero-grid">
+  <div>I am</div>
+  <div>I do</div>
+</div>

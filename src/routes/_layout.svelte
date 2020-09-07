@@ -71,6 +71,7 @@
     --primary: hsl(74, 32%, 8%);
     --secondary: hsl(206, 100%, 44%);
     --tertiary: hsl(206, 54%, 32%);
+    font-size: min(18px, calc(1vw + 0.8em));
   }
 
   :global([data-theme="dark"]) {
@@ -92,7 +93,7 @@
     transition: color, background-color 300ms ease-out;
   }
 
-  :global(.content > * + *) {
+  :global(.grid > * + *) {
     margin-top: 1rem;
   }
 
@@ -142,25 +143,8 @@
     margin: 0 auto;
   }
 
-  .header-container {
-    padding: 1em 1em 0 1em;
-  }
-
-  .page-pointers {
-    display: none;
-    margin-top: 0;
-  }
-
-  .page-pointers__pointer-oss {
-    width: 105px;
-  }
-
-  .page-pointers__pointer-writing {
-    width: 130px;
-  }
-
-  .page-pointers__pointer-home {
-    width: 117px;
+  .header {
+    padding: 0.5em 1em;
   }
 
   .flex-between {
@@ -169,14 +153,19 @@
     align-items: center;
   }
 
-  .author {
-    font-size: max(1.5rem, calc(1rem + 1vw));
+  .header__author {
+    font-size: 1.3rem;
     font-weight: bold;
     letter-spacing: 0.04em;
   }
 
+  .header__controls {
+    display: flex;
+    align-items: center;
+  }
+
   .bar {
-    padding: 0.2em;
+    padding: 0.4em;
     background-image: linear-gradient(
       70deg,
       var(--secondary),
@@ -200,20 +189,13 @@
     animation: gradient-right 30s ease infinite;
   }
 
-  .page-pointers__pointer {
-    border-radius: 50%;
-    background-color: var(--secondary);
-    width: 0.5em;
-    height: 0.5em;
-    margin: 0 auto;
-  }
-
   .menu-button {
     display: block;
     position: relative;
+    font-size: 3rem;
     width: 0.7em;
     height: 0.7em;
-    font-size: 2em;
+    margin-right: 0.5em;
     line-height: 0.4;
     text-indent: 5em;
     white-space: nowrap;
@@ -247,23 +229,36 @@
     position: relative;
   }
 
+  .pc-navigation__pointer {
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    height: 0.5em;
+    width: 0.5em;
+    top: 1.8em;
+    left: 2em;
+  }
+
   .pc-navigation {
-    display: flex;
-    font-size: 1.25rem;
-    margin-right: 3em;
+    display: none;
   }
 
   .pc-navigation > ul {
-    display: none;
+    display: flex;
+    list-style: none;
   }
 
   .pc-navigation > ul > * + * {
     margin-left: 1.5em;
   }
 
+  .pc-navigation__link {
+    position: relative;
+  }
+
   .pc-navigation__link > a {
     display: block;
-    padding: 0.3em 0.8em;
+    padding: 0 0.8em;
     font-weight: bold;
     text-decoration: none;
     letter-spacing: 0.03em;
@@ -280,18 +275,27 @@
     color: var(--secondary);
   }
 
+  .divider {
+    margin-top: 0.8em;
+  }
+
   @media screen and (min-width: 1024px) {
-    .pc-navigation > ul {
+    .pc-navigation {
       display: flex;
-      list-style: none;
+      font-size: 1.1rem;
+      margin-right: 3em;
     }
 
     .menu-button {
       display: none;
     }
 
-    .page-pointers {
-      display: block;
+    .divider {
+      margin-top: 1.3em;
+    }
+
+    .header__author {
+      font-size: 1.8rem;
     }
   }
 
@@ -307,9 +311,7 @@
 
   .mode-toggle__toggle {
     cursor: pointer;
-    position: absolute;
-    right: 1.5em;
-    top: -1.95em;
+    display: block;
   }
 
   .mode-toggle__toggle > input {
@@ -350,18 +352,11 @@
     );
   }
 
-  .page-pointers__offset {
-    font-size: 1.25rem;
-    padding: 0.2em 0;
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 3em;
-  }
-
   .grid {
     display: grid;
     grid-template-rows: auto 1fr auto;
+    grid-row-gap: 1rem;
+    height: 100vh;
   }
 
   @keyframes gradient-right {
@@ -387,6 +382,10 @@
       background-position: 100% 50%;
     }
   }
+
+  .min-height {
+    min-height: 0.5em;
+  }
 </style>
 
 <svelte:head>
@@ -406,54 +405,47 @@
 
 <div class="grid fix-scroll">
   <header>
-    <div class="max-width header-container flex-between">
-      <div class="gradient author">Kirill Vasiltsov</div>
-      <nav class="pc-navigation">
-        <ul>
-          {#each Object.keys(links) as link}
-            <li class="pc-navigation__link">
-              <a href={link}>{links[link]}</a>
-            </li>
-          {/each}
-        </ul>
+    <div class="max-width header flex-between">
+      <h1 class="gradient header__author">Kirill Vasiltsov</h1>
+      <div class="header__controls">
+        <nav class="pc-navigation">
+          <ul>
+            {#each Object.keys(links) as link}
+              <li class="pc-navigation__link">
+                <a href={link}>{links[link]}</a>
+                {#if (link === '/' && isRoot(path)) || isCurrentPath(link)}
+                  <div in:send out:recieve class={`pc-navigation__pointer`} />
+                {/if}
+              </li>
+            {/each}
+          </ul>
+        </nav>
         <button class="menu-button" on:click={toggleMenu}>MENU</button>
-      </nav>
-    </div>
-  </header>
-  <div class="content">
-    <aside class="mode-toggle">
-      <label
-        class={`mode-toggle__toggle mode-toggle__toggle--${$mode === 'dark' ? 'dark' : 'light'}`}>
-        <input
-          checked={$mode === 'dark'}
-          type="checkbox"
-          on:change={toggleMode} />
-        <div>
-          <div>
-            <div />
-          </div>
-        </div>
-      </label>
-    </aside>
-    <aside class="page-pointers">
-      <div class="max-width">
-        <div class="page-pointers__offset">
-          {#each Object.keys(links) as link}
-            <div class={`page-pointers__pointer-${links[link]}`}>
-              {#if (link === '/' && isRoot(path)) || isCurrentPath(link)}
-                <div in:send out:recieve class="page-pointers__pointer" />
-              {/if}
+        <aside class="mode-toggle">
+          <label
+            class={`mode-toggle__toggle mode-toggle__toggle--${$mode === 'dark' ? 'dark' : 'light'}`}>
+            <input
+              checked={$mode === 'dark'}
+              type="checkbox"
+              on:change={toggleMode} />
+            <div>
+              <div>
+                <div />
+              </div>
             </div>
-          {/each}
-        </div>
+          </label>
+        </aside>
       </div>
-    </aside>
+    </div>
     <aside class="divider">
       <div class="bar" />
       <div class="bar" />
     </aside>
+  </header>
+  <div class="content">
     <slot />
   </div>
+  <footer>Footer</footer>
 </div>
 {#if isMenuOpen}
   <Menu {links} {toggleMenu} />
