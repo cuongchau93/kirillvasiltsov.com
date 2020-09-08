@@ -6,6 +6,7 @@
 <style>
   svg {
     display: block;
+    fill: var(--primary);
   }
 </style>
 

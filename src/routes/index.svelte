@@ -60,7 +60,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0.8em;
-    background-color: var(--bg-tint);
+    background-color: var(--tint);
     border-radius: 1em;
     transition: 200ms;
   }

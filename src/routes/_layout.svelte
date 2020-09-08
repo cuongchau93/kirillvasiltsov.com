@@ -71,8 +71,8 @@
     --primary: hsl(74, 32%, 8%);
     --secondary: hsl(206, 100%, 44%);
     --tertiary: hsl(206, 54%, 32%);
-    --bg-tint: hsl(0, 0%, 93%);
-    --primary-shade: hsl(73, 4%, 48%);
+    --tint: hsl(0, 4%, 95%);
+    --shade: hsl(73, 4%, 48%);
     font-size: min(18px, calc(1vw + 0.8em));
   }
 
@@ -81,8 +81,8 @@
     --primary: hsl(240, 4%, 82%);
     --secondary: hsl(206, 80%, 71%);
     --tertiary: hsl(206, 89%, 82%);
-    --bg-tint: hsl(96, 4%, 25%);
-    --primary-shade: hsl(240, 1%, 61%);
+    --tint: hsl(96, 4%, 25%);
+    --shade: hsl(240, 1%, 61%);
   }
 
   :global(*:focus) {
@@ -110,24 +110,27 @@
   }
 
   :global(a) {
-    color: var(--secondary);
+    --link: var(--secondary);
+    --hover: var(--tertiary);
     text-decoration: none;
     transition: 200ms;
   }
 
   :global(a:link) {
+    color: var(--link);
   }
 
   :global(a:visited) {
+    color: var(--link);
   }
 
   :global(a:hover) {
-    color: var(--tertiary);
+    color: var(--hover);
     text-decoration: underline;
   }
 
   :global(a:active) {
-    color: var(--tertiary);
+    color: var(--hover);
     text-decoration: underline;
   }
 
@@ -142,6 +145,7 @@
 
   .header {
     padding: 0.5em 1em;
+    padding-top: 1.5em;
   }
 
   .flex-between {

@@ -12,7 +12,7 @@
 
   footer {
     padding: 2em;
-    background-color: var(--bg-tint);
+    background-color: var(--tint);
   }
 
   .footer {
