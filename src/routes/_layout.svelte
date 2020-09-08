@@ -109,6 +109,12 @@
     margin: 0;
   }
 
+  :global(pre) {
+    max-width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+
   :global(a) {
     --link: var(--secondary);
     --hover: var(--tertiary);
@@ -118,6 +124,10 @@
 
   :global(a:link) {
     color: var(--link);
+  }
+
+  :global(*) {
+    border: 1px solid red;
   }
 
   :global(a:visited) {
@@ -348,6 +358,7 @@
   .grid {
     display: grid;
     grid-template-rows: auto 1fr auto;
+    grid-template-columns: minmax(0, 1fr);
     grid-row-gap: 1rem;
     height: 100vh;
   }
@@ -392,7 +403,7 @@
   </script>
 </svelte:head>
 
-<div class="grid fix-scroll">
+<div class="grid">
   <header>
     <div class="max-width header flex-between">
       <h1 class="gradient header__author">Kirill Vasiltsov</h1>

@@ -10,6 +10,7 @@
 <script>
   import meta from "../_meta.js";
   export let posts = [];
+  let empty = [];
 </script>
 
 <style>
@@ -69,7 +70,7 @@
     <ul class="posts">
       {#each posts as post}
         <li>
-          <a href={`${meta.url}writing/${post.slug}/`}>{post.meta.title}</a>
+          <a href={`/writing/${post.slug}/`}>{post.meta.title}</a>
         </li>
       {/each}
     </ul>
