@@ -7,6 +7,7 @@
 
   import { mode, toggleMode, setModeTo } from "../theme.js";
   import Menu from "../components/Menu.svelte";
+  import Footer from "../components/Footer.svelte";
 
   let isMenuOpen = false;
 
@@ -27,8 +28,7 @@
 
   const links = {
     "/": "home",
-    "/writing": "writing",
-    "/oss": "oss"
+    "/writing": "writing"
   };
 
   const isRoot = p => p === "/";
@@ -71,14 +71,18 @@
     --primary: hsl(74, 32%, 8%);
     --secondary: hsl(206, 100%, 44%);
     --tertiary: hsl(206, 54%, 32%);
+    --bg-tint: hsl(0, 0%, 93%);
+    --primary-shade: hsl(73, 4%, 48%);
     font-size: min(18px, calc(1vw + 0.8em));
   }
 
   :global([data-theme="dark"]) {
     --bg: hsl(74, 32%, 8%);
-    --primary: hsl(210, 20%, 99%);
+    --primary: hsl(240, 4%, 82%);
     --secondary: hsl(206, 80%, 71%);
     --tertiary: hsl(206, 89%, 82%);
+    --bg-tint: hsl(96, 4%, 25%);
+    --primary-shade: hsl(240, 1%, 61%);
   }
 
   :global(*:focus) {
@@ -93,45 +97,38 @@
     transition: color, background-color 300ms ease-out;
   }
 
-  :global(.grid > * + *) {
-    margin-top: 1rem;
+  :global(h1) {
+    margin: 0;
+  }
+
+  :global(h2) {
+    margin: 0;
+  }
+
+  :global(h3) {
+    margin: 0;
   }
 
   :global(a) {
-    --link: linear-gradient(to bottom, transparent 70%, var(--secondary) 70.1%);
-    --active: linear-gradient(
-      to bottom,
-      transparent 0%,
-      transparent 50%,
-      var(--secondary) 50.1%
-    );
-    color: var(--primary);
+    color: var(--secondary);
+    text-decoration: none;
+    transition: 200ms;
   }
 
   :global(a:link) {
-    background-image: var(--link);
-    background-position: 0 70%;
-    background-size: 100% 200%;
-    word-break: break-word;
-    transition: background-position 100ms;
   }
 
   :global(a:visited) {
-    background-image: var(--link);
-    background-position: 0 70%;
-    background-size: 100% 200%;
-    word-break: break-word;
-    transition: background-position 100ms;
   }
 
   :global(a:hover) {
-    background-image: var(--active);
-    background-position: 0 100%;
+    color: var(--tertiary);
+    text-decoration: underline;
   }
 
   :global(a:active) {
-    background-image: var(--active);
-    background-position: 0 100%;
+    color: var(--tertiary);
+    text-decoration: underline;
   }
 
   .fix-scroll {
@@ -154,9 +151,10 @@
   }
 
   .header__author {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
+    color: var(--primary-shade);
   }
 
   .header__controls {
@@ -223,19 +221,6 @@
     text-indent: 0;
   }
 
-  .gradient {
-    background: linear-gradient(
-      138deg,
-      var(--primary) 20%,
-      var(--tertiary) 20.1%,
-      var(--tertiary) 85%,
-      var(--primary) 85.1%
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
   .mode-toggle {
     margin-top: 0;
     position: relative;
@@ -287,9 +272,6 @@
     color: var(--secondary);
   }
 
-  .divider {
-  }
-
   @media screen and (min-width: 1024px) {
     .pc-navigation {
       display: flex;
@@ -303,10 +285,6 @@
 
     .divider {
       margin-top: 1.3em;
-    }
-
-    .header__author {
-      font-size: 1.8rem;
     }
   }
 
@@ -450,10 +428,8 @@
       <div class="bar" />
     </aside>
   </header>
-  <div class="content">
-    <slot />
-  </div>
-  <footer>Footer</footer>
+  <slot />
+  <Footer />
 </div>
 {#if isMenuOpen}
   <Menu {links} {toggleMenu} />
