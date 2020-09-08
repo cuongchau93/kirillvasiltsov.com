@@ -1,9 +1,11 @@
-import { getAllTags } from "../_posts";
+import { getAllPosts, orderByRecent } from "../_posts"
 
 export function get(req, res) {
   res.writeHead(200, {
-    "Content-Type": "application/json",
-  });
+    "Content-Type": "application/json"
+  })
 
-  res.end(JSON.stringify(Array.from(getAllTags())));
+  const posts = getAllPosts()
+
+  res.end(JSON.stringify(orderByRecent(Array.from(posts))))
 }

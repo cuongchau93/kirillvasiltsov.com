@@ -7,8 +7,6 @@
 </script>
 
 <script>
-  import RepositoryCard from "../components/RepositoryCard.svelte";
-  import Social from "../components/Social.svelte";
   import Star from "../components/Star.svelte";
 
   export let built = [];

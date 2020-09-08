@@ -20,23 +20,28 @@
   }
 
   .footer > * + * {
-    margin-top: 1em;
+    margin-top: 1rem;
   }
 
   .social {
     display: flex;
-    padding: 0.5em;
   }
 
   .social > a {
     display: block;
-    margin-left: 1em;
+    margin-left: 1rem;
   }
 </style>
 
 <footer>
   <div class="max-width footer">
     <h2>Social stuff</h2>
+    <p>
+      This is my personal website. You can look at its
+      <a href="https://github.com/jlkiri/kirillvasiltsov.com">
+        source code here.
+      </a>
+    </p>
     <div class="social">
       <GithubIcon h={25} w={25} />
       <a href={siteMetadata.github}>Contact me on Github</a>
