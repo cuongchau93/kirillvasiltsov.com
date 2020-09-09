@@ -85,7 +85,7 @@
     content="Kirill Vasiltsov's personal website" />
   <meta
     property="og:image"
-    content="https://www.kirillvasiltsov.com/home.jpg" />
+    content="https://www.kirillvasiltsov.com/home.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:creator" content="https://twitter.com/virtualkirill/" />
   <meta name="twitter:title" content="Kirill Vasiltsov | Personal website" />
@@ -94,10 +94,11 @@
     content="Kirill Vasiltsov's personal website" />
   <meta
     name="twitter:image"
-    content="https://www.kirillvasiltsov.com/home.jpg" />
+    content="https://www.kirillvasiltsov.com/home.png" />
 </svelte:head>
 
 <main>
+  <a href="/writing">Writing</a>
   <div class="max-width content">
     <section>
       <p class="greeting">

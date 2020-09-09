@@ -204,7 +204,7 @@
       var(--primary)
     );
     background-size: 150% 150%;
-    animation: gradient-left 30s ease infinite -200ms;
+    animation: gradient-left 40s ease infinite -500ms;
   }
 
   .bar + .bar {
@@ -216,7 +216,7 @@
       var(--primary) 50.1%,
       var(--primary)
     );
-    animation: gradient-right 30s ease infinite 0ms;
+    animation: gradient-right 40s ease infinite 0ms;
   }
 
   .bar + .bar + .bar {
@@ -228,7 +228,7 @@
       var(--primary) 45.1%,
       var(--primary)
     );
-    animation: gradient-left 30s ease infinite 200ms;
+    animation: gradient-left 40s ease infinite 500ms;
   }
 
   .menu-button {

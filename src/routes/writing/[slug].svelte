@@ -66,6 +66,27 @@
   }
 </style>
 
+<svelte:head>
+  <title>{`${content.meta.title} | Writing | Kirill Vasiltsov`}</title>
+  <meta
+    property="og:url"
+    content={`https://www.kirillvasiltsov.com/writing/${content.slug}`} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={content.meta.title} />
+  <meta name="Description" content={content.meta.title} />
+  <meta property="og:description" content={content.meta.title} />
+  <meta
+    property="og:image"
+    content="https://www.kirillvasiltsov.com/thumbnail.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:creator" content="https://twitter.com/virtualkirill/" />
+  <meta name="twitter:title" content={content.meta.title} />
+  <meta name="twitter:description" content={content.meta.spoiler} />
+  <meta
+    name="twitter:image"
+    content="https://www.kirillvasiltsov.com/thumbnail.png" />
+</svelte:head>
+
 <main>
   <article class="max-width writing-content">
     <h1>{content.meta.title}</h1>

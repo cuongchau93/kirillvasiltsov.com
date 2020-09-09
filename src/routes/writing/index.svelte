@@ -52,8 +52,8 @@
     content="Kirill Vasiltsov's personal and work writing" />
   <meta
     property="og:image"
-    content="https://www.kirillvasiltsov.com/writing/writing.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
+    content="https://www.kirillvasiltsov.com/thumbnail.png" />
+  <meta name="twitter:card" content="summary" />
   <meta name="twitter:creator" content="https://twitter.com/virtualkirill/" />
   <meta name="twitter:title" content="Kirill Vasiltsov | Writing" />
   <meta
@@ -61,7 +61,7 @@
     content="Kirill Vasiltsov's personal and work writing" />
   <meta
     name="twitter:image"
-    content="https://www.kirillvasiltsov.com/writing/writing.jpg" />
+    content="https://www.kirillvasiltsov.com/thumbnail.png" />
 </svelte:head>
 
 <main>

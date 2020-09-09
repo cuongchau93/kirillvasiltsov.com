@@ -4,11 +4,9 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
-    "tailwind": "tailwindcss build tailwind.css -o static/tailwind.css -c tailwind.config.js",
-    "build": "cross-env NODE_ENV=production sapper build",
-    "export": "cross-env NODE_ENV=production sapper export && npm run copy-cards",
+    "build": "sapper build",
+    "export": "sapper export --timeout 99999",
     "start": "node __sapper__/build",
-    "copy-cards": "cp assets/home.jpg __sapper__/export && cp assets/writing.jpg __sapper__/export/writing && cp assets/oss.jpg __sapper__/export/oss",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "test": "run-p --race dev cy:run"
