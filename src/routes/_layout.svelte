@@ -126,9 +126,9 @@
     color: var(--link);
   }
 
-  :global(*) {
+  /*  :global(*) {
     border: 1px solid red;
-  }
+  } */
 
   :global(a:visited) {
     color: var(--link);
