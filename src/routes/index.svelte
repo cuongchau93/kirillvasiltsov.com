@@ -98,7 +98,6 @@
 </svelte:head>
 
 <main>
-  <a href="/writing">Writing</a>
   <div class="max-width content">
     <section>
       <p class="greeting">
