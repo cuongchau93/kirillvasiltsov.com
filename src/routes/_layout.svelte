@@ -418,6 +418,9 @@
       } catch (e) {}
     })();
   </script>
+  <script async src="https://cdn.splitbee.io/sb.js">
+
+  </script>
 </svelte:head>
 
 <div class="grid">
