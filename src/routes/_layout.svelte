@@ -184,7 +184,7 @@
   .header__author {
     font-size: 1.2rem;
     font-weight: bold;
-    letter-spacing: 0.05em;
+    letter-spacing: -0.02em;
     color: var(--primary-shade);
   }
 
@@ -289,7 +289,7 @@
     padding: 0 0.8em;
     font-weight: bold;
     text-decoration: none;
-    letter-spacing: 0.03em;
+    letter-spacing: -0.01em;
   }
 
   .pc-navigation__link > a:link,
