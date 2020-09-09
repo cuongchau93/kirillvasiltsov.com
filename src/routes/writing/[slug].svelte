@@ -19,10 +19,10 @@
 
   .writing-content {
     padding: 1em;
-    line-height: 1.4;
+    line-height: 1.5;
   }
 
-  :global(p > code) {
+  :global(article code) {
     background-color: hsl(0, 0%, 13%);
     color: hsl(180, 100%, 97%);
     padding: 0.2em;
