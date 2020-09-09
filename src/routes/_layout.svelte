@@ -110,7 +110,6 @@
   }
 
   :global(pre) {
-    overflow-x: scroll;
     overflow-y: hidden;
     font-family: "Source Code Pro", "Courier New", Courier, monospace;
     padding: 1em;
