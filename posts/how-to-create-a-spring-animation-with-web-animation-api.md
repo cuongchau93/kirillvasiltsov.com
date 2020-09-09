@@ -71,15 +71,15 @@ Strictly speaking, we are not dragging the element using native browser API. But
 
 ```javascript
 function transformDrag(dx, dy) {
-  square.style.transform = `translate(${dx}px, ${dy}px)`;
+  square.style.transform = `translate(${dx}px, ${dy}px)`
 }
 
 function handleMouseMove(e) {
-  const dx = e.clientX - mouseX;
-  const dy = e.clientY - mouseY;
-  dragDx = dragDx + dx;
-  dragDy = dragDy + dy;
-  transformDrag(dragDx, dragDy);
+  const dx = e.clientX - mouseX
+  const dy = e.clientY - mouseY
+  dragDx = dragDx + dx
+  dragDy = dragDy + dy
+  transformDrag(dragDx, dragDy)
 }
 ```
 
@@ -91,11 +91,11 @@ Any animation that uses WAAPI requires a set of keyframes which are just like th
 
 We need a total of 5 parameters to be able to generate keyframes:
 
-a) Displacement on x-axis  
-b) Displacement on y-axis  
-c) Stiffness  
-d) Mass  
-e) Damping ratio
+- Displacement on x-axis
+- Displacement on y-axis
+- Stiffness
+- Mass
+- Damping ratio
 
 In the codesandbox above we use these defaults for physical parameters 3-5: `600`, `7` and `1`. For simplicity, we assume that the spring has length `1`.
 
@@ -118,33 +118,33 @@ function createSpringAnimation(
 A time interval in the context of the browser is _one frame_, or ~0.016s.
 
 ```javascript
-const frame_rate = 1 / 60;
+const frame_rate = 1 / 60
 ```
 
 To generate one keyframe we simply apply the formulas from the article above:
 
 ```javascript
-let x = dx;
-let y = dy;
+let x = dx
+let y = dy
 
-let velocity_x = 0;
-let velocity_y = 0;
+let velocity_x = 0
+let velocity_y = 0
 
-let Fspring_x = k * (x - spring_length);
-let Fspring_y = k * (y - spring_length);
-let Fdamping_x = d * velocity_x;
-let Fdamping_y = d * velocity_y;
+let Fspring_x = k * (x - spring_length)
+let Fspring_y = k * (y - spring_length)
+let Fdamping_x = d * velocity_x
+let Fdamping_y = d * velocity_y
 
-let accel_x = (Fspring_x + Fdamping_x) / mass;
-let accel_y = (Fspring_y + Fdamping_y) / mass;
+let accel_x = (Fspring_x + Fdamping_x) / mass
+let accel_y = (Fspring_y + Fdamping_y) / mass
 
-velocity_x += accel_x * frame_rate;
-velocity_y += accel_y * frame_rate;
+velocity_x += accel_x * frame_rate
+velocity_y += accel_y * frame_rate
 
-x += velocity_x * frame_rate;
-y += velocity_y * frame_rate;
+x += velocity_x * frame_rate
+y += velocity_y * frame_rate
 
-const keyframe = { transform: `translate(${x}px, ${y}px)` };
+const keyframe = { transform: `translate(${x}px, ${y}px)` }
 ```
 
 Ideally we need a keyframe for _each_ time interval to have a smooth 60fps animation. Intuitively, we need to loop until the end of animation duration (duration divided by one frame length times). There's a problem, however - we don't know **when** exactly the spring will stop beforehand! This is the biggest difficulty when trying to animate springs with browser APIs that want the exact duration time from you. Fortunately, there is a workaround: loop a potentially large number of times, but break when we have enough keyframes. Let's say we want it to **stop when the largest movement does not exceed 3 pixels (in both directions) for the last 60 frames** - simply because it becomes not easy to notice movement. We lose precision but reach the goal.
@@ -152,34 +152,34 @@ Ideally we need a keyframe for _each_ time interval to have a smooth 60fps anima
 So, this is what this heuristic looks like in code:
 
 ```javascript
-const DISPL_THRESHOLD = 3;
+const DISPL_THRESHOLD = 3
 
-let frames = 0;
-let frames_below_threshold = 0;
-let largest_displ;
+let frames = 0
+let frames_below_threshold = 0
+let largest_displ
 
-let positions = [];
+let positions = []
 
 for (let step = 0; step <= 1000; step += 1) {
   // Generate a keyframe
   // ...
   // Put the keyframe in the array
-  positions.push(keyframe);
+  positions.push(keyframe)
 
   largest_displ =
     largest_displ < 0
       ? Math.max(largest_displ || -Infinity, x)
-      : Math.min(largest_displ || Infinity, x);
+      : Math.min(largest_displ || Infinity, x)
 
   if (Math.abs(largest_displ) < DISPL_THRESHOLD) {
-    frames_below_threshold += 1;
+    frames_below_threshold += 1
   } else {
-    frames_below_threshold = 0; // Reset the frame counter
+    frames_below_threshold = 0 // Reset the frame counter
   }
 
   if (frames_below_threshold >= 60) {
-    frames = step;
-    break;
+    frames = step
+    break
   }
 }
 ```
@@ -187,23 +187,23 @@ for (let step = 0; step <= 1000; step += 1) {
 After we break, we save the number of times we looped as the number of frames. We use this number to calculate the actual duration. This is the `mouseup` handler:
 
 ```javascript
-let animation;
+let animation
 
 function handleMouseUp(e) {
-  const { positions, frames } = createSpringAnimation(dragDx, dragDy);
+  const { positions, frames } = createSpringAnimation(dragDx, dragDy)
 
-  square.style.transform = ""; // Cancel all transforms right before animation
+  square.style.transform = "" // Cancel all transforms right before animation
 
   const keyframes = new KeyframeEffect(square, positions, {
     duration: (frames / 60) * 1000,
     fill: "both",
     easing: "linear",
-    iterations: 1,
-  });
+    iterations: 1
+  })
 
-  animation = new Animation(keyframes);
+  animation = new Animation(keyframes)
 
-  animation.play();
+  animation.play()
 }
 ```
 

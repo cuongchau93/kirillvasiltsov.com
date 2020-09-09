@@ -110,9 +110,17 @@
   }
 
   :global(pre) {
-    max-width: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
+    font-family: "Source Code Pro", "Courier New", Courier, monospace;
+    padding: 1em;
+    margin: 0 -1em;
+  }
+
+  @media screen and (min-width: 640px) {
+    :global(pre) {
+      border-radius: 1em;
+    }
   }
 
   :global(a) {
@@ -120,10 +128,19 @@
     --hover: var(--tertiary);
     text-decoration: none;
     transition: 200ms;
+    border-radius: 0.5em;
   }
 
   :global(a:link) {
     color: var(--link);
+  }
+
+  :global(img) {
+    max-width: 100%;
+  }
+
+  :global(iframe) {
+    max-width: 100%;
   }
 
   /*  :global(*) {
@@ -142,6 +159,7 @@
   :global(a:active) {
     color: var(--hover);
     text-decoration: underline;
+    box-shadow: none;
   }
 
   .fix-scroll {
@@ -216,7 +234,7 @@
   .menu-button {
     display: block;
     position: relative;
-    font-size: 3rem;
+    font-size: 3.2rem;
     width: 0.7em;
     height: 0.7em;
     margin-right: 0.5em;

@@ -1,10 +1,10 @@
-import { getPostBySlug } from "../_posts";
+import { getPostBySlug } from "../_posts"
 
-export function get(req, res) {
+export async function get(req, res) {
   res.writeHead(200, {
-    "Content-Type": "application/json",
-  });
+    "Content-Type": "application/json"
+  })
 
-  const post = getPostBySlug(req.params.slug);
-  res.end(JSON.stringify(getPostBySlug(req.params.slug)));
+  const post = await getPostBySlug(req.params.slug)
+  res.end(JSON.stringify(post))
 }

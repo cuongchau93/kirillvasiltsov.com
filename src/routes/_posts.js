@@ -1,55 +1,72 @@
 const fs = require("fs")
 const path = require("path")
 const graymatter = require("gray-matter")
-const showdown = require("showdown")
-
-const converter = new showdown.Converter()
+const shiki = require("shiki")
+const markdown = require("markdown-it")
 
 const contentDir = path.resolve(process.cwd(), "posts")
 
 const postCache = new Map()
 
-const loadEntry = (filename) => {
+const loadEntry = async (filename) => {
   const file = fs.readFileSync(path.join(contentDir, filename))
   const { data: frontmatter, content: md } = graymatter(file)
-  const html = converter.makeHtml(md)
 
   const slug = path.basename(filename, ".md")
+
+  const htr = await shiki.getHighlighter({
+    theme: "material-theme-darker"
+  })
+
+  const convert = markdown({
+    html: true,
+    highlight: (code, lang) => {
+      if (lang === "plain") {
+        return htr.codeToHtml(code, "markdown")
+      }
+      return htr.codeToHtml(code, lang)
+    }
+  })
+
+  const html = convert.render(md)
 
   postCache.set(slug, { html, slug, meta: frontmatter })
 
   return { html, slug, meta: frontmatter }
 }
 
-const loadAllEntries = () => {
+const loadAllEntries = async () => {
   const dir = fs.readdirSync(contentDir)
 
   for (const file of dir) {
     const filename = path.basename(file, ".md")
 
     if (!postCache.get(filename)) {
-      loadEntry(file)
+      await loadEntry(file)
     }
   }
 
   return postCache
 }
 
-const getFromCache = (key) => {
+const getFromCache = async (key) => {
   const entry = postCache.get(key)
 
   if (!entry) {
-    return loadEntry(`${key}.md`)
+    return await loadEntry(`${key}.md`)
   }
 
   return entry
 }
 
-const withCache = (fn) => () => fn(loadAllEntries())
+const withCache = (fn) => async () => {
+  const allEntries = await loadAllEntries()
+  return fn(allEntries)
+}
 
 exports.getAllPosts = withCache((cache) => cache.values())
 exports.getPostSlugs = withCache((cache) => Array.from(cache.keys()))
-exports.getPostBySlug = (slug) => getFromCache(slug)
+exports.getPostBySlug = async (slug) => getFromCache(slug)
 exports.getPostsByTag = (tag) =>
   withCache((cache) =>
     Array.from(cache.values()).filter((entry) => {
