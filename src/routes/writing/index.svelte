@@ -1,21 +1,42 @@
 <script context="module">
   export async function preload() {
-    const responses = await Promise.all([this.fetch("writing/allPosts.json")]);
-    const [{ tags }] = await Promise.all(responses.map(r => r.json()));
-    return { tags };
+    const response = await this.fetch("writing/writing.json");
+    const posts = await response.json();
+    console.log(posts.length);
+    return { posts };
   }
 </script>
 
 <script>
-  import TagCard from "../../components/TagCard.svelte";
-  import Bio from "../../components/Bio.svelte";
-  import PostLayout from "../_post.svelte";
-
-  export let tags;
+  import meta from "../_meta.js";
+  export let posts = [];
+  let empty = [];
 </script>
 
 <style>
+  main {
+    padding: 1em;
+  }
+  .max-width {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
 
+  .posts {
+    list-style: none;
+    margin-top: 1rem;
+  }
+
+  .posts > li {
+    padding: 0.8em;
+    background-color: var(--tint);
+    border-radius: 1em;
+  }
+
+  .posts > * + * {
+    display: block;
+    margin-top: 1rem;
+  }
 </style>
 
 <svelte:head>
@@ -31,8 +52,8 @@
     content="Kirill Vasiltsov's personal and work writing" />
   <meta
     property="og:image"
-    content="https://www.kirillvasiltsov.com/writing/writing.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
+    content="https://www.kirillvasiltsov.com/thumbnail.png" />
+  <meta name="twitter:card" content="summary" />
   <meta name="twitter:creator" content="https://twitter.com/virtualkirill/" />
   <meta name="twitter:title" content="Kirill Vasiltsov | Writing" />
   <meta
@@ -40,14 +61,18 @@
     content="Kirill Vasiltsov's personal and work writing" />
   <meta
     name="twitter:image"
-    content="https://www.kirillvasiltsov.com/writing/writing.jpg" />
+    content="https://www.kirillvasiltsov.com/thumbnail.png" />
 </svelte:head>
-<PostLayout>
-  <main
-    class="pt-10 pb-10 font-bold flex items-center justify-center flex-wrap">
-    {#each tags as tag}
-      <TagCard name={tag} />
-    {/each}
-  </main>
-  <Bio />
-</PostLayout>
+
+<main>
+  <div class="max-width">
+    <h2>Things I wrote:</h2>
+    <ul class="posts">
+      {#each posts as post}
+        <li>
+          <a href={`/writing/${post.slug}/`}>{post.meta.title}</a>
+        </li>
+      {/each}
+    </ul>
+  </div>
+</main>

@@ -1,5 +1,5 @@
 <script>
-  import siteMetadata from "../siteMetadata";
+  import siteMetadata from "../routes/_meta.js";
   import MediaQuery from "./MediaQuery.svelte";
   import { beforeUpdate } from "svelte";
   import { stores } from "@sapper/app";

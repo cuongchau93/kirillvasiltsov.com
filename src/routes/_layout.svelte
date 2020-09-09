@@ -1,8 +1,38 @@
 <script>
   import { beforeUpdate } from "svelte";
+  import { stores } from "@sapper/app";
+  import { crossfade, slide } from "svelte/transition";
+  import { cubicInOut } from "svelte/easing";
+  import { writable } from "svelte/store";
+
   import { mode, toggleMode, setModeTo } from "../theme.js";
-  import Navigation from "../components/Navigation.svelte";
-  import MediaQuery from "../components/MediaQuery.svelte";
+  import Menu from "../components/Menu.svelte";
+  import Footer from "../components/Footer.svelte";
+
+  let isMenuOpen = false;
+
+  const toggleMenu = () => {
+    isMenuOpen = !isMenuOpen;
+  };
+
+  const [send, recieve] = crossfade({
+    delay: 0,
+    duration: 200,
+    fallback: slide,
+    easing: cubicInOut
+  });
+
+  const { page } = stores();
+
+  $: path = $page.path;
+
+  const links = {
+    "/": "home",
+    "/writing": "writing"
+  };
+
+  const isRoot = p => p === "/";
+  const isCurrentPath = p => !isRoot(p) && path.startsWith(p);
 
   beforeUpdate(() => {
     let storedTheme;
@@ -36,66 +66,343 @@
 </script>
 
 <style>
-  .theme-toggle {
-    cursor: pointer;
+  :global(:root) {
+    --bg: hsl(210, 20%, 99%);
+    --primary: hsl(74, 32%, 8%);
+    --secondary: hsl(206, 100%, 44%);
+    --tertiary: hsl(206, 54%, 32%);
+    --tint: hsl(0, 4%, 95%);
+    --shade: hsl(73, 4%, 48%);
+    font-size: min(18px, calc(1vw + 0.8em));
   }
 
-  .theme-toggle input {
+  :global([data-theme="dark"]) {
+    --bg: hsl(74, 32%, 8%);
+    --primary: hsl(240, 4%, 82%);
+    --secondary: hsl(206, 80%, 71%);
+    --tertiary: hsl(206, 89%, 82%);
+    --tint: hsl(96, 4%, 25%);
+    --shade: hsl(240, 1%, 61%);
+  }
+
+  :global(*:focus) {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--tertiary);
+  }
+
+  :global(body) {
+    color: var(--primary);
+    background-color: var(--bg);
+    font-family: Inter, serif;
+    transition: color, background-color 300ms ease-out;
+  }
+
+  :global(h1) {
+    margin: 0;
+  }
+
+  :global(h2) {
+    margin: 0;
+  }
+
+  :global(h3) {
+    margin: 0;
+  }
+
+  :global(pre) {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    font-family: "Source Code Pro", "Courier New", Courier, monospace;
+    padding: 1em;
+    margin: 0 -1em;
+  }
+
+  @media screen and (min-width: 640px) {
+    :global(pre) {
+      border-radius: 1em;
+    }
+  }
+
+  :global(a) {
+    --link: var(--secondary);
+    --hover: var(--tertiary);
+    text-decoration: none;
+    transition: 200ms;
+    border-radius: 0.5em;
+  }
+
+  :global(a:link) {
+    color: var(--link);
+  }
+
+  :global(img) {
+    max-width: 100%;
+  }
+
+  :global(iframe) {
+    max-width: 100%;
+  }
+
+  /*  :global(*) {
+    border: 1px solid red;
+  } */
+
+  :global(a:visited) {
+    color: var(--link);
+  }
+
+  :global(a:hover) {
+    color: var(--hover);
+    text-decoration: underline;
+  }
+
+  :global(a:active) {
+    color: var(--hover);
+    text-decoration: underline;
+    box-shadow: none;
+  }
+
+  .fix-scroll {
+    padding-left: calc(100vw - 100%);
+  }
+
+  .max-width {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  .header {
+    padding: 0.5em 1em;
+    padding-top: 1.5em;
+  }
+
+  .flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header__author {
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    color: var(--primary-shade);
+  }
+
+  .header__controls {
+    display: flex;
+    align-items: center;
+  }
+
+  .bar {
+    padding: 0.7em;
+    background-image: linear-gradient(
+      70deg,
+      var(--secondary),
+      var(--secondary) 45%,
+      var(--primary) 45.1%,
+      var(--primary)
+    );
+    background-size: 150% 150%;
+    animation: gradient-left 40s ease infinite -500ms;
+  }
+
+  .bar + .bar {
+    margin-top: 0.4em;
+    background-image: linear-gradient(
+      110deg,
+      var(--secondary),
+      var(--secondary) 50%,
+      var(--primary) 50.1%,
+      var(--primary)
+    );
+    animation: gradient-right 40s ease infinite 0ms;
+  }
+
+  .bar + .bar + .bar {
+    margin-top: 0.4em;
+    background-image: linear-gradient(
+      70deg,
+      var(--secondary),
+      var(--secondary) 45%,
+      var(--primary) 45.1%,
+      var(--primary)
+    );
+    animation: gradient-left 40s ease infinite 500ms;
+  }
+
+  .menu-button {
+    display: block;
+    position: relative;
+    font-size: 3.2rem;
+    width: 0.7em;
+    height: 0.7em;
+    margin-right: 0.5em;
+    line-height: 0.4;
+    text-indent: 5em;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .menu-button::after {
+    position: absolute;
+    top: 0.1em;
+    left: 0.1em;
+    display: block;
+    content: "\2261";
+    text-indent: 0;
+  }
+
+  .mode-toggle {
+    margin-top: 0;
+    position: relative;
+  }
+
+  .pc-navigation__pointer {
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    height: 0.5em;
+    width: 0.5em;
+    top: 1.8em;
+    left: 2em;
+  }
+
+  .pc-navigation {
     display: none;
   }
 
-  .theme-toggle input + div {
-    border-radius: 50%;
-    width: 26px;
-    height: 26px;
+  .pc-navigation > ul {
+    display: flex;
+    list-style: none;
+  }
+
+  .pc-navigation > ul > * + * {
+    margin-left: 1.5em;
+  }
+
+  .pc-navigation__link {
     position: relative;
-    box-shadow: inset 10px -10px 0 0 var(--auxtext);
-    transform: scale(1) rotate(-2deg);
-    transition: box-shadow 0.5s ease 0s, transform 0.4s ease 0.1s;
   }
 
-  .theme-toggle input + div:before {
-    content: "";
-    width: inherit;
-    height: inherit;
-    border-radius: inherit;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transition: background 0.3s ease;
+  .pc-navigation__link > a {
+    display: block;
+    padding: 0 0.8em;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 0.03em;
   }
 
-  .theme-toggle input + div:after {
-    content: "";
-    width: 6px;
-    height: 6px;
+  .pc-navigation__link > a:link,
+  .pc-navigation__link > a:visited {
+    color: var(--primary);
+    background: none;
+  }
+
+  .pc-navigation__link > a:hover,
+  .pc-navigation__link > a:active {
+    color: var(--secondary);
+  }
+
+  @media screen and (min-width: 1024px) {
+    .pc-navigation {
+      display: flex;
+      font-size: 1.1rem;
+      margin-right: 3em;
+    }
+
+    .menu-button {
+      display: none;
+    }
+
+    .divider {
+      margin-top: 1.3em;
+    }
+  }
+
+  .mode-toggle__toggle--dark {
+    transition: transform 300ms ease-out;
+    transform: rotate(0deg);
+  }
+
+  .mode-toggle__toggle--light {
+    transition: transform 300ms ease-out;
+    transform: rotate(360deg);
+  }
+
+  .mode-toggle__toggle {
+    cursor: pointer;
+    display: block;
+  }
+
+  .mode-toggle__toggle > input {
+    display: none;
+  }
+
+  .mode-toggle__toggle > div {
     border-radius: 50%;
-    margin: -3px 0 0 -3px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    box-shadow: 0 -14px 0 var(--auxtext), 0 14px 0 var(--auxtext),
-      14px 0 0 var(--auxtext), -14px 0 0 var(--auxtext),
-      10px 10px 0 var(--auxtext), -10px 10px 0 var(--auxtext),
-      10px -10px 0 var(--auxtext), -10px -10px 0 var(--auxtext);
-    transform: scale(0);
-    transition: all 0.3s ease;
+    display: grid;
+    place-items: center;
   }
 
-  .theme-toggle input:checked + div {
-    box-shadow: inset 32px -32px 0 0 var(--auxtext);
-    transform: scale(0.5) rotate(0deg);
-    transition: transform 0.3s ease 0.1s, box-shadow 0.2s ease 0s;
+  .mode-toggle__toggle > div > div {
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--primary);
+    background: linear-gradient(
+      to right,
+      var(--bg),
+      var(--bg) 50%,
+      var(--primary) 50%
+    );
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    transition: background-position 500ms;
   }
 
-  .theme-toggle input:checked + div:before {
-    background: var(--auxtext);
-    transition: background 0.3s ease 0.1s;
+  .mode-toggle__toggle > div > div > div {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: linear-gradient(
+      to left,
+      var(--bg),
+      var(--bg) 50%,
+      var(--primary) 50%
+    );
   }
 
-  .theme-toggle input:checked + div:after {
-    transform: scale(1.5);
-    transition: transform 0.5s ease 0.15s;
+  .grid {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: minmax(0, 1fr);
+    grid-row-gap: 1rem;
+    height: 100vh;
+  }
+
+  @keyframes gradient-right {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes gradient-left {
+    0% {
+      background-position: 100% 50%;
+    }
+    50% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
   }
 </style>
 
@@ -114,21 +421,49 @@
   </script>
 </svelte:head>
 
-<div
-  class="preserve-3d-transform h-full transition-colors duration-300 relative
-  text-text min-h-screen">
-  <div class="preserve-3d-transform h-full flex flex-col">
-    <MediaQuery query="(min-width: 768px)" let:matches>
-      <Navigation isMobile={!matches}>
-        <label class="theme-toggle md:h-12 pl-10">
-          <input
-            checked={$mode === 'dark'}
-            type="checkbox"
-            on:change={toggleMode} />
-          <div />
-        </label>
-      </Navigation>
-    </MediaQuery>
-    <slot />
-  </div>
+<div class="grid">
+  <header>
+    <div class="max-width header flex-between">
+      <h1 class="gradient header__author">Kirill Vasiltsov</h1>
+      <div class="header__controls">
+        <nav class="pc-navigation">
+          <ul>
+            {#each Object.keys(links) as link}
+              <li class="pc-navigation__link">
+                <a href={link}>{links[link]}</a>
+                {#if (link === '/' && isRoot(path)) || isCurrentPath(link)}
+                  <div in:send out:recieve class={`pc-navigation__pointer`} />
+                {/if}
+              </li>
+            {/each}
+          </ul>
+        </nav>
+        <button class="menu-button" on:click={toggleMenu}>MENU</button>
+        <aside class="mode-toggle">
+          <label
+            class={`mode-toggle__toggle mode-toggle__toggle--${$mode === 'dark' ? 'dark' : 'light'}`}>
+            <input
+              checked={$mode === 'dark'}
+              type="checkbox"
+              on:change={toggleMode} />
+            <div>
+              <div>
+                <div />
+              </div>
+            </div>
+          </label>
+        </aside>
+      </div>
+    </div>
+    <aside class="divider">
+      <div class="bar" />
+      <div class="bar" />
+      <div class="bar" />
+    </aside>
+  </header>
+  <slot />
+  <Footer />
 </div>
+{#if isMenuOpen}
+  <Menu {links} {toggleMenu} />
+{/if}

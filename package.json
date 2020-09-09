@@ -3,12 +3,10 @@
   "description": "Kirill Vasiltsov's personal website",
   "version": "0.0.1",
   "scripts": {
-    "dev": "npm run tailwind && sapper dev",
-    "tailwind": "tailwindcss build tailwind.css -o static/tailwind.css -c tailwind.config.js",
-    "build": "cross-env NODE_ENV=production npm run tailwind && sapper build",
-    "export": "cross-env NODE_ENV=production npm run tailwind && sapper export --timeout 999999 && npm run copy-cards",
+    "dev": "sapper dev",
+    "build": "sapper build",
+    "export": "sapper export --timeout 99999",
     "start": "node __sapper__/build",
-    "copy-cards": "cp assets/home.jpg __sapper__/export && cp assets/writing.jpg __sapper__/export/writing && cp assets/oss.jpg __sapper__/export/oss",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "test": "run-p --race dev cy:run"
@@ -19,12 +17,14 @@
     "glob": "^7.1.6",
     "gray-matter": "^4.0.2",
     "jimp": "^0.13.0",
-    "marked": "^1.1.0",
+    "markdown-it": "^11.0.0",
     "node-fetch": "^2.6.0",
     "polka": "next",
     "query-string": "^6.12.1",
+    "rollup-plugin-postcss": "^3.1.8",
+    "shiki": "^0.2.3",
     "sirv": "^0.4.0",
-    "tailwindcss": "^1.4.6",
+    "tailwindcss": "^1.8.2",
     "wasm-twitter-card": "^0.3.0"
   },
   "devDependencies": {
@@ -42,7 +42,7 @@
     "rollup": "^2.3.4",
     "rollup-plugin-svelte": "^5.0.1",
     "rollup-plugin-terser": "^5.3.0",
-    "sapper": "^0.27.15",
-    "svelte": "^3.0.0"
+    "sapper": "^0.27.16",
+    "svelte": "^3.24.1"
   }
 }
