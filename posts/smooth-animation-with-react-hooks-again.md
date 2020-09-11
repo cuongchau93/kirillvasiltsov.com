@@ -10,7 +10,7 @@ tags:
   - post
 ---
 
-_Originally posted at [dev.to](https://dev.to/jlkiri/smooth-animations-with-react-hooks-again-51a4)_
+UPDATE: [This article](https://css-tricks.com/everything-you-need-to-know-about-flip-animations-in-react/) has newer and better information about FLIP animations in React.
 
 A few months ago I wrote [about using the FLIP technique to animate things in React](https://dev.to/jlkiri/flip-animation-but-with-react-hooks-5g9d). Since then, I've found that some decisions were rather redundant and realized that the way React works can be leveraged significantly.
 
@@ -24,16 +24,16 @@ First of all, we must make sure that initial position / size of the element we w
 
 ```jsx
 function Square() {
-  const squareId = "flipSquare";
-  const cachedPosition = useRef();
+  const squareId = "flipSquare"
+  const cachedPosition = useRef()
 
-  const elm = document.getElementById(squareId);
+  const elm = document.getElementById(squareId)
 
   if (elm && cachedPosition.current == null) {
-    cachedPosition.current = elm.getBoundingClientRect();
+    cachedPosition.current = elm.getBoundingClientRect()
   }
 
-  return <div id={squareId} />;
+  return <div id={squareId} />
 }
 ```
 
@@ -41,17 +41,17 @@ Next, assume that something triggered a style change of our `div`. We want to in
 
 ```javascript
 useLayoutEffect(() => {
-  const el = document.getElementById(squareId);
-  if (!el || cachedPosition.current == null) return;
+  const el = document.getElementById(squareId)
+  if (!el || cachedPosition.current == null) return
 
-  const rect = el.getBoundingClientRect();
-  const scaleX = cachedPosition.current.width / rect.width;
-  const scaleY = cachedPosition.current.height / rect.height;
+  const rect = el.getBoundingClientRect()
+  const scaleX = cachedPosition.current.width / rect.width
+  const scaleY = cachedPosition.current.height / rect.height
 
-  cachedPosition.current = rect;
+  cachedPosition.current = rect
 
-  el.style.transform = `scale(${scaleX}px, ${scaleY}px)`;
-}, [someToggle]);
+  el.style.transform = `scale(${scaleX}px, ${scaleY}px)`
+}, [someToggle])
 ```
 
 The logic is simple: we use `getBoundingClientRect` to find the new position / size of the element (but which has not been painted yet). Then we use it to calculate how much exactly we need to `scale` or `translate` the element. Finally, we cache this new position and set style directly.
@@ -62,12 +62,12 @@ Next, we replay that change in `useEffect`. This is even easier than inverting. 
 
 ```javascript
 useEffect(() => {
-  const el = document.getElementById(squareId);
-  if (!el) return;
+  const el = document.getElementById(squareId)
+  if (!el) return
 
-  el.style.transition = `1s`;
-  el.style.transform = ``;
-}, [someToggle]);
+  el.style.transition = `1s`
+  el.style.transform = ``
+}, [someToggle])
 ```
 
 And that's it! How you handle triggers that cause style changes and what part of state changes and can be used as a dependency - is completely up to you.
