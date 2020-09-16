@@ -1,1 +1,1 @@
-/writing/post/*  /writing/:splat
+/writing/post/*  /writing/:splat 301!
