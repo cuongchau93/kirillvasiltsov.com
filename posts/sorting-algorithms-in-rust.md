@@ -122,4 +122,4 @@ fn partition(array: &mut [i32], l: isize, h: isize) -> isize {
 }
 ```
 
-You can also find them on Github: https://github.com/jlkiri/rust-sorting-algorithms
+You can also find them on Github: [rust-sorting-algorithms](https://github.com/jlkiri/rust-sorting-algorithms)

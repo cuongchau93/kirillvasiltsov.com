@@ -58,7 +58,7 @@ Codesandbox:
 
 The simple approach is, well, simple. Almost nothing we do in real life is that simple. Logic will need to be reused, fancier animations will need to be played, multiple elements will need to be animated. I've built a hook that solves most of these problems with slightly more than 1KB of code. Meet `use-animate-presence`:
 
-https://github.com/jlkiri/use-animate-presence
+[use-animate-presence](https://github.com/jlkiri/use-animate-presence)
 
 It:
 
