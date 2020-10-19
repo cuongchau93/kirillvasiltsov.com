@@ -7,7 +7,7 @@ tags:
   - svelte
 ---
 
-In this article I will show you how to use Svelte Actions and why they make development with Svelte better.
+This is a text version of my [Svelte Summit 2020 talk](https://sveltesummit.com/). In this article I will show you how to use Svelte Actions and why they make development with Svelte better.
 
 ## What are Svelte Actions?
 
