@@ -141,6 +141,11 @@
       <h2>Appearances:</h2>
       <ul>
         <li>
+          <a href="https://sveltesummit.com/">
+            Svelte Summit 2020 (Worldwide, Online)
+          </a>
+        </li>
+        <li>
           <a href="https://2019.kfug.jp/session/kirillvasiltsov/">
             Frontend Conference (Osaka, Japan)
           </a>
