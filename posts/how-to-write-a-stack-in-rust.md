@@ -99,7 +99,7 @@ Another method that is associated with a stack is `peek`. It allows us to see th
 
 ```rust
 fn peek(&self) -> Option<&T> {
-   self.stack.get(self.length() - 1)
+    self.stack.last()
 }
 ```
 
