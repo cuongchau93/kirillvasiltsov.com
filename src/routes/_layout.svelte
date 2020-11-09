@@ -380,6 +380,11 @@
     height: 100vh;
   }
 
+  .home-link {
+    color: initial;
+    text-decoration: none;
+  }
+
   @keyframes gradient-right {
     0% {
       background-position: 0% 50%;
@@ -427,7 +432,9 @@
   <header>
     <div class="max-width header flex-between">
       <h1 class="gradient header__author">
-        <a href="https://www.kirillvasiltsov.com/">Kirill Vasiltsov</a>
+        <a class="home-link" href="https://www.kirillvasiltsov.com/">
+          Kirill Vasiltsov
+        </a>
       </h1>
       <div class="header__controls">
         <nav class="pc-navigation">
