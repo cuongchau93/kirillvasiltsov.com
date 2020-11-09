@@ -9,137 +9,147 @@
 
 <url>
   <loc>https://www.kirillvasiltsov.com/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://www.kirillvasiltsov.com/writing/unlocking-the-power-of-svelte-actions/</loc>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.kirillvasiltsov.com/writing/optional-arguments-in-rust/</loc>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>https://www.kirillvasiltsov.com/writing/how-to-create-a-spring-animation-with-web-animation-api/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/how-to-write-a-queue-in-rust/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/react-rendering-cheatsheet/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/how-to-write-a-stack-in-rust/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/thinking-in-react-hooks/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/contributing-to-gatsby-issue-20699/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/import-files-easier-with-these-three-tricks/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/when-more-functions-equals-less-code/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/my-first-article-as-a-guest-writer/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/contributing-to-gatsby-issue-21311/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/sorting-algorithms-in-rust/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/you-do-not-need-a-container-component-or-how-to-use-redux-hooks-in-storybook-stories/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/how-to-draw-a-circle-with-css-and-no-html/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/if-you-want-to-learn-how-to-code-but-are-afraid-to-start/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/visually-test-and-sandbox-your-react-components-with-looc/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/webmention-support/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/smooth-animation-with-react-hooks-again/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/drawing-a-line-between-merge-and-recursion/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/using-streams-api-in-react-app/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/how-to-implement-dark-theme-with-css-and-javascript/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/some-thoughts-on-merge/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/what-can-stoics-teach-us/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/poverty-of-stimulus-argument-part-2/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/poverty-of-stimulus-argument-part-1/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.kirillvasiltsov.com/writing/on-acceptability/</loc>
-  <lastmod>2020-09-10T10:05:24+00:00</lastmod>
+  <lastmod>2020-11-09T10:02:04+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 
