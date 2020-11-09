@@ -152,4 +152,4 @@ You can also [see the full code on my github](https://github.com/jlkiri/rust-dat
 
 ## Next time
 
-In the next part of this series I will show how to build another common and useful structure - Queue. In the meantime, you can get the latest updates if you [follow me on Twitter](https://twitter.com/virtualkirill).
+In the next part of this series I will show how to build another common and useful structure - [Queue](https://www.kirillvasiltsov.com/writing/how-to-write-a-queue-in-rust/). In the meantime, you can get the latest updates if you [follow me on Twitter](https://twitter.com/virtualkirill).

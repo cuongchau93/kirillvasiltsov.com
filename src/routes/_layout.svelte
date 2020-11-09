@@ -426,7 +426,9 @@
 <div class="grid">
   <header>
     <div class="max-width header flex-between">
-      <h1 class="gradient header__author">Kirill Vasiltsov</h1>
+      <h1 class="gradient header__author">
+        <a href="https://www.kirillvasiltsov.com/">Kirill Vasiltsov</a>
+      </h1>
       <div class="header__controls">
         <nav class="pc-navigation">
           <ul>
