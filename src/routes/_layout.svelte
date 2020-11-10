@@ -381,7 +381,7 @@
   }
 
   .home-link {
-    color: initial;
+    color: var(--primary);
     text-decoration: none;
   }
 
