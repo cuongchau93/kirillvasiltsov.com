@@ -103,7 +103,7 @@ fn peek(&self) -> Option<&T> {
 }
 ```
 
-This one is a little bit more complicated. The reason is that we cannot just return the item itself - that would be equal to removing it. Instead we only return a reference (`&`) to it. And the reference itself is wrapped in an `Option` because the index passed to `get` may be out of bounds (in which case you get a `None`).
+This one is a little bit more complicated. The reason is that we cannot just return the item itself - that would be equal to removing it. Instead we only return a reference (`&`) to it. And the reference itself is wrapped in an `Option` because the stack may be empty (in which case you get a `None`).
 
 Now we have a functioning a stack! Here's the full code:
 
