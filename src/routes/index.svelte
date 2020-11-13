@@ -67,10 +67,22 @@
     transform: scale(1.02);
   }
 
-  .appearances > ul,
+  .misc-built {
+    padding-left: 1em;
+  }
+
+  .misc-built__item + .misc-built__item {
+    margin-top: 0.5em;
+  }
+
+  .appearances-list__item + .appearances-list__item {
+    margin-top: 0.5em;
+  }
+
+  .appearances-list,
   .guest-writing > ul {
     margin-top: 1em;
-    list-style: none;
+    padding-left: 1em;
   }
 </style>
 
@@ -100,10 +112,7 @@
 <main>
   <div class="max-width content">
     <section>
-      <p class="greeting">
-        <span>Hi,</span>
-        I'm Kirill!
-      </p>
+      <p class="greeting"><span>Hi,</span> I'm Kirill!</p>
       <p class="greeting-introduce">
         I am a software developer. I love building user interfaces and creating
         performant tools that everyone needs in their everyday hacking.
@@ -137,15 +146,27 @@
         {/each}
       </ul>
     </section>
+    <section>
+      <h2>Other things I've built:</h2>
+      <ul class="misc-built">
+        <li class="misc-built__item">
+          <a href="https://will-it-render.vercel.app/">Will it render?</a>
+        </li>
+        <li class="misc-built__item">
+          <a href="https://rust-wasm-game-of-life.now.sh/">Game of Life (made
+            with WebGL and Rust + WebAssembly)</a>
+        </li>
+      </ul>
+    </section>
     <section class="appearances">
       <h2>Appearances:</h2>
-      <ul>
-        <li>
+      <ul class="appearances-list">
+        <li class="appearances-list__item">
           <a href="https://sveltesummit.com/">
             Svelte Summit 2020 (Worldwide, Online)
           </a>
         </li>
-        <li>
+        <li class="appearances-list__item">
           <a href="https://2019.kfug.jp/session/kirillvasiltsov/">
             Frontend Conference (Osaka, Japan)
           </a>
