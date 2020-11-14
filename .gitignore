@@ -6,3 +6,6 @@ yarn-error.log
 /__sapper__/
 .env
 /static/tailwind.css
+
+# Local Netlify folder
+.netlify
