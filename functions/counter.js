@@ -1,6 +1,6 @@
 const faunadb = require("faunadb");
 
-const knownServices = ["github"];
+const knownServices = ["github", "fibonacci"];
 
 const PLACES = 6;
 
@@ -83,6 +83,6 @@ exports.handler = async function (event) {
 
   return {
     statusCode: 200,
-    body: "",
+    body: JSON.stringify(doc.data.hits),
   };
 };

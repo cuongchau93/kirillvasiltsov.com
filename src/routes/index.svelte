@@ -156,6 +156,9 @@
           <a href="https://rust-wasm-game-of-life.now.sh/">Game of Life (made
             with WebGL and Rust + WebAssembly)</a>
         </li>
+        <li class="misc-built__item">
+          <a href="https://kirillvasiltsov.com/fibonacci">Fibonacci in nature</a>
+        </li>
       </ul>
     </section>
     <section class="appearances">

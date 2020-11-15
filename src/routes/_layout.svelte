@@ -3,7 +3,6 @@
   import { stores } from "@sapper/app";
   import { crossfade, slide } from "svelte/transition";
   import { cubicInOut } from "svelte/easing";
-  import { writable } from "svelte/store";
 
   import { mode, toggleMode, setModeTo } from "../theme.js";
   import Menu from "../components/Menu.svelte";
@@ -19,7 +18,7 @@
     delay: 0,
     duration: 200,
     fallback: slide,
-    easing: cubicInOut
+    easing: cubicInOut,
   });
 
   const { page } = stores();
@@ -28,11 +27,11 @@
 
   const links = {
     "/": "home",
-    "/writing": "writing"
+    "/writing": "writing",
   };
 
-  const isRoot = p => p === "/";
-  const isCurrentPath = p => !isRoot(p) && path.startsWith(p);
+  const isRoot = (p) => p === "/";
+  const isCurrentPath = (p) => !isRoot(p) && path.startsWith(p);
 
   beforeUpdate(() => {
     let storedTheme;
@@ -50,7 +49,7 @@
 
     setModeTo(storedTheme);
 
-    darkQuery.addListener(e => {
+    darkQuery.addListener((e) => {
       setModeTo(e.matches ? "dark" : "light");
     });
 
@@ -424,7 +423,6 @@
     })();
   </script>
   <script async src="https://cdn.splitbee.io/sb.js">
-
   </script>
 </svelte:head>
 
