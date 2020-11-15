@@ -128,8 +128,6 @@
   }
 </style>
 
-<svelte:window on:resize={redrawPattern} />
-
 <div class="controls">
   <button disabled={isAnimationRunning || !valid} on:click={redrawPattern}>
     Play
