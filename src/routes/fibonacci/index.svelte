@@ -95,6 +95,27 @@
   }
 </style>
 
+<svelte:head>
+  <title>Fibonacci in nature | Kirill Vasiltsov</title>
+  <meta
+    property="og:url"
+    content="https://www.kirillvasiltsov.com/fibonacci/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Kirill Vasiltsov | Fibonacci in nature" />
+  <meta name="Description" content="Fibonacci patterns in nature" />
+  <meta property="og:description" content="Fibonacci patterns in nature" />
+  <meta
+    property="og:image"
+    content="https://www.kirillvasiltsov.com/thumbnail.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:creator" content="https://twitter.com/virtualkirill/" />
+  <meta name="twitter:title" content="Kirill Vasiltsov | Fibonacci in nature" />
+  <meta name="twitter:description" content="Fibonacci patterns in nature" />
+  <meta
+    name="twitter:image"
+    content="https://www.kirillvasiltsov.com/thumbnail.png" />
+</svelte:head>
+
 <main class="grid">
   <header>
     <h1>Fibonacci In Nature</h1>
