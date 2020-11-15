@@ -157,7 +157,7 @@
             with WebGL and Rust + WebAssembly)</a>
         </li>
         <li class="misc-built__item">
-          <a href="https://kirillvasiltsov.com/fibonacci">Fibonacci in nature</a>
+          <a href="/fibonacci">Fibonacci in nature</a>
         </li>
       </ul>
     </section>

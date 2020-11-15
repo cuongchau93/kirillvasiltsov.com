@@ -1,7 +1,7 @@
 <script context="module">
   export async function preload({ params }) {
     const response = await this.fetch(
-      "https://kirillvasiltsov.com/.netlify/functions/counter?name=fibonacci"
+      "https://www.kirillvasiltsov.com/.netlify/functions/counter?name=fibonacci"
     );
     const hits = await response.json();
     return { hits };
@@ -17,7 +17,7 @@
 
   const fetchHits = async () => {
     const r = await fetch(
-      "https://kirillvasiltsov.com/.netlify/functions/counter?name=fibonacci"
+      "https://www.kirillvasiltsov.com/.netlify/functions/counter?name=fibonacci"
     );
     const hits = await r.json();
     return hits;
