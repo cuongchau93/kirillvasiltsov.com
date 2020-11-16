@@ -27,7 +27,15 @@
     hits = fetchHits();
   });
 
-  const t = translator($language);
+  const switchToRu = () => {
+    $language = "ru";
+  };
+
+  const switchToEn = () => {
+    $language = "en";
+  };
+
+  $: t = translator($language);
 </script>
 
 <style>
@@ -90,6 +98,17 @@
     color: gray;
   }
 
+  .lng-button + .lng-button {
+    margin-left: 1em;
+  }
+
+  .lng-button {
+    padding: 0.3em 0.5em;
+    background-color: var(--primary);
+    color: var(--bg);
+    border-radius: 0.3em;
+  }
+
   aside {
     padding: 1em;
   }
@@ -118,8 +137,16 @@
 
 <main class="grid">
   <header>
-    <h1>Fibonacci In Nature</h1>
+    <h1>
+      {@html t('header')}
+    </h1>
   </header>
+  <section>
+    <div class="centered">
+      <button class="lng-button" on:click={switchToRu}>Russian</button>
+      <button class="lng-button" on:click={switchToEn}>English</button>
+    </div>
+  </section>
   <section>
     {@html t('sec1')}
   </section>
