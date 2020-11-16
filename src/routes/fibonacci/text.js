@@ -1,6 +1,6 @@
-import { writable } from "svelte/store";
+import { writable } from "svelte/store"
 
-export const language = writable("en");
+export const language = writable("en")
 
 export const text = {
   en: {
@@ -32,15 +32,15 @@ export const text = {
     sec7: `Below, I created a playground where you can experiment with different degrees of rotation! Just input a number
      of <strong>turns</strong> that you think will get you the closest to the spirals in the pine cone. Remember, 1 turn = 360 degrees, so
       180 degress is 0.5 turns etc.`,
-    sec8: `The right answer is 0.618. Go back and try it. This value is known as
-     the <a href="https://en.wikipedia.org/wiki/Golden_ratio">Golden Ratio</a>. It looks like Golden Ratio is the most
+    sec8: `The right answer is 0.618 (or 0.382 which is 1 - 0.618). Go back and try it. The value 1.618 is known as
+     the <a href="https://en.wikipedia.org/wiki/Golden_ratio">Golden Ratio</a>. It looks like the most
       space-efficient way to pack seeds (or leaves) is by turning golden ratio times each time before
-        growing. How is it related to Fibonacci sequence? If you take two Fibonacci neighbours, like 8 and 13, and
+        growing. In the context of turning, 0.618 turns is the same as 1.618 turns. How is it related to Fibonacci sequence? If you take two Fibonacci neighbours, like 8 and 13, and
          divide them such that the dividend is the larger one, you get a value that is very close to the Golden Ratio.`,
     sec9: `Note that the Golden Ratio is irrational. You can only get so close by using Fibonacci members. 
     While the ratio is irrational it is amazing how the most physically space-efficient way to grow that the nature 
-    "chose" is describable with the language of mathematics.`,
-  },
-};
+    "chose" is describable with the language of mathematics.`
+  }
+}
 
-export const translator = (lang) => (key) => text[lang][key];
+export const translator = (lang) => (key) => text[lang][key]
