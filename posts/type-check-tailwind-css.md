@@ -105,6 +105,13 @@ type Tailwind<S> = S extends ValidClass ? S : never;
 
 Here, `ValidClass` is a union of all possible Tailwind classes. For the sake of this example, let's imagine that only valid classes are the `Space` and `BgColor` that we constructed above. So when we pass some string as a generic `S`, our type becomes the literal that we passed if it is a valid class, and `never` if it is not.
 
+```typescript
+type Good = Tailwind<"bg-red-400">;
+type Bad = Tailwind<"bg-red-4030">;
+// type Good = "bg-red-400"
+// type Bad = never;
+```
+
 - Next, let's see how the type would be used in e.g. a function:
 
 ```typescript
