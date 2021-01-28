@@ -227,7 +227,7 @@ class Drawer implements ShapeVisitor {
 
   visitTriangle(shape: Triangle) {}
 
-  draw(shapes: Drawable) {
+  draw(shape: Drawable) {
     shape.accept(this)
   }
 }
@@ -240,7 +240,7 @@ class Square implements Drawable {
 
 class Circle implements Drawable {
   accept(visitor: ShapeVisitor) {
-    visitor.visitSquare(this)
+    visitor.visitCircle(this)
   }
 }
 
