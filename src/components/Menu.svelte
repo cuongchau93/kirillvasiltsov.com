@@ -1,48 +1,72 @@
 <script>
-  import { fly } from "svelte/transition";
-  import { onMount } from "svelte";
+  import { fly } from "svelte/transition"
+  import { onMount } from "svelte"
 
-  export let toggleMenu = () => {};
-  export let links;
+  export let toggleMenu = () => {}
+  export let links
 
-  const KEYCODE_TAB = 9;
-  const paths = Object.keys(links);
+  const KEYCODE_TAB = 9
+  const paths = Object.keys(links)
 
-  let menuCloseBtn;
-  let topmostFocusable;
-  let bottomFocusable;
+  let menuCloseBtn
+  let topmostFocusable
+  let bottomFocusable
 
-  let refs = [];
+  let refs = []
 
-  $: topmostFocusable = menuCloseBtn;
+  $: topmostFocusable = menuCloseBtn
 
   $: {
     if (refs.length === paths.length) {
-      bottomFocusable = refs[paths.length - 1];
-      console.log(bottomFocusable);
+      bottomFocusable = refs[paths.length - 1]
     }
   }
 
-  const handleFocus = e => {
+  const handleFocus = (e) => {
     if (e.key === "Tab" || e.keyCode === KEYCODE_TAB) {
       if (e.shiftKey) {
         /* shift + tab */ if (document.activeElement === topmostFocusable) {
-          bottomFocusable.focus();
-          e.preventDefault();
+          bottomFocusable.focus()
+          e.preventDefault()
         }
       } /* tab */ else {
         if (document.activeElement === bottomFocusable) {
-          topmostFocusable.focus();
-          e.preventDefault();
+          topmostFocusable.focus()
+          e.preventDefault()
         }
       }
     }
-  };
+  }
 
   onMount(() => {
-    menuCloseBtn.focus();
-  });
+    menuCloseBtn.focus()
+  })
 </script>
+
+<aside class="menu" on:keydown={handleFocus}>
+  <nav
+    class="mobile-navigation"
+    in:fly={{ y: -1000, opacity: 0.6, duration: 400 }}
+    out:fly={{ y: -1000, opacity: 0.6, duration: 400 }}
+  >
+    <button
+      bind:this={menuCloseBtn}
+      class="mobile-navigation__close"
+      on:click={toggleMenu}
+    >
+      Close
+    </button>
+    <ul>
+      {#each paths as path, i}
+        <li class="mobile-navigation__link">
+          <a on:click={toggleMenu} bind:this={refs[i]} href={path}>
+            {links[path]}
+          </a>
+        </li>
+      {/each}
+    </ul>
+  </nav>
+</aside>
 
 <style>
   .menu {
@@ -117,26 +141,3 @@
     content: "\00D7";
   }
 </style>
-
-<aside class="menu" on:keydown={handleFocus}>
-  <nav
-    class="mobile-navigation"
-    in:fly={{ y: -1000, opacity: 0.6, duration: 400 }}
-    out:fly={{ y: -1000, opacity: 0.6, duration: 400 }}>
-    <button
-      bind:this={menuCloseBtn}
-      class="mobile-navigation__close"
-      on:click={toggleMenu}>
-      Close
-    </button>
-    <ul>
-      {#each paths as path, i}
-        <li class="mobile-navigation__link">
-          <a on:click={toggleMenu} bind:this={refs[i]} href={path}>
-            {links[path]}
-          </a>
-        </li>
-      {/each}
-    </ul>
-  </nav>
-</aside>

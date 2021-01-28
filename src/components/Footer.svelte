@@ -1,37 +1,8 @@
 <script>
-  import GithubIcon from "./GithubIcon.svelte";
-  import TwitterIcon from "./TwitterIcon.svelte";
-  import siteMetadata from "../routes/_meta.js";
+  import GithubIcon from "./GithubIcon.svelte"
+  import TwitterIcon from "./TwitterIcon.svelte"
+  import siteMetadata from "../routes/_meta.js"
 </script>
-
-<style>
-  .max-width {
-    max-width: 1024px;
-    margin: 0 auto;
-  }
-
-  footer {
-    padding: 2em;
-    background-color: var(--tint);
-  }
-
-  .footer {
-    padding: 1em;
-  }
-
-  .footer > * + * {
-    margin-top: 1rem;
-  }
-
-  .social {
-    display: flex;
-  }
-
-  .social > a {
-    display: block;
-    margin-left: 1rem;
-  }
-</style>
 
 <footer>
   <div class="max-width footer">
@@ -52,3 +23,33 @@
     </div>
   </div>
 </footer>
+
+<style>
+  .max-width {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  footer {
+    padding: 2em;
+    position: relative;
+    background-color: var(--tint);
+  }
+
+  .footer {
+    padding: 1em;
+  }
+
+  .footer > * + * {
+    margin-top: 1rem;
+  }
+
+  .social {
+    display: flex;
+  }
+
+  .social > a {
+    display: block;
+    margin-left: 1rem;
+  }
+</style>

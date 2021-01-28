@@ -1,17 +1,59 @@
 <script context="module">
   export async function preload() {
-    const response = await this.fetch("writing/writing.json");
-    const posts = await response.json();
-    console.log(posts.length);
-    return { posts };
+    const response = await this.fetch("writing/writing.json")
+    const posts = await response.json()
+    return { posts }
   }
 </script>
 
 <script>
-  import meta from "../_meta.js";
-  export let posts = [];
-  let empty = [];
+  import meta from "../_meta.js"
+  export let posts = []
+  let empty = []
 </script>
+
+<svelte:head>
+  <title>Writing | Kirill Vasiltsov</title>
+  <meta property="og:url" content="https://www.kirillvasiltsov.com/writing/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Kirill Vasiltsov | Writing" />
+  <meta
+    name="Description"
+    content="Kirill Vasiltsov's personal and work writing"
+  />
+  <meta
+    property="og:description"
+    content="Kirill Vasiltsov's personal and work writing"
+  />
+  <meta
+    property="og:image"
+    content="https://www.kirillvasiltsov.com/thumbnail.png"
+  />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:creator" content="https://twitter.com/virtualkirill/" />
+  <meta name="twitter:title" content="Kirill Vasiltsov | Writing" />
+  <meta
+    name="twitter:description"
+    content="Kirill Vasiltsov's personal and work writing"
+  />
+  <meta
+    name="twitter:image"
+    content="https://www.kirillvasiltsov.com/thumbnail.png"
+  /></svelte:head
+>
+
+<main>
+  <div class="max-width">
+    <h2>Things I wrote:</h2>
+    <ul class="posts">
+      {#each posts as post}
+        <li>
+          <a href={`/writing/${post.slug}/`}>{post.meta.title}</a>
+        </li>
+      {/each}
+    </ul>
+  </div>
+</main>
 
 <style>
   main {
@@ -38,41 +80,3 @@
     margin-top: 1rem;
   }
 </style>
-
-<svelte:head>
-  <title>Writing | Kirill Vasiltsov</title>
-  <meta property="og:url" content="https://www.kirillvasiltsov.com/writing/" />
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="Kirill Vasiltsov | Writing" />
-  <meta
-    name="Description"
-    content="Kirill Vasiltsov's personal and work writing" />
-  <meta
-    property="og:description"
-    content="Kirill Vasiltsov's personal and work writing" />
-  <meta
-    property="og:image"
-    content="https://www.kirillvasiltsov.com/thumbnail.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:creator" content="https://twitter.com/virtualkirill/" />
-  <meta name="twitter:title" content="Kirill Vasiltsov | Writing" />
-  <meta
-    name="twitter:description"
-    content="Kirill Vasiltsov's personal and work writing" />
-  <meta
-    name="twitter:image"
-    content="https://www.kirillvasiltsov.com/thumbnail.png" />
-</svelte:head>
-
-<main>
-  <div class="max-width">
-    <h2>Things I wrote:</h2>
-    <ul class="posts">
-      {#each posts as post}
-        <li>
-          <a href={`/writing/${post.slug}/`}>{post.meta.title}</a>
-        </li>
-      {/each}
-    </ul>
-  </div>
-</main>

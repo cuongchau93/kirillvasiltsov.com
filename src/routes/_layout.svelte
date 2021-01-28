@@ -1,70 +1,154 @@
 <script>
-  import { beforeUpdate } from "svelte";
-  import { stores } from "@sapper/app";
-  import { crossfade, slide } from "svelte/transition";
-  import { cubicInOut } from "svelte/easing";
+  import { beforeUpdate } from "svelte"
+  import { stores } from "@sapper/app"
+  import { crossfade, slide } from "svelte/transition"
+  import { cubicInOut } from "svelte/easing"
 
-  import { mode, toggleMode, setModeTo } from "../theme.js";
-  import Menu from "../components/Menu.svelte";
-  import Footer from "../components/Footer.svelte";
+  import { mode, toggleMode, setModeTo } from "../theme.js"
+  import Menu from "../components/Menu.svelte"
+  import Footer from "../components/Footer.svelte"
 
-  let isMenuOpen = false;
+  let isMenuOpen = false
 
   const toggleMenu = () => {
-    isMenuOpen = !isMenuOpen;
-  };
+    isMenuOpen = !isMenuOpen
+  }
 
   const [send, recieve] = crossfade({
     delay: 0,
     duration: 200,
     fallback: slide,
     easing: cubicInOut,
-  });
+  })
 
-  const { page } = stores();
+  const { page } = stores()
 
-  $: path = $page.path;
+  $: path = $page.path
 
   const links = {
     "/": "home",
     "/writing": "writing",
-  };
+  }
 
-  const isRoot = (p) => p === "/";
-  const isCurrentPath = (p) => !isRoot(p) && path.startsWith(p);
+  const isRoot = (p) => p === "/"
+  const isCurrentPath = (p) => !isRoot(p) && path.startsWith(p)
 
   beforeUpdate(() => {
-    let storedTheme;
+    let storedTheme
 
     try {
-      storedTheme = localStorage.getItem("theme");
+      storedTheme = localStorage.getItem("theme")
     } catch (e) {}
 
-    const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
 
     document.documentElement.setAttribute(
       "data-theme",
       storedTheme || (darkQuery.matches ? "dark" : "light")
-    );
+    )
 
-    setModeTo(storedTheme);
+    setModeTo(storedTheme)
 
     darkQuery.addListener((e) => {
-      setModeTo(e.matches ? "dark" : "light");
-    });
+      setModeTo(e.matches ? "dark" : "light")
+    })
 
     const setPreferredTheme = () => {
-      document.documentElement.setAttribute("data-theme", $mode);
+      document.documentElement.setAttribute("data-theme", $mode)
       try {
-        localStorage.setItem("theme", $mode);
+        localStorage.setItem("theme", $mode)
       } catch (e) {}
-    };
+    }
 
-    mode.subscribe(setPreferredTheme);
-  });
+    mode.subscribe(setPreferredTheme)
+  })
 </script>
 
+<svelte:head
+  ><script>
+    ;(() => {
+      try {
+        const storedTheme = localStorage.getItem("theme")
+        const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
+        document.documentElement.setAttribute(
+          "data-theme",
+          storedTheme || (darkQuery.matches ? "dark" : "light")
+        )
+      } catch (e) {}
+    })()
+  </script><script async src="https://cdn.splitbee.io/sb.js">
+  </script></svelte:head
+>
+
+<div class="grid">
+  <header>
+    <div class="max-width header flex-between">
+      <h1 class="gradient header__author">
+        <a class="home-link" href="https://www.kirillvasiltsov.com/">
+          Kirill Vasiltsov
+        </a>
+      </h1>
+      <div class="header__controls">
+        <nav class="pc-navigation">
+          <ul>
+            {#each Object.keys(links) as link}
+              <li class="pc-navigation__link">
+                <a href={link}>{links[link]}</a>
+                {#if (link === "/" && isRoot(path)) || isCurrentPath(link)}
+                  <div in:send out:recieve class={`pc-navigation__pointer`} />
+                {/if}
+              </li>
+            {/each}
+          </ul>
+        </nav>
+        <button class="menu-button" on:click={toggleMenu}>MENU</button>
+        <a class="ko-fi" href="https://ko-fi.com/A0A23GQT8" target="_blank"
+          ><img
+            height="36"
+            style="border:0px;height:36px;"
+            src="https://cdn.ko-fi.com/cdn/kofi3.png?v=2"
+            border="0"
+            alt="Buy Me a Coffee at ko-fi.com"
+          /></a
+        >
+        <aside class="mode-toggle">
+          <label
+            class={`mode-toggle__toggle mode-toggle__toggle--${
+              $mode === "dark" ? "dark" : "light"
+            }`}
+          >
+            <input
+              checked={$mode === "dark"}
+              type="checkbox"
+              on:change={toggleMode}
+            />
+            <div>
+              <div>
+                <div />
+              </div>
+            </div>
+          </label>
+        </aside>
+      </div>
+    </div>
+    <aside class="divider">
+      <div class="bar" />
+      <div class="bar" />
+      <div class="bar" />
+    </aside>
+  </header>
+  <slot />
+  <Footer />
+</div>
+{#if isMenuOpen}
+  <Menu {links} {toggleMenu} />
+{/if}
+
 <style>
+  .ko-fi {
+    margin-right: 1.5em;
+  }
+
   :global(:root) {
     --bg: hsl(210, 20%, 99%);
     --primary: hsl(74, 32%, 8%);
@@ -408,71 +492,3 @@
     }
   }
 </style>
-
-<svelte:head>
-  <script>
-    (() => {
-      try {
-        const storedTheme = localStorage.getItem("theme");
-        const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
-        document.documentElement.setAttribute(
-          "data-theme",
-          storedTheme || (darkQuery.matches ? "dark" : "light")
-        );
-      } catch (e) {}
-    })();
-  </script>
-  <script async src="https://cdn.splitbee.io/sb.js">
-  </script>
-</svelte:head>
-
-<div class="grid">
-  <header>
-    <div class="max-width header flex-between">
-      <h1 class="gradient header__author">
-        <a class="home-link" href="https://www.kirillvasiltsov.com/">
-          Kirill Vasiltsov
-        </a>
-      </h1>
-      <div class="header__controls">
-        <nav class="pc-navigation">
-          <ul>
-            {#each Object.keys(links) as link}
-              <li class="pc-navigation__link">
-                <a href={link}>{links[link]}</a>
-                {#if (link === '/' && isRoot(path)) || isCurrentPath(link)}
-                  <div in:send out:recieve class={`pc-navigation__pointer`} />
-                {/if}
-              </li>
-            {/each}
-          </ul>
-        </nav>
-        <button class="menu-button" on:click={toggleMenu}>MENU</button>
-        <aside class="mode-toggle">
-          <label
-            class={`mode-toggle__toggle mode-toggle__toggle--${$mode === 'dark' ? 'dark' : 'light'}`}>
-            <input
-              checked={$mode === 'dark'}
-              type="checkbox"
-              on:change={toggleMode} />
-            <div>
-              <div>
-                <div />
-              </div>
-            </div>
-          </label>
-        </aside>
-      </div>
-    </div>
-    <aside class="divider">
-      <div class="bar" />
-      <div class="bar" />
-      <div class="bar" />
-    </aside>
-  </header>
-  <slot />
-  <Footer />
-</div>
-{#if isMenuOpen}
-  <Menu {links} {toggleMenu} />
-{/if}
