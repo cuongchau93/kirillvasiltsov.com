@@ -1,67 +1,64 @@
-import fetch from "node-fetch"
+import fetch from 'node-fetch';
+import { dev } from '$app/env';
+import { loadEnv } from '$lib/environment';
 
-require("dotenv").config()
+if (dev) {
+	loadEnv();
+}
 
-export async function get(req, res) {
-  const _contributed = [
-    "gatsbyjs/gatsby",
-    "dotansimha/graphql-code-generator",
-    "pikapkg/snowpack",
-    "orogene/orogene"
-  ]
+export async function get() {
+	const _contributed = [
+		'gatsbyjs/gatsby',
+		'dotansimha/graphql-code-generator',
+		'pikapkg/snowpack',
+		'orogene/orogene'
+	];
 
-  const _built = [
-    "react-easy-flip",
-    "use-animate-presence",
-    "springframes",
-    "will-it-render",
-    "looc",
-    "tsx-ray",
-    "umca",
-    "useFetch",
-    "wasm-game-of-life",
-    "gatsby-remark-shiki",
-    "rollup-plugin-web-imports"
-  ]
+	const _built = [
+		'react-easy-flip',
+		'use-animate-presence',
+		'springframes',
+		'will-it-render',
+		'looc',
+		'tsx-ray',
+		'umca',
+		'useFetch',
+		'wasm-game-of-life',
+		'gatsby-remark-shiki',
+		'rollup-plugin-web-imports'
+	];
 
-  const builtResponses = await Promise.all(
-    _built.map((repo) =>
-      fetch(`https://api.github.com/repos/jlkiri/${repo}`, {
-        headers: { Authorization: `Bearer ${process.env.GITHUB_API_TOKEN}` }
-      })
-    )
-  )
+	const builtResponses = _built.map((repo) =>
+		fetch(`https://api.github.com/repos/jlkiri/${repo}`, {
+			headers: { Authorization: `Bearer ${process.env['GITHUB_API_TOKEN']}` }
+		})
+	);
 
-  const contributedResponses = await Promise.all(
-    _contributed.map((repo) =>
-      fetch(`https://api.github.com/repos/${repo}`, {
-        headers: { Authorization: `Bearer ${process.env.GITHUB_API_TOKEN}` }
-      })
-    )
-  )
+	const contributedResponses = _contributed.map((repo) =>
+		fetch(`https://api.github.com/repos/${repo}`, {
+			headers: { Authorization: `Bearer ${process.env['GITHUB_API_TOKEN']}` }
+		})
+	);
 
-  const responses = await Promise.all(
-    [...contributedResponses, ...builtResponses].map((r) => r.json())
-  )
-  const repositories = responses.map((repo) => {
-    return {
-      name: repo.name,
-      description: repo.description,
-      url: repo["html_url"],
-      stars: repo["stargazers_count"],
-      fullName: repo["full_name"]
-    }
-  })
+	const responses = await Promise.all(
+		[...contributedResponses, ...builtResponses].map((f) => f.then((r) => r.json()))
+	);
 
-  const built = repositories.filter((r) => _built.includes(r.name))
+	const repositories = responses.map((repo) => {
+		return {
+			name: repo.name,
+			description: repo.description,
+			url: repo['html_url'],
+			stars: repo['stargazers_count'],
+			fullName: repo['full_name']
+		};
+	});
 
-  const contributed = repositories.filter((r) =>
-    _contributed.includes(r.fullName)
-  )
+	const built = repositories.filter((r) => _built.includes(r.name));
 
-  res.writeHead(200, {
-    "Content-Type": "application/json"
-  })
+	const contributed = repositories.filter((r) => _contributed.includes(r.fullName));
 
-  res.end(JSON.stringify({ contributed, built }))
+	return {
+		body: JSON.stringify({ contributed, built })
+	};
 }
