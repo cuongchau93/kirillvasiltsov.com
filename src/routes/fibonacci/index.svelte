@@ -1,10 +1,10 @@
 <script context="module">
-  export async function preload({ params }) {
-    const response = await this.fetch(
+  export async function load({ fetch }) {
+    const response = await fetch(
       "https://www.kirillvasiltsov.com/.netlify/functions/counter?name=fibonacci"
     );
     const hits = await response.json();
-    return { hits };
+    return { props:  {hits} };
   }
 </script>
 

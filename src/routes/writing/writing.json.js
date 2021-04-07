@@ -1,11 +1,9 @@
-import { getAllPosts, orderByRecent } from "../_posts"
+import { getAllPosts, orderByRecent } from '$lib/site/posts';
 
-export async function get(req, res) {
-  res.writeHead(200, {
-    "Content-Type": "application/json"
-  })
+export async function get() {
+	const posts = await getAllPosts();
 
-  const posts = await getAllPosts()
-
-  res.end(JSON.stringify(orderByRecent(Array.from(posts))))
+	return {
+		body: JSON.stringify(orderByRecent(Array.from(posts)))
+	};
 }
