@@ -1,11 +1,5 @@
 .DS_Store
-/node_modules/
-/src/node_modules/@sapper/
-yarn-error.log
-/cypress/screenshots/
-/__sapper__/
-.env
-/static/tailwind.css
-
-# Local Netlify folder
-.netlify
+node_modules
+/.svelte
+/build
+/functions
